@@ -1,0 +1,65 @@
+// scss-docs-start theme-text-dark-variables
+$primary-text-emphasis-dark: #b8dcff;
+$secondary-text-emphasis-dark: #c8d3e0;
+$success-text-emphasis-dark: #003917;
+$info-text-emphasis-dark: #c4ecff;
+$warning-text-emphasis-dark: #3e2800;
+$danger-text-emphasis-dark: #5b1103;
+$light-text-emphasis-dark: $gray-100;
+$dark-text-emphasis-dark: $gray-300;
+// scss-docs-end theme-text-dark-variables
+
+// scss-docs-start theme-bg-subtle-dark-variables
+$primary-bg-subtle-dark: $primary;
+$secondary-bg-subtle-dark: $secondary;
+$success-bg-subtle-dark: $success;
+$info-bg-subtle-dark: $info;
+$warning-bg-subtle-dark: $warning;
+$danger-bg-subtle-dark: $danger;
+$light-bg-subtle-dark: $gray-800;
+$dark-bg-subtle-dark: mix($gray-800, $black);
+// scss-docs-end theme-bg-subtle-dark-variables
+
+// scss-docs-start theme-border-subtle-dark-variables
+$primary-border-subtle-dark: shade-color($primary, 40%);
+$secondary-border-subtle-dark: shade-color($secondary, 40%);
+$success-border-subtle-dark: shade-color($success, 40%);
+$info-border-subtle-dark: shade-color($info, 40%);
+$warning-border-subtle-dark: shade-color($warning, 40%);
+$danger-border-subtle-dark: shade-color($danger, 40%);
+$light-border-subtle-dark: $gray-700;
+$dark-border-subtle-dark: $gray-800;
+
+// scss-docs-end theme-border-subtle-dark-variables
+$body-color-dark: $gray-500;
+$body-bg-dark: $gray-900;
+$body-secondary-color-dark: rgba($body-color-dark, 0.75);
+$body-secondary-bg-dark: $gray-800;
+$body-tertiary-color-dark: rgba($body-color-dark, 0.5);
+$body-tertiary-bg-dark: mix($gray-800, $gray-900, 50%);
+$body-emphasis-color-dark: $white;
+$border-color-dark: $gray-700;
+$border-color-translucent-dark: rgba($white, 0.15);
+$headings-color-dark: null;
+$link-color-dark: tint-color($primary, 40%);
+$link-hover-color-dark: shift-color($link-color-dark, -$link-shade-percentage);
+$code-color-dark: tint-color($code-color, 40%);
+
+//
+// Forms
+//
+$form-select-indicator-color-dark: $body-color-dark;
+
+$form-switch-color-dark: rgba($white, 0.25);
+// scss-docs-start form-validation-colors-dark
+$form-valid-color-dark: $success;
+$form-valid-border-color-dark: $green-300;
+$form-invalid-color-dark: $red-300;
+$form-invalid-border-color-dark: $red-300;
+// scss-docs-end form-validation-colors-dark
+
+//
+// Accordion
+//
+$accordion-icon-color-dark: $primary-text-emphasis-dark;
+$accordion-icon-active-color-dark: $primary-text-emphasis-dark;

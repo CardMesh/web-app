@@ -1,0 +1,32 @@
+// Defaults
+$primary: #1c4e80;
+$secondary: #6e7781;
+$success: #6bb187;
+$info: #0091d5;
+$warning: #dbae59;
+$danger: #ea6947;
+$light: #d2d2d2;
+$dark: #212529;
+$border-radius: 0.2rem;
+$border-radius-lg: 0.2rem;
+$color-mode-type: data;
+
+$card-border-radius: 10px;
+
+// Loads variables
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+
+// Style alerts
+.alert {
+	box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+	border: none !important;
+}
+
+// Load overrides
+@import './css/dark-theme';
+@import './css/light-theme';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
