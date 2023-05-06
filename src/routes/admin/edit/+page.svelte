@@ -1,47 +1,54 @@
 <script>
 	import AdminMain from '$lib/admin/AdminMain.svelte';
 	import Preview from '$lib/admin/Preview.svelte';
+	import { enhance } from '$app/forms';
+	import { displaySuccess } from '../../../js/toast.js';
+	import { browser } from '$app/environment';
 
-	// get from database...
-	let options = {
-		firstName: 'John',
-		lastName: 'Doe',
-		title: 'Full-stack Web Developer',
-		pronouns: 'he/him',
-		company: 'KEA',
-		bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod sapien vitae odio ullamcorper, non blandit neque fermentum.',
-		phone: '(555) 123-4567',
-		cell: '(555) 123-4567',
-		email: 'johndoe@example.com',
-		web: 'https://example.dk',
-		street: '123 Main Street',
-		state: 'Apt. 4B',
-		city: 'Anytown',
-		postalCode: '12345',
-		country: 'USA',
-		timeZone: 'Europe/Copenhagen',
-		gender: 'M',
-		birthday: '1992-10-09'
+	let uuid;
+	$: if (browser) {
+		uuid = getUUID();
+	}
+
+	function getUUID() {
+		const url = new URL(window.location.href);
+		const searchParams = new URLSearchParams(url.search);
+		return searchParams.get('uuid');
+	}
+
+	export let data;
+	export let options = { ...data.vCards.data };
+	let isLoading = false;
+	const save = () => {
+		isLoading = true;
+		return async ({ update, result }) => {
+			await update({ reset: false });
+
+			if (result.type === 'success') {
+				displaySuccess('Successfully saved!');
+			}
+
+			isLoading = false;
+		};
 	};
-
-	// when done write the whole options obj to db...
 </script>
 
 <AdminMain>
 	<div
 		class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
 	>
-		<h1 class="h2">Table</h1>
+		<h1 class="h2">Edit</h1>
 	</div>
 
 	<div class="row">
 		<div class="col-8">
-			<form>
+			<form action="?/save{uuid ? `&uuid=${uuid}` : ''}" method="POST" use:enhance={save}>
 				<div class="form-floating mb-3">
 					<input
 						bind:value={options.firstName}
 						class="form-control"
 						id="firstNameInput"
+						name="firstName"
 						placeholder=""
 						type="text"
 					/>
@@ -52,6 +59,7 @@
 						bind:value={options.lastName}
 						class="form-control"
 						id="lastNameInput"
+						name="lastName"
 						placeholder=""
 						type="text"
 					/>
@@ -62,6 +70,7 @@
 						bind:value={options.title}
 						class="form-control"
 						id="titleInput"
+						name="title"
 						placeholder=""
 						type="text"
 					/>
@@ -72,6 +81,7 @@
 						bind:value={options.pronouns}
 						class="form-control"
 						id="pronounsInput"
+						name="pronouns"
 						placeholder=""
 						type="text"
 					/>
@@ -82,6 +92,7 @@
 						bind:value={options.company}
 						class="form-control"
 						id="companyInput"
+						name="company"
 						placeholder=""
 						type="text"
 					/>
@@ -92,6 +103,7 @@
 						bind:value={options.bio}
 						class="form-control"
 						id="bioTextarea"
+						name="bio"
 						placeholder=""
 						style="height: 100px"
 						type="text"
@@ -103,6 +115,7 @@
 						bind:value={options.phone}
 						class="form-control"
 						id="phoneInput"
+						name="phone"
 						placeholder=""
 						type="tel"
 					/>
@@ -113,6 +126,7 @@
 						bind:value={options.email}
 						class="form-control"
 						id="emailInput"
+						name="email"
 						placeholder=""
 						type="email"
 					/>
@@ -123,6 +137,7 @@
 						bind:value={options.web}
 						class="form-control"
 						id="webInput"
+						name="web"
 						placeholder=""
 						type="text"
 					/>
@@ -133,6 +148,7 @@
 						bind:value={options.street}
 						class="form-control"
 						id="streetInput"
+						name="street"
 						placeholder=""
 						type="text"
 					/>
@@ -143,6 +159,7 @@
 						bind:value={options.state}
 						class="form-control"
 						id="stateInput"
+						name="state"
 						placeholder=""
 						type="text"
 					/>
@@ -153,6 +170,7 @@
 						bind:value={options.postalCode}
 						class="form-control"
 						id="postalCodeInput"
+						name="postalCode"
 						placeholder=""
 						type="text"
 					/>
@@ -163,6 +181,7 @@
 						bind:value={options.city}
 						class="form-control"
 						id="cityInput"
+						name="city"
 						placeholder=""
 						type="text"
 					/>
@@ -173,13 +192,22 @@
 						bind:value={options.country}
 						class="form-control"
 						id="countryInput"
+						name="country"
 						placeholder=""
 						type="text"
 					/>
 					<label for="countryInput">Country</label>
 				</div>
 
-				<button class="btn btn-primary" type="submit">Save</button>
+				<div class="d-grid gap-2 mb-5">
+					<button class="btn btn-primary btn-lg" disabled={isLoading} type="submit">
+						{#if isLoading}
+							<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" />
+						{:else}
+							Save
+						{/if}
+					</button>
+				</div>
 			</form>
 		</div>
 

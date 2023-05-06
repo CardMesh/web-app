@@ -25,8 +25,14 @@
 		vcard.set('org', `${options.company}`);
 		vcard.set('title', `${options.title}`);
 		vcard.set('email', `${options.email}`, { type: 'work' });
-		vcard.set('tel', `${options.phone}`, { type: 'work', voice: true });
-		vcard.set('tel', `${options.mobile}`, { type: 'cell', voice: true });
+		vcard.set('tel', `${options.phone}`, {
+			type: 'work',
+			voice: true
+		});
+		vcard.set('tel', `${options.mobile}`, {
+			type: 'cell',
+			voice: true
+		});
 		vcard.set(
 			'adr',
 			`${options.street};${options.city};${options.state};${options.postalCode};${options.country}`,

@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import Main from '$lib/front/Main.svelte';
 
 	onMount(async () => {
 		const leaflet = await import('leaflet');

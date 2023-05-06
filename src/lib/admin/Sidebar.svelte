@@ -65,13 +65,13 @@
 		</li>
 		<li class="nav-item">
 			<a
-				aria-current={$page.url.pathname === '/admin/theme' ? 'page' : undefined}
+				aria-current={$page.url.pathname === '/admin/edit' ? 'page' : undefined}
 				class="mt-2 my-2 btn btn-nav d-flex align-items-center justify-content-center mx-auto"
-				data-bs-content="Theme"
+				data-bs-content="Edit"
 				data-bs-placement="right"
 				data-bs-toggle="popover"
 				data-bs-trigger="hover"
-				href="/admin/theme"
+				href="/admin/edit"
 				on:click={resetPopoverState()}
 				role="button"
 			>

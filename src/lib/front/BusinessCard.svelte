@@ -148,8 +148,7 @@
 
 	.fixed-bottom-demo {
 		position: sticky;
-		top: calc(100% - 43px);
-		margin-top: -43px;
+		bottom: 0;
 		width: 100%;
 		display: flex;
 		justify-content: center;

@@ -1,6 +1,7 @@
 <script>
 	import Sidebar from '$lib/admin/Sidebar.svelte';
 	import NavbarTop from '$lib/admin/NavbarTop.svelte';
+	import { SvelteToast } from '@zerodevx/svelte-toast';
 </script>
 
 <main class="d-flex flex-nowrap">
@@ -14,6 +15,7 @@
 		</div>
 	</div>
 </main>
+<SvelteToast />
 
 <style>
 	.custom-container {

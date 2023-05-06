@@ -10,7 +10,10 @@
 			const options = {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email, password })
+				body: JSON.stringify({
+					email,
+					password
+				})
 			};
 
 			const response = await fetch('http://localhost:8080/api/auth/login', options);
@@ -20,7 +23,7 @@
 		const user = await fetchUser();
 
 		if (!user.errors) {
-			Cookies.set('user', JSON.stringify(user));
+			Cookies.set('user', JSON.stringify(user), { expires: 365 });
 			await goto('/admin');
 		} else {
 			// TODO: error handle

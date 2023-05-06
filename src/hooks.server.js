@@ -7,5 +7,5 @@ export async function handle({ event, resolve }) {
     throw redirect(302, '/login');
   }
 
-  return await resolve(event);
+  return resolve(event);
 }
