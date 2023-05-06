@@ -1,11 +1,18 @@
 import { redirect } from '@sveltejs/kit';
 
-export async function handle({ event, resolve }) {
-  const auth = event.cookies.get('user');
+export async function handle({
+  event,
+  resolve,
+}) {
+  const user = event.cookies.get('user');
 
-  if (event.url.pathname.startsWith('/admin') && !auth) {
+  const theme = JSON.parse(user).data.theme || 'dark';
+
+  if (event.url.pathname.startsWith('/admin') && !user) {
     throw redirect(302, '/login');
   }
 
-  return resolve(event);
+  return await resolve(event, {
+    transformPageChunk: ({ html }) => html.replace('data-bs-theme="auto"', `data-bs-theme="${theme}"`),
+  });
 }
