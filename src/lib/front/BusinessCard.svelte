@@ -19,7 +19,7 @@
 </script>
 
 <div class="bg-secondary">
-	<div class="container">
+	<div class="container bg-custom">
 		<img
 			alt={options.company}
 			class="position-relative mt-2"
@@ -50,6 +50,7 @@
 		<SocialIcons alt="" height="22" network="facebook" width="22" />
 		<SocialIcons alt="" height="22" network="instagram" width="22" />
 		<SocialIcons alt="" height="22" network="pinterest" width="22" />
+		<SocialIcons alt="" height="22" network="github" width="22" />
 
 		<Divider />
 
@@ -165,5 +166,18 @@
 			left: 0;
 			z-index: 1030;
 		}
+	}
+
+	// override boostrap custom css... make this configurable from BO
+	p, span, h1, h2, h3, em {
+		color: white;
+	}
+
+	.bg-custom {
+		background-color: #212529;
+	}
+
+	.text-secondary {
+		color: grey !important;
 	}
 </style>
