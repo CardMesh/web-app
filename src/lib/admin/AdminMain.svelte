@@ -1,24 +1,46 @@
 <script>
-	import Sidebar from '$lib/admin/Sidebar.svelte';
-	import NavbarTop from '$lib/admin/NavbarTop.svelte';
-	import { SvelteToast } from '@zerodevx/svelte-toast';
+  import { onMount } from 'svelte';
+  import Sidebar from '$lib/admin/Sidebar.svelte';
+  import NavbarTop from '$lib/admin/NavbarTop.svelte';
+  import { SvelteToast } from '@zerodevx/svelte-toast';
+  import MobileMenu from '$lib/admin/MobileMenu.svelte';
+
+  let screenWidth = false;
+  let isMounted = false;
+
+  onMount(() => {
+    const handleResize = () => {
+      screenWidth = window.innerWidth;
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    isMounted = true;
+  });
 </script>
 
-<main class="d-flex flex-nowrap">
-	<Sidebar />
+{#if isMounted}
+    <div class="d-flex flex-nowrap">
+        {#if screenWidth > 500}
+            <Sidebar/>
+        {:else}
+            <MobileMenu/>
+        {/if}
 
-	<div class="custom-container">
-		<NavbarTop />
-
-		<div class="px-5">
-			<slot />
-		</div>
-	</div>
-</main>
-<SvelteToast />
+        <div class="custom-container">
+            <NavbarTop/>
+            <main>
+                <div class="px-3">
+                    <slot/>
+                </div>
+            </main>
+        </div>
+    </div>
+    <SvelteToast/>
+{/if}
 
 <style>
-	.custom-container {
-		width: 100%;
-	}
+    .custom-container {
+        width: 100%;
+    }
 </style>

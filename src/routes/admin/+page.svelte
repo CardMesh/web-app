@@ -8,7 +8,7 @@
 
   let svgString = '';
   const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
-  let profileUrl = `http://localhost/profile/${uuid}`;
+  let profileUrl = `http://localhost:5173/profile/${uuid}`;
 
   onMount(() => {
     svgString = new QRCode({
