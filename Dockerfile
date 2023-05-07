@@ -12,13 +12,12 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV=production
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
 # Install packages needed to build node modules
 RUN apt-get update -qq && \
-    apt-get install -y python-is-python3 pkg-config build-essential 
+    apt-get install -y python-is-python3 pkg-config build-essential
 
 # Install node modules
 COPY --link package.json package-lock.json .
@@ -32,7 +31,6 @@ RUN npm run build
 
 # Remove development dependencies
 RUN npm prune --production
-
 
 # Final stage for app image
 FROM base
