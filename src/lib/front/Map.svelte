@@ -22,7 +22,7 @@
 <div id="map" />
 
 <style lang="scss">
-	@import 'node_modules/leaflet/dist/leaflet.css';
+//	@import 'node_modules/leaflet/dist/leaflet.css';
 	/* Set the height of the map container */
 	#map {
 		height: 200px;

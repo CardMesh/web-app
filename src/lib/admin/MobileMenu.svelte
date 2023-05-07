@@ -10,8 +10,8 @@
   };
 </script>
 
-<div class="d-flex flex-row bg-body fixed-bottom justify-content-around align-items-center border-top">
-    <ul class="nav nav-pills nav-flush flex-row mb-auto text-center justify-content-between align-items-center w-100 py-2">
+<div class="bg-body fixed-bottom border-top mt-5">
+    <ul class="nav w-100 py-2">
         <li class="nav-item">
             <a
                     aria-current={$page.url.pathname === '/admin' ? 'page' : undefined}
@@ -20,7 +20,7 @@
                     href="/admin"
                     role="button"
             >
-                <HomeIcon class="align-middle" size="2x" />
+                <HomeIcon class="align-middle" size="2x"/>
             </a>
         </li>
         <li class="nav-item">
@@ -30,7 +30,7 @@
                     href="/admin/edit"
                     role="button"
             >
-                <EditIcon class="align-middle" size="2x" />
+                <EditIcon class="align-middle" size="2x"/>
             </a>
         </li>
 
@@ -41,7 +41,7 @@
                     href="/admin/users"
                     role="button"
             >
-                <UsersIcon class="text-warning align-middle" size="2x" />
+                <UsersIcon class="text-warning align-middle" size="2x"/>
             </a>
         </li>
 
@@ -52,7 +52,7 @@
                     href="/admin/api"
                     role="button"
             >
-                <UsersIcon class="text-warning align-middle" size="2x" />
+                <UsersIcon class="text-warning align-middle" size="2x"/>
             </a>
         </li>
 
@@ -61,7 +61,7 @@
                     class="btn btn-nav d-flex align-items-center justify-content-center mx-auto"
                     on:click={handleLogout}
             >
-                <LogOutIcon class="align-middle text-danger" size="2x" />
+                <LogOutIcon class="align-middle text-danger" size="2x"/>
             </button>
         </li>
     </ul>

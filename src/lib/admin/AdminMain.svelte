@@ -36,6 +36,7 @@
             </main>
         </div>
     </div>
+    <div  style="margin-bottom: 70px"></div>
     <SvelteToast/>
 {/if}
 

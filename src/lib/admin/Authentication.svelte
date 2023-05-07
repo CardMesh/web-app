@@ -16,7 +16,7 @@
 				})
 			};
 
-			const response = await fetch('http://localhost:8080/api/auth/login', options);
+			const response = await fetch('https://meishi-rest-api.fly.dev/api/auth/login', options);
 			return response.json();
 		};
 

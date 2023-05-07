@@ -6,7 +6,7 @@ export const csr = dev;
 
 // since there's no dynamic data here, we can prerender
 // it so that it gets served as a static asset in production
-export const prerender = true;
+export const prerender = 'auto';
 
 export const load = async ({ fetch, params }) => {
   const fetchVcard = async () => {
@@ -18,7 +18,7 @@ export const load = async ({ fetch, params }) => {
     };
 
     const response = await fetch(
-      `http://localhost:8080/api/users/${params.id}/vcard-options`,
+      `https://meishi-rest-api.fly.dev/api/users/${params.id}/vcard-options`,
       options,
     );
     return response.json();

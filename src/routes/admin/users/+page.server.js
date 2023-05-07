@@ -10,7 +10,7 @@ export const load = async ({ fetch, cookies }) => {
       },
     };
 
-    const response = await fetch('http://localhost:8080/api/users', options);
+    const response = await fetch('https://meishi-rest-api.fly.dev/api/users', options);
     return response.json();
   };
 
@@ -35,7 +35,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/users', options);
+      const response = await fetch('https://meishi-rest-api.fly.dev/api/users', options);
 
       if (response.ok) {
         console.log('Form submitted successfully.');
