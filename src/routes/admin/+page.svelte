@@ -4,7 +4,7 @@
   import { onMount } from 'svelte';
   import Cookies from 'js-cookie';
   import QRCode from 'qrcode-svg';
-  import { displayError, displaySuccess, displayWarning } from '../../js/toast.js';
+  import NfcButton from '$lib/admin/NfcButton.svelte';
 
   let svgString = '';
   const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
@@ -34,20 +34,6 @@
 		  Object.assign(document.createElement('a'), { download: filename, href: canvas.toDataURL('image/png') }).click();
 	  };
 	  image.src = url;
-  };
-
-  const writeTag = async () => {
-    if ('NDEFReader' in window) {
-      const ndef = new NDEFReader();
-      try {
-        await ndef.write({ records: [{ recordType: 'url', data: `${profileUrl}?entryPoint=nfc` }] });
-        displaySuccess('NDEF message written!');
-      } catch (error) {
-        displayError(error);
-      }
-    } else {
-      displayWarning('Web NFC is not supported.');
-    }
   };
 </script>
 
@@ -95,7 +81,7 @@
                     <p class="card-text">
                         With supporting text below as a natural lead-in to additional content.
                     </p>
-                    <button class="btn btn-primary" on:click={writeTag}>Write NFC tag</button>
+                    <NfcButton profileUrl="{`${profileUrl}?entryPoint=nfc`}" />
                 </div>
             </div>
         </div>

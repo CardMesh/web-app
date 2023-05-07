@@ -20,7 +20,7 @@
 </script>
 
 {#if isMounted}
-    <div class="d-flex flex-nowrap">
+    <div class="d-flex flex-nowrap mobile">
         {#if screenWidth > 642}
             <Sidebar/>
         {:else}
@@ -36,12 +36,17 @@
             </main>
         </div>
     </div>
-    <div  style="margin-bottom: 70px"></div>
-    <SvelteToast/>
+   <SvelteToast/>
 {/if}
 
 <style>
     .custom-container {
         width: 100%;
+    }
+
+    @media (max-width: 642px) {
+        .mobile {
+            padding-bottom: 70px;
+        }
     }
 </style>

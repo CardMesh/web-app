@@ -2,6 +2,7 @@
 	import Map from '$lib/front/Map.svelte';
 	import { UserPlusIcon } from 'svelte-feather-icons';
 	import Divider from '$lib/front/Divider.svelte';
+	import VCardButton from '$lib/front/VCard.svelte';
 
 	export let data;
 </script>
@@ -32,10 +33,10 @@
 	<Divider />
 
 	<div class="row fixed-bottom-custom p-0">
-		<button class="btn btn-primary w-100 rounded-0 py-2">
+		<VCardButton c="btn btn-primary w-100 rounded-0 py-2">
 			<UserPlusIcon size="1x" />
 			Add to contacts
-		</button>
+		</VCardButton>
 	</div>
 </div>
 
