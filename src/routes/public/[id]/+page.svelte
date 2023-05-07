@@ -9,7 +9,7 @@
 
 <svelte:head>
 	<title>About</title>
-	<meta content="About this app" name="description" />
+	<meta content="About this app" name="description" /> <!-- TODO -->
 </svelte:head>
 
 <div class="container rounded-3 bg-light overflow-hidden">

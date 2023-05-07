@@ -25,6 +25,7 @@
 			class="position-relative mt-2"
 			src="https://fakeimg.pl/60x30/"
 			style="max-width: 60px; max-height: 60px;"
+
 		/>
 
 		<Divider />
@@ -60,6 +61,7 @@
 					class="btn me-2 d-flex my-auto rounded-circle bg-info p-2 border-0"
 					href="tel:{options.phone}"
 					role="button"
+					aria-label="Call {options.phone}"
 				>
 					<PhoneIcon size="1.2x" />
 				</a>
@@ -68,6 +70,7 @@
 					class="btn me-2 d-flex my-auto rounded-circle bg-info p-2 border-0"
 					href="sms:{options.phone}"
 					role="button"
+					aria-label="Send SMS to {options.phone}"
 				>
 					<MessageSquareIcon size="1.2x" />
 				</a>
@@ -83,6 +86,7 @@
 					class="btn me-2 d-flex my-auto rounded-circle bg-info p-2 border-0"
 					href="mailto:{options.email}"
 					role="button"
+					aria-label="Email {options.email}"
 				>
 					<MailIcon size="1.2x" />
 				</a>
@@ -98,6 +102,7 @@
 					href={options.web}
 					role="button"
 					target="_blank"
+					aria-label="Visit {options.web}"
 				>
 					<GlobeIcon size="1.2x" />
 				</a>
@@ -113,6 +118,7 @@
 					href="https://www.google.com/maps/place/Guldstjernevej+4+2400+K%C3%B8benhavn"
 					role="button"
 					target="_blank"
+					aria-label="View location on Google Maps"
 				>
 					<MapPinIcon size="1.2x" />
 				</a>

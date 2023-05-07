@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import Cookies from 'js-cookie';
+	import { displaySuccess } from '../../js/toast.js';
 
 	// TODO add this method to the report.. Beskrive teknisk udfordring..
 	const resetPopoverState = () => {
@@ -30,6 +31,7 @@
 		resetPopoverState();
 		Cookies.remove('user');
 		goto('/login');
+		displaySuccess('Successfully logged out')
 	};
 </script>
 

@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { goto } from '$app/navigation';
 
 export async function handle({
   event,
@@ -9,10 +9,10 @@ export async function handle({
   const theme = JSON.parse(user)?.data?.theme || 'dark';
 
   if (event.url.pathname.startsWith('/admin') && !JSON.parse(user)?.data?.token) {
-    throw redirect(302, '/login');
+    await goto('/login');
   }
 
-  return await resolve(event, {
+  return resolve(event, {
     transformPageChunk: ({ html }) => html.replace('data-bs-theme="auto"', `data-bs-theme="${theme}"`),
   });
 }

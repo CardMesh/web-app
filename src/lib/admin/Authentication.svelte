@@ -2,9 +2,10 @@
 	import Cookies from 'js-cookie';
 	import { goto } from '$app/navigation';
 	import { PUBLIC_REST_API_URL } from '$env/static/public';
+	import { displaySuccess, displayWarning } from '../../js/toast.js';
 
-	let email;
-	let password;
+	let email = "demo@demo.com";
+	let password = "Demodemo!";
 
 	const login = async () => {
 		const fetchUser = async () => {
@@ -18,6 +19,7 @@
 			};
 
 			const response = await fetch(`${PUBLIC_REST_API_URL}/api/auth/login`, options);
+
 			return response.json();
 		};
 
@@ -25,9 +27,10 @@
 
 		if (!user.errors) {
 			Cookies.set('user', JSON.stringify(user), { expires: 365 });
+			displaySuccess('Successfully login')
 			await goto('/admin');
 		} else {
-			// TODO: error handle
+			displayWarning('Wrong credentials');
 		}
 	};
 </script>
