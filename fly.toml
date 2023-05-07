@@ -1,8 +1,3 @@
-# fly.toml app configuration file generated for meishi on 2023-05-07T11:25:47+02:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = "meishi"
 kill_signal = "SIGINT"
 kill_timeout = 5

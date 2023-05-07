@@ -1,6 +1,7 @@
 <script>
 	import Cookies from 'js-cookie';
 	import { goto } from '$app/navigation';
+	import { PUBLIC_REST_API_URL } from '$env/static/public';
 
 	let email;
 	let password;
@@ -16,7 +17,7 @@
 				})
 			};
 
-			const response = await fetch('https://meishi-rest-api.fly.dev/api/auth/login', options);
+			const response = await fetch(`${PUBLIC_REST_API_URL}/api/auth/login`, options);
 			return response.json();
 		};
 

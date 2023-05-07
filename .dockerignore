@@ -3,3 +3,6 @@ Dockerfile
 .dockerignore
 node_modules
 .git
+.idea
+.env
+.env.production

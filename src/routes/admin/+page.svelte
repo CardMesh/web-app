@@ -5,10 +5,11 @@
   import Cookies from 'js-cookie';
   import QRCode from 'qrcode-svg';
   import NfcButton from '$lib/admin/NfcButton.svelte';
+  import { PUBLIC_BASE_URL } from '$env/static/public';
 
   let svgString = '';
   const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
-  let profileUrl = `https://meishi.fly.dev/profile/${uuid}`;
+  let profileUrl = `${PUBLIC_BASE_URL}/profile/${uuid}`;
 
   onMount(() => {
     svgString = new QRCode({

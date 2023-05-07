@@ -1,3 +1,5 @@
+import { PUBLIC_REST_API_URL } from '$env/static/public';
+
 export const load = async ({ fetch, cookies }) => {
   const { token } = JSON.parse(cookies.get('user')).data;
 
@@ -10,7 +12,7 @@ export const load = async ({ fetch, cookies }) => {
       },
     };
 
-    const response = await fetch('https://meishi-rest-api.fly.dev/api/users', options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users`, options);
     return response.json();
   };
 
@@ -35,7 +37,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch('https://meishi-rest-api.fly.dev/api/users', options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users`, options);
 
       if (response.ok) {
         console.log('Form submitted successfully.');
