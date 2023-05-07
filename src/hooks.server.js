@@ -4,11 +4,11 @@ export async function handle({
   event,
   resolve,
 }) {
-  const user = event.cookies.get('user');
+  const user = event.cookies.get('user') ?? '{}';
 
-  const theme = JSON.parse(user).data.theme || 'dark';
+  const theme = JSON.parse(user)?.data?.theme || 'dark';
 
-  if (event.url.pathname.startsWith('/admin') && !user) {
+  if (event.url.pathname.startsWith('/admin') && !JSON.parse(user)?.data?.token) {
     throw redirect(302, '/login');
   }
 

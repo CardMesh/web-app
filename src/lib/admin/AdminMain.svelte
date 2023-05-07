@@ -21,7 +21,7 @@
 
 {#if isMounted}
     <div class="d-flex flex-nowrap">
-        {#if screenWidth > 500}
+        {#if screenWidth > 642}
             <Sidebar/>
         {:else}
             <MobileMenu/>
