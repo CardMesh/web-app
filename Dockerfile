@@ -38,5 +38,8 @@ FROM base
 # Copy built application
 COPY --from=build /app /app
 
+# Rename .env.production to .env
+RUN mv .env.production .env
+
 # Start the server by default, this can be overwritten at runtime
 CMD [ "npm", "run", "start" ]
