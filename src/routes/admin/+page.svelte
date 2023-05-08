@@ -24,17 +24,28 @@
   });
 
   const downloadSvgAsPng = (svgString, filename) => {
-	  const canvas = document.createElement('canvas');
-	  const svg = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
-	  const url = URL.createObjectURL(svg);
-	  const image = new Image();
-	  image.onload = () => {
-		  const { width, height } = image;
-		  Object.assign(canvas, { width: 800, height: (800 * height) / width });
-		  canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
-		  Object.assign(document.createElement('a'), { download: filename, href: canvas.toDataURL('image/png') }).click();
-	  };
-	  image.src = url;
+    const canvas = document.createElement('canvas');
+    const svg = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svg);
+    const image = new Image();
+    image.onload = () => {
+      const {
+        width,
+        height
+      } = image;
+      Object.assign(canvas, {
+        width: 800,
+        height: (800 * height) / width
+      });
+      canvas.getContext('2d')
+        .drawImage(image, 0, 0, canvas.width, canvas.height);
+      Object.assign(document.createElement('a'), {
+        download: filename,
+        href: canvas.toDataURL('image/png')
+      })
+        .click();
+    };
+    image.src = url;
   };
 </script>
 
@@ -75,9 +86,19 @@
                 <div class="card-body">
                     <h5 class="card-title">QR-code</h5>
                     <div class="mb-3">{@html svgString}</div>
-                    <button class="btn btn-primary" on:click={downloadSvgAsPng(svgString, 'qr.png')}
+                    <button
+                            class="btn btn-primary"
+                            on:click={downloadSvgAsPng(svgString, 'qr.png')}
                     >Download QR code in PNG
                     </button>
+
+                    <a
+                            class="btn btn-primary"
+                            href="{`${PUBLIC_BASE_URL}/qr/${uuid}`}"
+                            role="button"
+                            target="_blank"
+                    >Show QR code on a new page
+                    </a>
                 </div>
             </div>
 
@@ -87,7 +108,7 @@
                     <p class="card-text">
                         With supporting text below as a natural lead-in to additional content.
                     </p>
-                    <NfcButton profileUrl="{`${profileUrl}?entryPoint=nfc`}" />
+                    <NfcButton profileUrl="{`${profileUrl}?entryPoint=nfc`}"/>
                 </div>
             </div>
         </div>
