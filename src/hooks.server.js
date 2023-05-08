@@ -1,5 +1,3 @@
-import { goto } from '$app/navigation';
-
 export async function handle({
   event,
   resolve,
@@ -9,7 +7,10 @@ export async function handle({
   const theme = JSON.parse(user)?.data?.theme || 'dark';
 
   if (event.url.pathname.startsWith('/admin') && !JSON.parse(user)?.data?.token) {
-    await goto('/login');
+    return new Response('Redirect', {
+      status: 303,
+      headers: { Location: '/login' },
+    });
   }
 
   return resolve(event, {

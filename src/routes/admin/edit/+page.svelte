@@ -239,6 +239,11 @@
     </div>
 </AdminMain>
 
+<svelte:head>
+    <title>Edit</title>
+    <meta content="Edit">
+</svelte:head>
+
 <style>
     .float-preview {
         position: fixed;

@@ -22,6 +22,11 @@
 	let text;
 </script>
 
+<svelte:head>
+	<title>Users</title>
+	<meta content="Users">
+</svelte:head>
+
 <AdminMain>
 	<div
 		class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
