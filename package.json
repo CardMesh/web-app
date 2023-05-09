@@ -1,17 +1,17 @@
 {
-  "name": "meishi-web-app",
+  "name": "cardmesh-web-app",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
   "author": "Mathias Reker",
   "repository": {
     "type": "git",
-    "url": "git@github.com:meishi-project/web-app.git"
+    "url": "git@github.com:CardMesh/web-app.git"
   },
   "bugs": {
-    "url": "https://github.com/meishi-project/web-app/issues"
+    "url": "https://github.com/CardMesh/web-app/issues"
   },
-  "homepage": "https://meishi.fly.dev",
+  "homepage": "https://cardmesh.fly.dev",
   "scripts": {
     "build": "vite build",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
