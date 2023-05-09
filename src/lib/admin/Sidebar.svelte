@@ -23,7 +23,7 @@
 			}
 
 			// Create a new popover instance and store the new instance in the '_bootstrap' property
-			element._bootstrap = new bootstrap.Popover(element);
+			element._bootstrap = new bootstrap.Popover(element) ;
 		});
 	};
 

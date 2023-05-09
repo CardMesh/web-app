@@ -1,7 +1,7 @@
-import { dev } from '$app/environment';
+//import { dev } from '$app/environment';
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
-export const csr = dev;
+//export const csr = dev;
 
 export const prerender = 'auto';
 
