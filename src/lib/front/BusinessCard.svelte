@@ -9,6 +9,8 @@
 
   export let options;
 
+  let mapCoordinates = {latitude: 55.6761, longitude: 12.5683};
+
   let displayMode = view === 'demo' ? 'fixed-bottom-demo' : 'fixed-bottom-prod';
 </script>
 
@@ -128,11 +130,10 @@
 			<Divider></Divider>
 
             <div class="card h-100 overflow-hidden">
-                <Map/>
+                <Map coordinates={mapCoordinates}/>
             </div>
         </ul>
     </div>
-
 
     <div class="{displayMode} mt-3 p-0" style="z-index: 999999">
         <VCardButton c="btn btn-primary w-100 rounded-0 py-2" {options}>

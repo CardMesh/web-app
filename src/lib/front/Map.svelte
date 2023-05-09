@@ -4,20 +4,20 @@
   const createCustomMarkerIcon = () => new L.Icon({
     iconUrl: '/images/marker-icon.png',
     iconRetinaUrl: '/images/marker-icon-2x.png',
-    shadowUrl: '/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
-    shadowSize: [41, 41]
   });
+
+  export let coordinates = {};
 
   onMount(async () => {
     // Dynamically import the Leaflet library
     const leaflet = await import('leaflet');
 
-    // Create the map and set the view to Copenhagen (as an example)
+    // Create the map and set the view
     const map = leaflet.map('map')
-      .setView([55.6761, 12.5683], 13);
+      .setView([coordinates.latitude, coordinates.longitude], 13);
 
     // Add the OpenStreetMap tile layer
     leaflet
@@ -30,8 +30,8 @@
     // Create a custom marker icon
     const customMarkerIcon = createCustomMarkerIcon();
 
-    // Add a marker at the center of the map
-    leaflet.marker([55.6761, 12.5683], { icon: customMarkerIcon })
+    // Add a marker
+    leaflet.marker([coordinates.latitude, coordinates.longitude], { icon: customMarkerIcon })
       .addTo(map);
   });
 </script>

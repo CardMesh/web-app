@@ -153,11 +153,6 @@
 </div>
 
 <style>
-	.bi {
-		vertical-align: -0.125em;
-		fill: currentColor;
-	}
-
 	.nav-scroller .nav {
 		display: flex;
 		flex-wrap: nowrap;
