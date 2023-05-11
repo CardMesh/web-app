@@ -4,8 +4,8 @@
 	import { PUBLIC_REST_API_URL } from '$env/static/public';
 	import { displaySuccess, displayWarning } from '../../js/toast.js';
 
-	let email = "demo@demo.com";
-	let password = "Demodemo!";
+	let email = 'demo@demo.com';
+	let password = 'Demodemo!';
 
 	const login = async () => {
 		const fetchUser = async () => {
@@ -27,7 +27,7 @@
 
 		if (!user.errors) {
 			Cookies.set('user', JSON.stringify(user), { expires: 365 });
-			displaySuccess('Successfully login')
+			displaySuccess('Successfully login');
 			await goto('/admin');
 		} else {
 			displayWarning('Wrong credentials');

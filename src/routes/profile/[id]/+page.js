@@ -1,7 +1,7 @@
-//import { dev } from '$app/environment';
+// import { dev } from '$app/environment';
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
-//export const csr = dev;
+// export const csr = dev;
 
 export const prerender = 'auto';
 
@@ -21,7 +21,21 @@ export const load = async ({ fetch, params }) => {
     return response.json();
   };
 
+  const fetchTheme = async () => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+
+    return response.json();
+  };
+
   return {
-    vCards: fetchVcard(),
+    vCardOptions: fetchVcard(),
+    theme: fetchTheme(),
   };
 };

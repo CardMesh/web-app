@@ -6,10 +6,7 @@ export const csr = dev;
 
 export const prerender = 'auto';
 
-export const load = async ({
-  fetch,
-  params,
-}) => {
+export const load = async ({ fetch, params }) => {
   const fetchVcard = async () => {
     const options = {
       method: 'GET',

@@ -1,7 +1,7 @@
 <script>
 	import Authentication from '$lib/admin/Authentication.svelte';
-    import { SvelteToast } from '@zerodevx/svelte-toast';
+	import { SvelteToast } from '@zerodevx/svelte-toast';
 </script>
 
 <Authentication />
-<SvelteToast/>
+<SvelteToast />

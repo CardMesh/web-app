@@ -4,9 +4,13 @@
 	import MobileView from '$lib/front/MobileView.svelte';
 	import BusinessCard from '$lib/front/BusinessCard.svelte';
 
-	export let options;
+	export let vCardOptions;
+
+	export let themeOptions;
+
+	export let logo;
 </script>
 
 <MobileView>
-	<BusinessCard {options} />
+	<BusinessCard {vCardOptions} {themeOptions} {logo} />
 </MobileView>

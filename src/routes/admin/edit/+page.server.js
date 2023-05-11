@@ -17,8 +17,23 @@ export const load = async ({ fetch, cookies, url }) => {
     return response.json();
   };
 
+  const fetchTheme = async () => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    };
+
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+
+    return response.json();
+  };
+
   return {
     vCards: fetchVcard(),
+    theme: fetchTheme(),
   };
 };
 

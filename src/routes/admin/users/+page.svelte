@@ -24,7 +24,7 @@
 
 <svelte:head>
 	<title>Users</title>
-	<meta content="Users">
+	<meta content="Users" />
 </svelte:head>
 
 <AdminMain>
