@@ -34,7 +34,7 @@
 			bind:this={fileinput}
 			class="form-control"
 			id="formFile"
-			name="logo"
+			name="file"
 			on:change={(e) => onFileSelected(e)}
 			type="file"
 		/>
@@ -44,6 +44,6 @@
 	<input hidden name="name" value="logo" />
 
 	<div class="d-grid gap-2 mb-5 pt-3">
-		<button class="btn btn-primary btn-lg" type="submit"> Upload image </button>
+		<button class="btn btn-primary btn-lg" type="submit">Upload image</button>
 	</div>
 </form>

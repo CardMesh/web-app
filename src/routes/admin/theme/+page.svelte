@@ -73,10 +73,16 @@
 					<div id="item-1">
 						<h4 class="pb-3">General</h4>
 						<ColorInput
-							bind:value={themeOptions.fontColor}
+							bind:value={themeOptions.fontColor}/>
 							id="fontInput"
 							label="Font color"
 							name="fontColor"
+						/>
+						<ColorInput
+								bind:value={themeOptions.secondaryFontColor}
+								id="fontInput"
+								label="Font color"
+								name="fontColor"
 						/>
 						<ColorInput
 							bind:value={themeOptions.backgroundColor}
@@ -180,6 +186,12 @@
 					</div>
 				</div>
 
+				<div id="item-6">
+					<h4 class="pb-3 pt-3">Logo</h4>
+					<label for="logoHeightRange" class="form-label">Logo size</label>
+					<input type="range" class="form-range" min="10" max="50" id="logoHeightRange" name="logoHeight" bind:value={themeOptions.logoHeight}>
+				</div>
+
 				<div class="d-grid gap-2 mb-5 pt-3">
 					<button class="btn btn-primary btn-lg" disabled={isLoading} type="submit">
 						{#if isLoading}
@@ -189,9 +201,10 @@
 						{/if}
 					</button>
 				</div>
+
 			</form>
 
-			<div id="item-6">
+			<div id="item-7">
 				<h4 class="pb-3 pt-3">Logo</h4>
 				<UploadFile bind:logo />
 			</div>
@@ -218,20 +231,3 @@
     <div class="alert alert-dark" role="alert">A simple dark alert—check it out!</div>
     -->
 </AdminMain>
-
-<style>
-	.btn-action {
-		width: 50px !important;
-		max-width: 100% !important;
-		max-height: 100% !important;
-		height: 50px !important;
-		text-align: center;
-		padding: 0;
-		font-size: 10px;
-	}
-
-	.btn-action:hover {
-		color: white;
-		background-color: grey;
-	}
-</style>

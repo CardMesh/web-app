@@ -27,6 +27,7 @@
 	};
 
 	let displayMode = view === 'demo' ? 'fixed-bottom-demo' : 'fixed-bottom-prod';
+
 </script>
 
 <div style="background-color: {themeOptions.backgroundColor}">
@@ -35,7 +36,7 @@
 			alt={vCardOptions.company}
 			class="position-relative mt-2"
 			src={logo}
-			style="max-width: 60px; max-height: 60px;"
+			style="max-height: {themeOptions.logoHeight}px"
 		/>
 
 		<Divider />
