@@ -8,10 +8,12 @@
 	const vCardOptions = data.vCardOptions.data;
 
 	export let themeOptions = data.theme.data[0]; // TODO remove?
+
+	export let logo;
 </script>
 
 <ProductionView>
-	<BusinessCard {vCardOptions} {themeOptions} view="prod" />
+	<BusinessCard {vCardOptions} {themeOptions} {logo} view="prod" />
 </ProductionView>
 
 <svelte:head>

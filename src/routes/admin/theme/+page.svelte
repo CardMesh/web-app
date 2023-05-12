@@ -25,23 +25,7 @@
 	};
 
 	// TODO WIP
-	let vCardOptions = {
-		firstName: 'John',
-		lastName: 'Doe',
-		title: 'Full stack web develoopoer',
-		pronouns: 'hi/him',
-		company: 'KEA',
-		bio: 'Full-stack web developer. 💻 I love IT Security. I believe in sharing knowledge, tools and value open source software development. 🚀',
-		phone: '21750080',
-		email: 'mathias@reker.dk',
-		web: 'http://reker.dk',
-		street: 'Guldstjernevej 4, 2. th',
-		state: '',
-		city: 'København NV',
-		postalCode: '2400',
-		country: 'Denmark',
-		_id: '645b3a5ab0530fac10c0ea8f'
-	};
+	let vCardOptions = data.vCards.data;
 
 	export let themeOptions = data.theme.data[0];
 
@@ -61,7 +45,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-8">
+		<div class="col-lg-8">
 			<form action="?/save" method="POST" use:enhance={save}>
 				<div
 					class="scrollspy-example-2"
@@ -73,22 +57,51 @@
 					<div id="item-1">
 						<h4 class="pb-3">General</h4>
 						<ColorInput
-							bind:value={themeOptions.fontColor}/>
+							bind:value={themeOptions.fontColor}
 							id="fontInput"
 							label="Font color"
 							name="fontColor"
-						/>
-						<ColorInput
-								bind:value={themeOptions.secondaryFontColor}
-								id="fontInput"
-								label="Font color"
-								name="fontColor"
 						/>
 						<ColorInput
 							bind:value={themeOptions.backgroundColor}
 							id="backgroundColorInput"
 							label="Background color"
 							name="backgroundColor"
+						/>
+
+						<ColorInput
+							bind:value={themeOptions.secondaryFontColor}
+							id="secondaryFontInput"
+							label="Secondary font color"
+							name="secondaryFontColor"
+						/>
+
+						<ColorInput
+							bind:value={themeOptions.socialIconFontColor}
+							id="socialIconFontColorInput"
+							label="Social icon font color"
+							name="socialIconFontColor"
+						/>
+
+						<ColorInput
+							bind:value={themeOptions.socialIconBackgroundColor}
+							id="socialIconBackgroundColorInput"
+							label="Social icon background color"
+							name="socialIconBackgroundColor"
+						/>
+
+						<ColorInput
+							bind:value={themeOptions.btnFontColor}
+							id="btnFontColorInput"
+							label="Button font color"
+							name="btnFontColor"
+						/>
+
+						<ColorInput
+							bind:value={themeOptions.btnBackgroundColor}
+							id="btnBackgroundColorInput"
+							label="Button backgrund color"
+							name="btnBackgroundColor"
 						/>
 					</div>
 
@@ -188,8 +201,16 @@
 
 				<div id="item-6">
 					<h4 class="pb-3 pt-3">Logo</h4>
-					<label for="logoHeightRange" class="form-label">Logo size</label>
-					<input type="range" class="form-range" min="10" max="50" id="logoHeightRange" name="logoHeight" bind:value={themeOptions.logoHeight}>
+					<label class="form-label" for="logoHeightRange">Logo size</label>
+					<input
+						bind:value={themeOptions.logoHeight}
+						class="form-range"
+						id="logoHeightRange"
+						max="50"
+						min="10"
+						name="logoHeight"
+						type="range"
+					/>
 				</div>
 
 				<div class="d-grid gap-2 mb-5 pt-3">
@@ -201,7 +222,6 @@
 						{/if}
 					</button>
 				</div>
-
 			</form>
 
 			<div id="item-7">

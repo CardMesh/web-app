@@ -27,7 +27,6 @@
 	};
 
 	let displayMode = view === 'demo' ? 'fixed-bottom-demo' : 'fixed-bottom-prod';
-
 </script>
 
 <div style="background-color: {themeOptions.backgroundColor}">
@@ -65,15 +64,16 @@
 
 		<Divider />
 
-		<ul class="list-unstyled m-0">
+		<ul class="list-unstyled m-0" style="color: {themeOptions.fontColor}">
 			{#if themeOptions.displayPhone || themeOptions.displaySms}
 				<li class="d-flex align-middle pb-3">
 					{#if themeOptions.displayPhone}
 						<a
 							aria-label="Call {vCardOptions.phone}"
-							class="btn me-2 d-flex my-auto rounded-circle bg-info p-2 border-0"
+							class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
 							href="tel:{vCardOptions.phone}"
 							role="button"
+							style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
 						>
 							<PhoneIcon size="1.2x" />
 						</a>
@@ -82,9 +82,10 @@
 					{#if themeOptions.displaySms}
 						<a
 							aria-label="Send SMS to {vCardOptions.phone}"
-							class="btn me-2 d-flex my-auto rounded-circle bg-info p-2 border-0"
+							class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
 							href="sms:{vCardOptions.phone}"
 							role="button"
+							style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
 						>
 							<MessageSquareIcon size="1.2x" />
 						</a>
@@ -92,7 +93,6 @@
 
 					<div class="d-flex flex-column my-auto">
 						<span>{vCardOptions.phone}</span>
-						<span class="small text-secondary">mobile</span>
 					</div>
 				</li>
 			{/if}
@@ -101,9 +101,10 @@
 				<li class="d-flex align-middle pb-3">
 					<a
 						aria-label="Email {vCardOptions.email}"
-						class="btn me-2 d-flex my-auto rounded-circle bg-info p-2 border-0"
+						class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
 						href="mailto:{vCardOptions.email}"
 						role="button"
+						style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
 					>
 						<MailIcon size="1.2x" />
 					</a>
@@ -118,10 +119,11 @@
 				<li class="d-flex align-middle pb-3">
 					<a
 						aria-label="Visit {vCardOptions.web}"
-						class="btn me-2 d-flex my-auto rounded-circle bg-info p-2 border-0"
+						class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
 						href={vCardOptions.web}
 						role="button"
 						target="_blank"
+						style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
 					>
 						<GlobeIcon size="1.2x" />
 					</a>
@@ -136,10 +138,11 @@
 				<li class="d-flex align-middle pb-3">
 					<a
 						aria-label="View location on Google Maps"
-						class="btn me-2 d-flex my-auto rounded-circle bg-info p-2 border-0"
+						class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
 						href="https://www.google.com/maps/place/Guldstjernevej+4+2400+K%C3%B8benhavn"
 						role="button"
 						target="_blank"
+						style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
 					>
 						<MapPinIcon size="1.2x" />
 					</a>
@@ -154,6 +157,7 @@
 			{/if}
 
 			<Divider />
+
 			{#if themeOptions.displayMap}
 				<div class="card h-100 overflow-hidden">
 					<Map coordinates={mapCoordinates} />
@@ -162,9 +166,16 @@
 		</ul>
 	</div>
 
+	<div class="pt-3" />
+
 	{#if themeOptions.displayContactBtn}
-		<div class="{displayMode} mt-3 p-0" style="z-index: 999999">
-			<VCardButton c="btn btn-primary w-100 rounded-0 py-2" {vCardOptions}>
+		<div class="{displayMode} p-0" style="z-index: 999999; ">
+			<VCardButton
+				c="btn w-100 rounded-0 py-2"
+				{vCardOptions}
+				backgroundColor={themeOptions.btnBackgroundColor}
+				color={themeOptions.btnFontColor}
+			>
 				<UserPlusIcon size="1x" />
 				Add to contacts
 			</VCardButton>

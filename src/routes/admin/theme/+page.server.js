@@ -1,7 +1,21 @@
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
-export const load = async ({ fetch, cookies }) => {
+export const load = async ({ fetch, cookies, url }) => {
   const { token } = JSON.parse(cookies.get('user')).data;
+  const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
+
+  const fetchVcard = async () => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    };
+
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcard-options`, options);
+    return response.json();
+  };
 
   const fetchTheme = async () => {
     const options = {
@@ -18,6 +32,7 @@ export const load = async ({ fetch, cookies }) => {
   };
 
   return {
+    vCards: fetchVcard(),
     theme: fetchTheme(),
   };
 };
