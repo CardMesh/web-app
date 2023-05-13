@@ -5,6 +5,7 @@
   import { browser } from '$app/environment';
   import DisplayPreview from '$lib/preview/DisplayPreview.svelte';
   import { onMount } from 'svelte';
+  import SocialIconTextInput from '$lib/common/SocialIconTextInput.svelte';
 
   let uuid;
   $: if (browser) {
@@ -183,17 +184,7 @@
                     />
                     <label for="emailInput">Email</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <input
-                            bind:value={vCardOptions.web}
-                            class="form-control"
-                            id="webInput"
-                            name="web"
-                            placeholder=""
-                            type="text"
-                    />
-                    <label for="webInput">Web</label>
-                </div>
+
 
                 <div class="form-floating mb-3">
                     <input
@@ -204,7 +195,7 @@
                             placeholder=""
                             type="text"
                     />
-                    <label for="webInput">Language</label>
+                    <label for="languageInput">Language</label>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -294,6 +285,54 @@
                     />
                     <label for="longitudeInput">Longitude</label>
                 </div>
+
+                <div class="form-floating mb-3">
+                    <input
+                            bind:value={vCardOptions.web}
+                            class="form-control"
+                            id="webInput"
+                            name="web"
+                            placeholder=""
+                            type="text"
+                    />
+                    <label for="webInput">Web</label>
+                </div>
+
+                <SocialIconTextInput
+                        bind:value={vCardOptions.twitter}
+                        id="twitterInput"
+                        label="Twitter link"
+                        name="twitter"
+                        network="twitter"
+                />
+                <SocialIconTextInput
+                        bind:value={vCardOptions.facebook}
+                        id="facebookInput"
+                        label="Facebook link"
+                        name="facebook"
+                        network="facebook"
+                />
+                <SocialIconTextInput
+                        bind:value={vCardOptions.linkedin}
+                        id="linkedinInput"
+                        label="LinkedIn link"
+                        name="linkedin"
+                        network="linkedin"
+                />
+                <SocialIconTextInput
+                        bind:value={vCardOptions.instagram}
+                        id="instagramInput"
+                        label="Instagram link"
+                        name="instagram"
+                        network="instagram"
+                />
+                <SocialIconTextInput
+                        bind:value={vCardOptions.pinterest}
+                        id="pinterestInput"
+                        label="Pinterest link"
+                        name="pinterest"
+                        network="pinterest"
+                />
 
                 <div class="d-grid gap-2 mb-5">
                     <button class="btn btn-primary btn-lg" disabled={isLoading} type="submit">

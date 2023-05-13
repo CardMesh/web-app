@@ -56,11 +56,11 @@
 			<p>{vCardOptions.bio}</p>
 		</div>
 
-		<SocialIconLink link={themeOptions.twitter} network="twitter" />
-		<SocialIconLink link={themeOptions.linkedin} network="linkedin" />
-		<SocialIconLink link={themeOptions.facebook} network="facebook" />
-		<SocialIconLink link={themeOptions.instagram} network="instagram" />
-		<SocialIconLink link={themeOptions.pinterest} network="pinterest" />
+		<SocialIconLink link={vCardOptions.twitter} network="twitter" />
+		<SocialIconLink link={vCardOptions.linkedin} network="linkedin" />
+		<SocialIconLink link={vCardOptions.facebook} network="facebook" />
+		<SocialIconLink link={vCardOptions.instagram} network="instagram" />
+		<SocialIconLink link={vCardOptions.pinterest} network="pinterest" />
 
 		<Divider />
 

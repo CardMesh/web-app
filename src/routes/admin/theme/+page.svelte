@@ -107,41 +107,6 @@
 
 					<div id="item-2">
 						<h4 class="pb-3 pt-3">Social Icons</h4>
-						<SocialIconTextInput
-							bind:value={themeOptions.twitter}
-							id="twitterInput"
-							label="Twitter link"
-							name="twitter"
-							network="twitter"
-						/>
-						<SocialIconTextInput
-							bind:value={themeOptions.facebook}
-							id="facebookInput"
-							label="Facebook link"
-							name="facebook"
-							network="facebook"
-						/>
-						<SocialIconTextInput
-							bind:value={themeOptions.linkedin}
-							id="linkedinInput"
-							label="LinkedIn link"
-							name="linkedin"
-							network="linkedin"
-						/>
-						<SocialIconTextInput
-							bind:value={themeOptions.instagram}
-							id="instagramInput"
-							label="Instagram link"
-							name="instagram"
-							network="instagram"
-						/>
-						<SocialIconTextInput
-							bind:value={themeOptions.pinterest}
-							id="pinterestInput"
-							label="Pinterest link"
-							name="pinterest"
-							network="pinterest"
-						/>
 					</div>
 
 					<div id="item-3">
