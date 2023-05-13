@@ -66,6 +66,7 @@
                             name="firstName"
                             placeholder=""
                             type="text"
+                            required
                     />
                     <label for="firstNameInput">First Name</label>
                 </div>
@@ -88,6 +89,7 @@
                             name="lastName"
                             placeholder=""
                             type="text"
+                            required
                     />
                     <label for="lastNameInput">Last Name</label>
                 </div>

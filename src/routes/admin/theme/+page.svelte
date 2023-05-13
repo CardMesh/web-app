@@ -232,14 +232,7 @@
 	</div>
 
 	<DisplayPreview {logo} {themeOptions} {vCardOptions} />
-	<!-- <form ref='uploadForm'
-           id='uploadForm'
-           action='http://localhost:8080/api/themes/upload'
-           method='post'
-           encType="multipart/form-data">
-         <input type="file" name="sampleFile" />
-         <input type='submit' value='Upload!' />
-     </form> -->
+
 	<!--
     <div class="alert alert-primary" role="alert">A simple primary alert—check it out!</div>
     <div class="alert alert-secondary" role="alert">A simple secondary alert—check it out!</div>
