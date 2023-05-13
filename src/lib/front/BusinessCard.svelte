@@ -170,6 +170,7 @@
 
 	{#if themeOptions.displayContactBtn}
 		<div class="{displayMode} p-0" style="z-index: 999999; ">
+
 			<VCardButton
 				c="btn w-100 rounded-0 py-2"
 				{vCardOptions}

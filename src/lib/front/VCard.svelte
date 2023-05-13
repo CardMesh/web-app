@@ -67,7 +67,7 @@
 	class={c}
 	style="background-color: {backgroundColor}; color: {color}"
 	download="{vCardOptions.firstName}{vCardOptions.lastName}.vcf"
-	href={`data:text/vcard;charset=utf-8,${encodeURIComponent(generateVcard())}`}
+	href=http://localhost:8080/uploads/{vCardOptions.uuid}/profile.vcf
 >
 	<slot />
 </a>
