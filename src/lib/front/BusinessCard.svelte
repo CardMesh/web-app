@@ -53,7 +53,7 @@
 		<div class="text-center" style="color: {themeOptions.fontColor}">
 			<h1>{vCardOptions.firstName} {vCardOptions.lastName}</h1>
 			<small><em>{vCardOptions.pronouns}</em></small>
-			<p>{vCardOptions.bio}</p>
+			<p>{vCardOptions.role} {vCardOptions.bio}</p>
 		</div>
 
 		<SocialIconLink link={vCardOptions.twitter} network="twitter" />

@@ -43,10 +43,6 @@
   let timezones = Intl.supportedValuesOf('timeZone');
   let currentTimezone = data.vCards.data.timeZone || Intl.DateTimeFormat()
     .resolvedOptions().timeZone;
-
-  onMount(() => {
-    data.vCards.data.language = data.vCards.data.language || navigator.language;
-  });
 </script>
 
 <AdminMain>
@@ -183,19 +179,6 @@
                             type="email"
                     />
                     <label for="emailInput">Email</label>
-                </div>
-
-
-                <div class="form-floating mb-3">
-                    <input
-                            bind:value={vCardOptions.language}
-                            class="form-control"
-                            id="languageInput"
-                            name="language"
-                            placeholder=""
-                            type="text"
-                    />
-                    <label for="languageInput">Language</label>
                 </div>
 
                 <div class="form-floating mb-3">
