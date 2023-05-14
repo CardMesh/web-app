@@ -1,48 +1,61 @@
 <script>
-	import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
+  import { get } from 'svelte/store';
 
-	const createCustomMarkerIcon = () =>
-		new L.Icon({
-			iconUrl: '/images/marker-icon.png',
-			iconRetinaUrl: '/images/marker-icon-2x.png',
-			iconSize: [25, 41],
-			iconAnchor: [12, 41],
-			popupAnchor: [1, -34]
-		});
+  let map;
+  let marker;
+  let leaflet;
+  let customMarkerIcon;
 
-	export let coordinates = {};
+  const createCustomMarkerIcon = () =>
+    new L.Icon({
+      iconUrl: '/images/marker-icon.png',
+      iconRetinaUrl: '/images/marker-icon-2x.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34]
+    });
 
-	onMount(async () => {
-		// Dynamically import the Leaflet library
-		const leaflet = await import('leaflet');
+  export let latitude;
+  export let longitude;
 
-		// Create the map and set the view
-		const map = leaflet.map('map').setView([coordinates.latitude, coordinates.longitude], 11);
+  onMount(async () => {
+    // Dynamically import the Leaflet library
+    leaflet = await import('leaflet');
 
-		// Add the OpenStreetMap tile layer
-		leaflet
-			.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution:
-					'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-			})
-			.addTo(map);
+    // Create the map and set the view
+    map = leaflet.map('map')
+      .setView([latitude, longitude], 11);
 
-		// Create a custom marker icon
-		const customMarkerIcon = createCustomMarkerIcon();
+    // Add the OpenStreetMap tile layer
+    leaflet
+      .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+      })
+      .addTo(map);
 
-		// Add a marker
-		leaflet
-			.marker([coordinates.latitude, coordinates.longitude], { icon: customMarkerIcon })
-			.addTo(map);
-	});
+    // Create a custom marker icon
+    customMarkerIcon = createCustomMarkerIcon();
+
+    // Add a marker
+    marker = leaflet.marker([latitude, longitude], { icon: customMarkerIcon }).addTo(map);
+  });
+
+  $: {
+    if (map && marker && leaflet) {
+      map.setView([latitude, longitude], 11);
+      marker.setLatLng([latitude, longitude]);
+    }
+  }
 </script>
 
-<div id="map" />
+<div id="map"/>
 
 <style>
-	@import 'leaflet/dist/leaflet.css';
+    @import 'leaflet/dist/leaflet.css';
 
-	#map {
-		height: 200px;
-	}
+    #map {
+        height: 200px;
+    }
 </style>

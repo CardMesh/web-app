@@ -4,8 +4,8 @@
   import { displaySuccess } from '../../../js/toast.js';
   import { browser } from '$app/environment';
   import DisplayPreview from '$lib/preview/DisplayPreview.svelte';
-  import { onMount } from 'svelte';
   import SocialIconTextInput from '$lib/common/SocialIconTextInput.svelte';
+  import SocialIcons from '@rodneylab/svelte-social-icons';
 
   let uuid;
   $: if (browser) {
@@ -43,6 +43,34 @@
   let timezones = Intl.supportedValuesOf('timeZone');
   let currentTimezone = data.vCards.data.timeZone || Intl.DateTimeFormat()
     .resolvedOptions().timeZone;
+
+  const updateCoordinates = async () => {
+
+    const address = [
+      vCardOptions.street,
+      vCardOptions.postalCode,
+      vCardOptions.city,
+      vCardOptions.country
+    ];
+
+    console.log(address);
+    let formattedAddress = address.join(' ')
+      .replace(/[^\p{L}\p{N}\s]/gu, '')
+      .replace(/\s/g, '+')
+      .toLowerCase();
+
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${(formattedAddress)}`);
+
+    if (!response.ok) {
+      return;
+    }
+
+    const coordinates = await response.json();
+
+    vCardOptions.latitude = coordinates[0].lat;
+    vCardOptions.longitude = coordinates[0].lon;
+  };
+
 </script>
 
 <AdminMain>
@@ -62,8 +90,8 @@
                             id="firstNameInput"
                             name="firstName"
                             placeholder=""
-                            type="text"
                             required
+                            type="text"
                     />
                     <label for="firstNameInput">First Name</label>
                 </div>
@@ -85,8 +113,8 @@
                             id="lastNameInput"
                             name="lastName"
                             placeholder=""
-                            type="text"
                             required
+                            type="text"
                     />
                     <label for="lastNameInput">Last Name</label>
                 </div>
@@ -192,6 +220,20 @@
                     />
                     <label for="streetInput">Street</label>
                 </div>
+
+                <div class="form-floating mb-3">
+                    <input
+                            bind:value={vCardOptions.storey}
+                            class="form-control"
+                            id="storeyInput"
+                            name="storey"
+                            placeholder=""
+                            type="text"
+                    />
+                    <label for="storeyInput">Storey</label>
+                </div>
+
+
                 <div class="form-floating mb-3">
                     <input
                             bind:value={vCardOptions.state}
@@ -246,28 +288,47 @@
                     <label for="floatingSelect">Time zone</label>
                 </div>
 
-                <div class="form-floating mb-3">
-                    <input
-                            bind:value={vCardOptions.latitude}
-                            class="form-control"
-                            id="latitudeInput"
-                            name="latitude"
-                            placeholder=""
-                            type="text"
-                    />
-                    <label for="latitudeInput">Latitude</label>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="form-floating flex-grow-1">
+                                <input
+                                        bind:value={vCardOptions.latitude}
+                                        class="form-control"
+                                        id="latitudeInput"
+                                        name="latitude"
+                                        placeholder=""
+                                        type="text"
+                                />
+                                <label for="latitudeInput">Latitude</label>
+                            </div>
+                            <button class="btn btn-outline-secondary" on:click|preventDefault={updateCoordinates}
+                                    type="button">Update
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="form-floating flex-grow-1">
+                                <input
+                                        bind:value={vCardOptions.longitude}
+                                        class="form-control"
+                                        id="longitudeInput"
+                                        name="longitude"
+                                        placeholder=""
+                                        type="text"
+                                />
+                                <label for="longitudeInput">Longitude</label>
+                            </div>
+                            <button class="btn btn-outline-secondary" on:click|preventDefault={updateCoordinates}
+                                    type="button">Update
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-floating mb-3">
-                    <input
-                            bind:value={vCardOptions.longitude}
-                            class="form-control"
-                            id="longitudeInput"
-                            name="longitude"
-                            placeholder=""
-                            type="text"
-                    />
-                    <label for="longitudeInput">Longitude</label>
-                </div>
+
 
                 <div class="form-floating mb-3">
                     <input

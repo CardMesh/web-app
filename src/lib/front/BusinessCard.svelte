@@ -21,11 +21,6 @@
 
 	export let logo = `${PUBLIC_REST_API_URL}/uploads/logo.webp`;
 
-	let mapCoordinates = {
-		latitude: 55.6761,
-		longitude: 12.5683
-	};
-
 	let displayMode = view === 'demo' ? 'fixed-bottom-demo' : 'fixed-bottom-prod';
 </script>
 
@@ -148,7 +143,7 @@
 					</a>
 
 					<div class="d-flex flex-column my-auto">
-						<span>{vCardOptions.street}</span>
+						<span>{vCardOptions.street}{vCardOptions.storey ? ', ' + vCardOptions.storey : ''}</span>
 						<span>{vCardOptions.city}</span>
 						<span>{vCardOptions.state}</span>
 						<span>{vCardOptions.postalCode}, {vCardOptions.country}</span>
@@ -160,7 +155,7 @@
 
 			{#if themeOptions.displayMap}
 				<div class="card h-100 overflow-hidden">
-					<Map coordinates={mapCoordinates} />
+					<Map latitude="{vCardOptions.latitude}" longitude="{vCardOptions.longitude}" />
 				</div>
 			{/if}
 		</ul>
