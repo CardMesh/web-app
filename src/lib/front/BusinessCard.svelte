@@ -53,7 +53,7 @@
 			/>
 		</div>
 
-		<div class="text-center" style="color: {themeOptions.fontColor}">
+		<div class="text-center" style="color: {themeOptions.secondaryFontColor}">
 			<h1>{vCardOptions.name.firstName} {vCardOptions.name.lastName}</h1>
 			<small><em>{vCardOptions.personal.pronouns}</em></small>
 			<p>{vCardOptions.professional.role} {vCardOptions.professional.bio}</p>
@@ -178,7 +178,11 @@
 		</ul>
 	</div>
 
-	<div class="pt-3" />
+	{#if view === 'demo'}
+		<div style="padding-top: 30px"></div>
+		{:else}
+		<div style="padding-top: 74px"></div>
+	{/if}
 
 	{#if themeOptions.displayContactBtn}
 		<div class="{displayMode} p-0" style="z-index: 999999; ">
