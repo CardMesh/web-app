@@ -85,7 +85,7 @@ export const actions = {
         pinterest: formData.get('pinterest'),
       },
       personal: {
-        // birthday: formData.get("birthday"),
+        birthday: formData.get('birthday'),
         pronouns: formData.get('pronouns'),
       },
     };

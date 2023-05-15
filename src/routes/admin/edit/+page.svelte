@@ -1,7 +1,7 @@
 <script>
   import AdminMain from '$lib/admin/AdminMain.svelte';
   import { enhance } from '$app/forms';
-  import { displaySuccess, displayWarning } from '../../../js/toast.js';
+  import { displayError, displaySuccess, displayWarning } from '../../../js/toast.js';
   import { browser } from '$app/environment';
   import DisplayPreview from '$lib/preview/DisplayPreview.svelte';
   import SocialIconTextInput from '$lib/common/SocialIconTextInput.svelte';
@@ -65,6 +65,7 @@
     );
 
     if (!response.ok) {
+      displayError('Failed to connect.')
       return;
     }
 
@@ -320,7 +321,7 @@
                             class="btn btn-outline-secondary"
                             on:click|preventDefault={updateCoordinates}
                             type="button"
-                    >Update coordinates
+                    >Update
                     </button>
                 </div>
 
@@ -334,6 +335,18 @@
                             type="text"
                     />
                     <label for="webInput">Web</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input
+                            bind:value={vCardOptions.personal.birthday}
+                            class="form-control"
+                            id="birthdayInput"
+                            name="birthday"
+                            placeholder=""
+                            type="date"
+                    />
+                    <label for="birthdayInput">Birthday</label>
                 </div>
 
                 <SocialIconTextInput
