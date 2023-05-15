@@ -30,6 +30,7 @@
 		"@rodneylab/svelte-social-icons": "^0.0.25",
 		"@zerodevx/svelte-toast": "^0.9.3",
 		"chart.js": "^4.3.0",
+		"country-telephone-data": "^0.6.3",
 		"js-cookie": "^3.0.5",
 		"leaflet": "^1.9.3",
 		"moment-timezone": "^0.5.43",

@@ -22,12 +22,20 @@
 	export let logo = `${PUBLIC_REST_API_URL}/uploads/logo.webp`;
 
 	let displayMode = view === 'demo' ? 'fixed-bottom-demo' : 'fixed-bottom-prod';
+
+	let { countryCode, number, extension } = vCardOptions.contact.phone;
+
+	let telLink = `${countryCode ? `+${countryCode}` : ''}${number}${
+		extension ? `,${extension}` : ''
+	}`;
+
+	let formattedNumber = `${countryCode ? `(+${countryCode})` : ''} ${number}`;
 </script>
 
 <div style="background-color: {themeOptions.backgroundColor}">
 	<div class="container">
 		<img
-			alt={vCardOptions.company}
+			alt={vCardOptions.professional.company}
 			class="position-relative mt-2"
 			src={logo}
 			style="max-height: {themeOptions.logoHeight}px"
@@ -46,16 +54,16 @@
 		</div>
 
 		<div class="text-center" style="color: {themeOptions.fontColor}">
-			<h1>{vCardOptions.firstName} {vCardOptions.lastName}</h1>
-			<small><em>{vCardOptions.pronouns}</em></small>
-			<p>{vCardOptions.role} {vCardOptions.bio}</p>
+			<h1>{vCardOptions.name.firstName} {vCardOptions.name.lastName}</h1>
+			<small><em>{vCardOptions.personal.pronouns}</em></small>
+			<p>{vCardOptions.professional.role} {vCardOptions.professional.bio}</p>
 		</div>
 
-		<SocialIconLink link={vCardOptions.twitter} network="twitter" />
-		<SocialIconLink link={vCardOptions.linkedin} network="linkedin" />
-		<SocialIconLink link={vCardOptions.facebook} network="facebook" />
-		<SocialIconLink link={vCardOptions.instagram} network="instagram" />
-		<SocialIconLink link={vCardOptions.pinterest} network="pinterest" />
+		<SocialIconLink link={vCardOptions.socialMedia.twitter} network="twitter" />
+		<SocialIconLink link={vCardOptions.socialMedia.linkedin} network="linkedin" />
+		<SocialIconLink link={vCardOptions.socialMedia.facebook} network="facebook" />
+		<SocialIconLink link={vCardOptions.socialMedia.instagram} network="instagram" />
+		<SocialIconLink link={vCardOptions.socialMedia.pinterest} network="pinterest" />
 
 		<Divider />
 
@@ -64,9 +72,9 @@
 				<li class="d-flex align-middle pb-3">
 					{#if themeOptions.displayPhone}
 						<a
-							aria-label="Call {vCardOptions.phone}"
+							aria-label="Call {vCardOptions.contact.phone.number}"
 							class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
-							href="tel:{vCardOptions.phone}"
+							href="tel:{telLink}"
 							role="button"
 							style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
 						>
@@ -76,9 +84,10 @@
 
 					{#if themeOptions.displaySms}
 						<a
-							aria-label="Send SMS to {vCardOptions.phone}"
+							aria-label="Send SMS to {vCardOptions.contact.phone.number}"
 							class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
-							href="sms:{vCardOptions.phone}"
+							href="sms:+{vCardOptions.contact.phone.countryCode}{vCardOptions.contact.phone
+								.number}"
 							role="button"
 							style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
 						>
@@ -87,7 +96,7 @@
 					{/if}
 
 					<div class="d-flex flex-column my-auto">
-						<span>{vCardOptions.phone}</span>
+						<span>{formattedNumber}</span>
 					</div>
 				</li>
 			{/if}
@@ -95,9 +104,9 @@
 			{#if themeOptions.displayEmail}
 				<li class="d-flex align-middle pb-3">
 					<a
-						aria-label="Email {vCardOptions.email}"
+						aria-label="Email {vCardOptions.contact.email}"
 						class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
-						href="mailto:{vCardOptions.email}"
+						href="mailto:{vCardOptions.contact.email}"
 						role="button"
 						style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
 					>
@@ -105,7 +114,7 @@
 					</a>
 
 					<div class="d-flex flex-column my-auto">
-						<span>{vCardOptions.email}</span>
+						<span>{vCardOptions.contact.email}</span>
 					</div>
 				</li>
 			{/if}
@@ -113,9 +122,9 @@
 			{#if themeOptions.displayWeb}
 				<li class="d-flex align-middle pb-3">
 					<a
-						aria-label="Visit {vCardOptions.web}"
+						aria-label="Visit {vCardOptions.contact.web}"
 						class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
-						href={vCardOptions.web}
+						href={vCardOptions.contact.web}
 						role="button"
 						target="_blank"
 						style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
@@ -124,7 +133,7 @@
 					</a>
 
 					<div class="d-flex flex-column my-auto">
-						<span>{vCardOptions.web}</span>
+						<span>{vCardOptions.contact.web}</span>
 					</div>
 				</li>
 			{/if}
@@ -143,10 +152,14 @@
 					</a>
 
 					<div class="d-flex flex-column my-auto">
-						<span>{vCardOptions.street}{vCardOptions.storey ? ', ' + vCardOptions.storey : ''}</span>
-						<span>{vCardOptions.city}</span>
-						<span>{vCardOptions.state}</span>
-						<span>{vCardOptions.postalCode}, {vCardOptions.country}</span>
+						<span
+							>{vCardOptions.location.street}{vCardOptions.location.storey
+								? ', ' + vCardOptions.location.storey
+								: ''}</span
+						>
+						<span>{vCardOptions.location.city}</span>
+						<span>{vCardOptions.location.state}</span>
+						<span>{vCardOptions.location.postalCode}, {vCardOptions.location.country}</span>
 					</div>
 				</li>
 			{/if}
@@ -155,7 +168,10 @@
 
 			{#if themeOptions.displayMap}
 				<div class="card h-100 overflow-hidden">
-					<Map latitude="{vCardOptions.latitude}" longitude="{vCardOptions.longitude}" />
+					<Map
+						latitude={vCardOptions.location.coordinates.latitude}
+						longitude={vCardOptions.location.coordinates.longitude}
+					/>
 				</div>
 			{/if}
 		</ul>
@@ -165,7 +181,6 @@
 
 	{#if themeOptions.displayContactBtn}
 		<div class="{displayMode} p-0" style="z-index: 999999; ">
-
 			<VCardButton
 				c="btn w-100 rounded-0 py-2"
 				{vCardOptions}

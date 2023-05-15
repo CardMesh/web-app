@@ -17,9 +17,11 @@
 </ProductionView>
 
 <svelte:head>
-	<title>{`${vCardOptions.firstName} ${vCardOptions.lastName} - Personal Profile`}</title>
+	<title>{`${vCardOptions.name.firstName} ${vCardOptions.name.lastName} - Personal Profile`}</title>
 	<meta
-		content="`Discover ${vCardOptions.firstName} ${vCardOptions.lastName}'s personal business card, including contact information, social media profiles, and a brief bio. Connect with ${vCardOptions.firstName} and learn more about their background.`"
+		content="`Discover ${vCardOptions.name.firstName} ${vCardOptions.name
+			.lastName}'s personal business card, including contact information, social media profiles, and a brief bio. Connect with ${vCardOptions
+			.name.firstName} and learn more about their background.`"
 		name="description"
 	/>
 </svelte:head>
