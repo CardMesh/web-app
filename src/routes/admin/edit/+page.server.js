@@ -47,7 +47,7 @@ export const actions = {
         firstName: formData.get('firstName'),
         middleName: formData.get('middleName'),
         lastName: formData.get('lastName'),
-        suffix: 'Jr',
+        suffix: formData.get('suffix'),
       },
       professional: {
         title: formData.get('title'),
