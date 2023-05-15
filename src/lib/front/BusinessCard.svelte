@@ -48,7 +48,7 @@
 				alt="My Image"
 				class="rounded-circle"
 				height="130"
-				src="https://fakeimg.pl/130/"
+				src="https://avatars.githubusercontent.com/u/26626066"
 				width="130"
 			/>
 		</div>
@@ -64,6 +64,7 @@
 		<SocialIconLink link={vCardOptions.socialMedia.facebook} network="facebook" />
 		<SocialIconLink link={vCardOptions.socialMedia.instagram} network="instagram" />
 		<SocialIconLink link={vCardOptions.socialMedia.pinterest} network="pinterest" />
+		<SocialIconLink link={vCardOptions.socialMedia.github} network="github" />
 
 		<Divider />
 
@@ -167,7 +168,7 @@
 			<Divider />
 
 			{#if themeOptions.displayMap}
-				<div class="card h-100 overflow-hidden">
+				<div class="card overflow-hidden">
 					<Map
 						latitude={vCardOptions.location.coordinates.latitude}
 						longitude={vCardOptions.location.coordinates.longitude}

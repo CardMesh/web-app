@@ -357,32 +357,39 @@
                         network="twitter"
                 />
                 <SocialIconTextInput
-                        bind:value={vCardOptions.facebook}
+                        bind:value={vCardOptions.socialMedia.facebook}
                         id="facebookInput"
                         label="Facebook link"
                         name="facebook"
                         network="facebook"
                 />
                 <SocialIconTextInput
-                        bind:value={vCardOptions.linkedin}
+                        bind:value={vCardOptions.socialMedia.linkedin}
                         id="linkedinInput"
                         label="LinkedIn link"
                         name="linkedin"
                         network="linkedin"
                 />
                 <SocialIconTextInput
-                        bind:value={vCardOptions.instagram}
+                        bind:value={vCardOptions.socialMedia.instagram}
                         id="instagramInput"
                         label="Instagram link"
                         name="instagram"
                         network="instagram"
                 />
                 <SocialIconTextInput
-                        bind:value={vCardOptions.pinterest}
+                        bind:value={vCardOptions.socialMedia.pinterest}
                         id="pinterestInput"
                         label="Pinterest link"
                         name="pinterest"
                         network="pinterest"
+                />
+                <SocialIconTextInput
+                        bind:value={vCardOptions.socialMedia.github}
+                        id="githubInput"
+                        label="Github link"
+                        name="github"
+                        network="github"
                 />
 
                 <div class="d-grid gap-2 mb-5">

@@ -83,6 +83,7 @@ export const actions = {
         facebook: formData.get('facebook'),
         instagram: formData.get('instagram'),
         pinterest: formData.get('pinterest'),
+        github: formData.get('github'),
       },
       personal: {
         birthday: formData.get('birthday'),
