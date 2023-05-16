@@ -318,7 +318,7 @@
                     </div>
 
                     <button
-                            class="btn btn-outline-secondary"
+                            class="btn btn-primary"
                             on:click|preventDefault={updateCoordinates}
                             type="button"
                     >Update
