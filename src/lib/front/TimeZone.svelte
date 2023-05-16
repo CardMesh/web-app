@@ -6,7 +6,6 @@
 
 	const changeTimezone = (event) => {
 		selectedTimezone = event.target.value;
-		console.log(`Selected timezone: ${selectedTimezone}`);
 	};
 </script>
 

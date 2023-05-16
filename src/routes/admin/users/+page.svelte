@@ -1,7 +1,10 @@
 <script>
 	import AdminMain from '$lib/admin/AdminMain.svelte';
-	import { Edit2Icon, EyeIcon, TrashIcon } from 'svelte-feather-icons';
+	import { Edit2Icon, EyeIcon, TrashIcon, SendIcon, UserPlusIcon } from 'svelte-feather-icons';
 	import { displaySuccess } from '../../../js/toast.js';
+	import Phone from '$lib/front/Phone.svelte';
+	import SocialIconTextInput from '$lib/common/SocialIconTextInput.svelte';
+	import { enhance } from '$app/forms';
 
 	export let data;
 
@@ -33,6 +36,69 @@
 	>
 		<h1 class="h2">Users</h1>
 	</div>
+
+	<button
+		type="button"
+		class="btn btn-primary"
+		data-bs-toggle="modal"
+		data-bs-target="#createUserModal">Create new user</button
+	>
+
+	<div
+		class="modal fade"
+		id="createUserModal"
+		tabindex="-1"
+		aria-labelledby="createUserModalLabel"
+		aria-hidden="true"
+	>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="createUserModalLabel">Create user</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+				</div>
+				<div class="modal-body">
+					<form action="?/create" method="POST" use:enhance={save}>
+						<div class="mb-3">
+							<label for="nameInput" class="col-form-label">Name:</label>
+							<input type="text" class="form-control" id="nameInput" name="name" />
+						</div>
+						<div class="mb-3">
+							<label for="nameEmail" class="col-form-label">Email:</label>
+							<input type="email" class="form-control" id="nameEmail" name="email" />
+						</div>
+
+						<div class="form-check form-switch">
+							<input
+								class="form-check-input"
+								type="checkbox"
+								role="switch"
+								id="sendMailSwitch"
+								name="sendMail"
+								checked
+							/>
+							<label class="form-check-label" for="sendMailSwitch">Send reset password email</label>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Create user</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--   <form action="?/send" method="POST" use:enhance={save}>
+        <input type="text" value="{user.uuid}" name="uuid" hidden>
+        <button type="submit" class="btn btn-action rounded-circle d-flex align-items-center justify-content-center" data-bs-content="btn" data-bs-placement="top">
+            <div class="d-flex text-success">
+                <SendIcon size="2x"/> Create new user
+            </div>
+        </button>
+    </form>
+   -->
 
 	<div class="table-responsive">
 		<table class="table">
@@ -77,6 +143,20 @@
 									<Edit2Icon size="2x" />
 								</div>
 							</a>
+
+							<form action="?/send" method="POST" use:enhance={save}>
+								<input type="text" value={user.uuid} name="uuid" hidden />
+								<button
+									type="submit"
+									class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
+									data-bs-content="btn"
+									data-bs-placement="top"
+								>
+									<div class="d-flex text-success">
+										<SendIcon size="2x" />
+									</div>
+								</button>
+							</form>
 
 							<button
 								class="btn btn-action rounded-circle"
