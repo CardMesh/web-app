@@ -250,7 +250,13 @@
         position: fixed;
         bottom: 30px;
         right: 30px;
-        z-index: 9999; /* Adjust the z-index value as needed */
+        z-index: 9999;
+    }
+
+    @media (max-width: 642px) {
+        .float-button {
+            bottom: 97px;
+         }
     }
 
     .bubble {
