@@ -81,19 +81,19 @@
 				<div class="card-body">
 					<h5 class="card-title">QR-code</h5>
 					<div class="mb-3">{@html svgString}</div>
-					<button class="btn btn-primary" on:click={downloadSvgAsPng(svgString, 'qr.png')}
-						>Download QR code in PNG
-					</button>
-
-					<a
-						class="btn btn-primary"
-						href={`${PUBLIC_BASE_URL}/qr/${uuid}`}
-						role="button"
-						target="_blank"
-						>Show QR code on a new page
-					</a>
+					<div class="button-container">
+						<button class="btn btn-primary mb-3" on:click={downloadSvgAsPng(svgString, 'qr.png')}>
+							Download QR code in PNG
+						</button>
+					</div>
+					<div class="button-container">
+						<a class="btn btn-primary" href={`${PUBLIC_BASE_URL}/qr/${uuid}`} role="button" target="_blank">
+							Show QR code on a new page
+						</a>
+					</div>
 				</div>
 			</div>
+
 
 			<div class="card mb-3">
 				<div class="card-body">
