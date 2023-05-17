@@ -96,7 +96,8 @@ export const actions = {
       body: JSON.stringify({
         email: formData.get('email'),
         name: formData.get('name'),
-        sendMail: formData.get('sendMail'),
+        role: formData.get('role'),
+        sendMail: !!formData.get('sendMail'),
       }),
     };
 
