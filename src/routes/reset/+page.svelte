@@ -2,6 +2,7 @@
 	import { displaySuccess } from '../../js/toast.js';
 	import { SvelteToast } from '@zerodevx/svelte-toast';
 	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
 
 	export let data;
 
@@ -15,6 +16,7 @@
 
 			if (result.type === 'success') {
 				displaySuccess('Successfully saved!');
+				await goto('/login')
 			}
 		};
 	};
