@@ -20,8 +20,8 @@ $card-border-radius: 10px;
 
 // Style alerts
 .alert {
-	box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-	border: none !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border: none !important;
 }
 
 // Load overrides
@@ -33,5 +33,5 @@ $card-border-radius: 10px;
 
 // Style toasts
 :root {
-	--toastBoxShadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --toastBoxShadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }

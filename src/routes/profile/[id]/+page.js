@@ -5,7 +5,10 @@ import { PUBLIC_REST_API_URL } from '$env/static/public';
 
 export const prerender = 'auto';
 
-export const load = async ({ fetch, params }) => {
+export const load = async ({
+  fetch,
+  params,
+}) => {
   const fetchVcard = async () => {
     const options = {
       method: 'GET',

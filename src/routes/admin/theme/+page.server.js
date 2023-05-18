@@ -1,6 +1,10 @@
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
-export const load = async ({ fetch, cookies, url }) => {
+export const load = async ({
+  fetch,
+  cookies,
+  url,
+}) => {
   const { token } = JSON.parse(cookies.get('user')).data;
   const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
 
@@ -38,7 +42,10 @@ export const load = async ({ fetch, cookies, url }) => {
 };
 
 export const actions = {
-  save: async ({ request, cookies }) => {
+  save: async ({
+    request,
+    cookies,
+  }) => {
     const { token } = JSON.parse(cookies.get('user')).data;
     const formData = await request.formData();
 
@@ -76,7 +83,10 @@ export const actions = {
     }
   },
 
-  uploadLogo: async ({ request, cookies }) => {
+  uploadLogo: async ({
+    request,
+    cookies,
+  }) => {
     const { token } = JSON.parse(cookies.get('user')).data;
     const formData = await request.formData();
     // formData.append('height', 50);

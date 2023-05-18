@@ -1,6 +1,10 @@
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
-export const load = async ({ fetch, cookies, url }) => {
+export const load = async ({
+  fetch,
+  cookies,
+  url,
+}) => {
   const { token } = JSON.parse(cookies.get('user')).data;
 
   const fetchUsers = async () => {
@@ -39,7 +43,10 @@ export const load = async ({ fetch, cookies, url }) => {
 };
 
 export const actions = {
-  view: async ({ request, cookies }) => {
+  view: async ({
+    request,
+    cookies,
+  }) => {
     const { token } = JSON.parse(cookies.get('user')).data;
     const formData = await request.formData();
     const data = Object.fromEntries(Array.from(formData.entries()));
@@ -68,7 +75,10 @@ export const actions = {
     }
   },
 
-  send: async ({ request, cookies }) => {
+  send: async ({
+    request,
+    cookies,
+  }) => {
     const { token } = JSON.parse(cookies.get('user')).data;
     const formData = await request.formData();
 
@@ -98,7 +108,10 @@ export const actions = {
     }
   },
 
-  create: async ({ request, cookies }) => {
+  create: async ({
+    request,
+    cookies,
+  }) => {
     const { token } = JSON.parse(cookies.get('user')).data;
     const formData = await request.formData();
 

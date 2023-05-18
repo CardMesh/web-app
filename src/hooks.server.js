@@ -1,4 +1,7 @@
-export async function handle({ event, resolve }) {
+export async function handle({
+  event,
+  resolve,
+}) {
   const user = event.cookies.get('user') ?? '{}';
 
   const theme = JSON.parse(user)?.data?.theme || 'dark';

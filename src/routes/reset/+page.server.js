@@ -13,7 +13,10 @@ export const load = async ({ url }) => {
 };
 
 export const actions = {
-  save: async ({ fetch, request }) => {
+  save: async ({
+    fetch,
+    request,
+  }) => {
     const formData = await request.formData();
 
     const body = {
