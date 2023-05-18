@@ -1,13 +1,13 @@
 <script>
-	import AdminMain from '$lib/admin/AdminMain.svelte';
-	import PieChart from '$lib/admin/PieChart.svelte';
-	import { onMount } from 'svelte';
-	import Cookies from 'js-cookie';
-	import QRCode from 'qrcode-svg';
-	import NfcButton from '$lib/admin/NfcButton.svelte';
-	import { PUBLIC_BASE_URL } from '$env/static/public';
+  import AdminMain from '$lib/admin/AdminMain.svelte';
+  import PieChart from '$lib/admin/PieChart.svelte';
+  import { onMount } from 'svelte';
+  import Cookies from 'js-cookie';
+  import QRCode from 'qrcode-svg';
+  import { PUBLIC_BASE_URL } from '$env/static/public';
+  import Nfc from '$lib/front/Nfc.svelte';
 
-	let svgString = '';
+  let svgString = '';
   const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
   let profileUrl = `${PUBLIC_BASE_URL}/profile/${uuid}`;
 
@@ -110,7 +110,10 @@
                     <p class="card-text">
                         With supporting text below as a natural lead-in to additional content.
                     </p>
-                    <NfcButton profileUrl={`${profileUrl}?entryPoint=nfc`}/>
+
+                    <Nfc c="btn btn-primary" profileUrl="{`${profileUrl}?entryPoint=nfc`}">
+                        Ready to write
+                    </Nfc>
                 </div>
             </div>
         </div>

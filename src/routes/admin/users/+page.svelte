@@ -1,13 +1,25 @@
 <script>
-	import AdminMain from '$lib/admin/AdminMain.svelte';
-	import { AlertTriangleIcon, Edit2Icon, EyeIcon, SendIcon, TrashIcon, UserPlusIcon } from 'svelte-feather-icons';
-	import { displaySuccess } from '../../../js/toast.js';
-	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
+  import AdminMain from '$lib/admin/AdminMain.svelte';
+  import {
+    AlertTriangleIcon,
+    CreditCardIcon,
+    Edit2Icon,
+    EyeIcon,
+    MoreVerticalIcon,
+    SendIcon,
+    TrashIcon,
+    UserPlusIcon
+  } from 'svelte-feather-icons';
+  import { displaySuccess } from '../../../js/toast.js';
+  import { enhance } from '$app/forms';
+  import { goto } from '$app/navigation';
+  import Nfc from '$lib/front/Nfc.svelte';
+  import { PUBLIC_BASE_URL } from '$env/static/public';
 
-	export let data;
+  export let data;
 
   let isLoading = false;
+
   const save = () => {
     isLoading = true;
     return async ({
@@ -177,22 +189,13 @@
         </div>
     </div>
 
-    <!--   <form action="?/send" method="POST" use:enhance={save}>
-        <input type="text" value="{user.uuid}" name="uuid" hidden>
-        <button type="submit" class="btn btn-action rounded-circle d-flex align-items-center justify-content-center" data-bs-content="btn" data-bs-placement="top">
-            <div class="d-flex text-success">
-                <SendIcon size="2x"/> Create new user
-            </div>
-        </button>
-    </form>
-   -->
-
     <div class="table-responsive">
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Role</th>
+                <th scope="col">Enabled</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th class="text-end" scope="col">Actions</th>
@@ -200,16 +203,15 @@
             </thead>
             <tbody class="table-group-divider">
             {#each data.users.data as user}
-                <tr>
+                <tr class="text-nowrap">
                     <th class="align-middle" scope="row">{user.uuid}</th>
                     <td class="align-middle">{user.role}</td>
+                    <td class="align-middle">{user.enabled}</td>
                     <td class="align-middle">{user.name}</td>
                     <td class="align-middle">{user.email}</td>
                     <td class="d-flex justify-content-end">
                         <a
                                 class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
-                                data-bs-content="btn"
-                                data-bs-placement="top"
                                 role="button"
                                 href="/profile/{user.uuid}"
                                 target="_blank"
@@ -219,43 +221,47 @@
                             </div>
                         </a>
 
-                        <a
-                                class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
-                                data-bs-content="btn"
-                                data-bs-placement="top"
-                                role="button"
-                                href="/admin/edit?uuid={user.uuid}"
+                        <Nfc
+                                c="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
+                                profileUrl="{`${PUBLIC_BASE_URL}/profile/${user.uuid}?entryPoint=nfc`}"
                         >
-                            <div class="d-flex text-warning">
-                                <Edit2Icon size="2x"/>
+                            <div class="d-flex text-success">
+                                <CreditCardIcon size="2x"/>
                             </div>
-                        </a>
+                        </Nfc>
 
-                        <form action="?/send" method="POST" use:enhance={save}>
-                            <input type="text" value={user.uuid} name="uuid" hidden/>
-                            <button
-                                    type="submit"
-                                    class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
-                                    data-bs-content="btn"
-                                    data-bs-placement="top"
-                            >
-                                <div class="d-flex text-success">
-                                    <SendIcon size="2x"/>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-action rounded-circle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                <div class="d-flex align-items-center justify-content-center text-secondary">
+                                    <MoreVerticalIcon size="2x"/>
                                 </div>
                             </button>
-                        </form>
-
-                        <button
-                                class="btn btn-action rounded-circle"
-                                data-bs-content="btn"
-                                data-bs-placement="top"
-                                data-bs-toggle="modal"
-                                data-bs-target="#{user.uuid}Modal"
-                        >
-                            <div class="d-flex align-items-center justify-content-center text-danger">
-                                <TrashIcon size="2x"/>
-                            </div>
-                        </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a role="button" href="/admin/edit?uuid={user.uuid}" class="dropdown-item"
+                                       type="button">
+                                    <Edit2Icon size="1x" class="me-2"/>
+                                    Edit</a>
+                                </li>
+                                <li>
+                                    <form action="?/send" method="POST" use:enhance={save}>
+                                        <input type="text" value={user.uuid} name="uuid" hidden/>
+                                        <button class="dropdown-item" type="submit">
+                                            <SendIcon size="1x" class="me-2"/>
+                                            Send mail
+                                        </button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <button
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#{user.uuid}Modal" class="dropdown-item" type="button">
+                                        <TrashIcon size="1x" class="me-2"/>
+                                        Delete
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
 
                         <!-- Modal -->
                         <div
@@ -295,7 +301,7 @@
         </table>
     </div>
 
-    <nav aria-label="...">
+    <nav aria-label="..." class="mt-4">
         <ul class="pagination">
             <li class="page-item">
                 <a
@@ -377,5 +383,9 @@
     .btn-action:hover {
         color: white;
         background-color: grey;
+    }
+
+    .dropdown-menu {
+        position: fixed !important;
     }
 </style>
