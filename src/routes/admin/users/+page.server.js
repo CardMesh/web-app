@@ -1,9 +1,14 @@
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
-export const load = async ({ fetch, cookies }) => {
+export const load = async ({ fetch, cookies, url }) => {
   const { token } = JSON.parse(cookies.get('user')).data;
 
   const fetchUsers = async () => {
+    const params = new URLSearchParams(url.search);
+    const page = params.get('page');
+    const limit = params.get('limit') ?? 5;
+    const search = params.get('search');
+
     const options = {
       method: 'GET',
       headers: {
@@ -12,7 +17,19 @@ export const load = async ({ fetch, cookies }) => {
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users`, options);
+    const apiUrl = new URL(`${PUBLIC_REST_API_URL}/api/users`);
+
+    if (page) {
+      apiUrl.searchParams.append('page', page);
+    }
+    if (limit) {
+      apiUrl.searchParams.append('limit', limit);
+    }
+    if (search) {
+      apiUrl.searchParams.append('search', search);
+    }
+
+    const response = await fetch(apiUrl.toString(), options);
     return response.json();
   };
 
@@ -68,8 +85,6 @@ export const actions = {
 
     try {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/auth/recover`, options);
-      console.log(`${PUBLIC_REST_API_URL}/api/auth/recover`);
-      console.log(options);
 
       if (response.ok) {
         console.log('Form submitted successfully.');

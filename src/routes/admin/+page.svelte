@@ -87,13 +87,17 @@
 						</button>
 					</div>
 					<div class="button-container">
-						<a class="btn btn-primary" href={`${PUBLIC_BASE_URL}/qr/${uuid}`} role="button" target="_blank">
+						<a
+							class="btn btn-primary"
+							href={`${PUBLIC_BASE_URL}/qr/${uuid}`}
+							role="button"
+							target="_blank"
+						>
 							Show QR code on a new page
 						</a>
 					</div>
 				</div>
 			</div>
-
 
 			<div class="card mb-3">
 				<div class="card-body">

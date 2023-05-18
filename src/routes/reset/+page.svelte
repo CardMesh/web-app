@@ -16,7 +16,7 @@
 
 			if (result.type === 'success') {
 				displaySuccess('Successfully saved!');
-				await goto('/login')
+				await goto('/login');
 			}
 		};
 	};
