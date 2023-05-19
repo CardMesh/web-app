@@ -118,14 +118,10 @@ export const actions = {
       );
 
       if (response.ok) {
-        console.log('Form submitted successfully.');
-        console.log('put', uuid);
         return { success: true };
       }
-      console.error('Error submitting form: Server responded with an error.');
       return { success: false };
     } catch (error) {
-      console.error('Error submitting form:', error);
       return { success: false };
     }
   },

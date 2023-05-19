@@ -1,13 +1,13 @@
 <script>
-	import AdminMain from '$lib/admin/AdminMain.svelte';
-	import { enhance } from '$app/forms';
-	import { displayError, displaySuccess, displayWarning } from '../../../js/toast.js';
-	import { browser } from '$app/environment';
-	import DisplayPreview from '$lib/preview/DisplayPreview.svelte';
-	import SocialIconTextInput from '$lib/common/SocialIconTextInput.svelte';
-	import Phone from '$lib/front/Phone.svelte';
+  import AdminMain from '$lib/admin/AdminMain.svelte';
+  import { enhance } from '$app/forms';
+  import { displayError, displaySuccess, displayWarning } from '../../../js/toast.js';
+  import { browser } from '$app/environment';
+  import DisplayPreview from '$lib/preview/DisplayPreview.svelte';
+  import SocialIconTextInput from '$lib/common/SocialIconTextInput.svelte';
+  import Phone from '$lib/front/Phone.svelte';
 
-	let uuid;
+  let uuid;
   $: if (browser) {
     uuid = getUUID();
   }
@@ -41,10 +41,10 @@
     };
   };
 
-  // let timezones = Intl.supportedValuesOf('timeZone');
-  // let currentTimezone =
-  //   data.vCards.data.timeZone || Intl.DateTimeFormat()
-  //      .resolvedOptions().timeZone;
+  let timezones = Intl.supportedValuesOf('timeZone');
+  let currentTimezone =
+    data.vCards.data.timeZone || Intl.DateTimeFormat()
+      .resolvedOptions().timeZone;
 
   const updateCoordinates = async () => {
     const address = [
@@ -191,7 +191,6 @@
                             name="bio"
                             placeholder=""
                             style="height: 100px"
-                            type="text"
                     />
                     <label for="bioTextarea">Bio</label>
                 </div>
@@ -286,7 +285,7 @@
                 <div class="form-floating mb-3">
                     <select class="form-select" id="floatingSelect" name="timeZone">
                         {#each timezones as timezone}
-                            <!--    <option value={timezone} selected={timezone === currentTimezone}>{timezone}</option> -->
+                            <option value={timezone} selected={timezone === currentTimezone}>{timezone}</option>
                         {/each}
                     </select>
                     <label for="floatingSelect">Time zone</label>
@@ -400,7 +399,7 @@
                 </div>
             </form>
         </div>
-        <DisplayPreview {themeOptions} {vCardOptions}/>
+        <DisplayPreview {themeOptions} {vCardOptions}/> <!-- TODO logo is missing -->
     </div>
 </AdminMain>
 

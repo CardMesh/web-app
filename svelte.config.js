@@ -1,7 +1,6 @@
 import preprocess from 'svelte-preprocess';
 import adapter from '@sveltejs/adapter-node';
 
-/** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
     // adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.

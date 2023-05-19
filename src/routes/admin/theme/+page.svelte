@@ -49,121 +49,114 @@
     <div class="row">
         <div class="col-lg-8">
             <form action="?/save" method="POST" use:enhance={save}>
-                <div
-                        class="scrollspy-example-2"
-                        data-bs-smooth-scroll="true"
-                        data-bs-spy="scroll"
-                        data-bs-target="#navbar-example3"
-                        tabindex="0"
-                >
-                    <div id="item-1">
-                        <h4 class="pb-3">General</h4>
-                        <ColorInput
-                                bind:value={themeOptions.fontColor}
-                                id="fontInput"
-                                label="Font color"
-                                name="fontColor"
-                        />
-                        <ColorInput
-                                bind:value={themeOptions.backgroundColor}
-                                id="backgroundColorInput"
-                                label="Background color"
-                                name="backgroundColor"
-                        />
 
-                        <ColorInput
-                                bind:value={themeOptions.secondaryFontColor}
-                                id="secondaryFontInput"
-                                label="Secondary font color"
-                                name="secondaryFontColor"
-                        />
+                <div id="item-1">
+                    <h4 class="pb-3">General</h4>
+                    <ColorInput
+                            bind:value={themeOptions.fontColor}
+                            id="fontInput"
+                            label="Font color"
+                            name="fontColor"
+                    />
+                    <ColorInput
+                            bind:value={themeOptions.backgroundColor}
+                            id="backgroundColorInput"
+                            label="Background color"
+                            name="backgroundColor"
+                    />
 
-                        <ColorInput
-                                bind:value={themeOptions.socialIconFontColor}
-                                id="socialIconFontColorInput"
-                                label="Social icon font color"
-                                name="socialIconFontColor"
-                        />
+                    <ColorInput
+                            bind:value={themeOptions.secondaryFontColor}
+                            id="secondaryFontInput"
+                            label="Secondary font color"
+                            name="secondaryFontColor"
+                    />
 
-                        <ColorInput
-                                bind:value={themeOptions.socialIconBackgroundColor}
-                                id="socialIconBackgroundColorInput"
-                                label="Social icon background color"
-                                name="socialIconBackgroundColor"
-                        />
+                    <ColorInput
+                            bind:value={themeOptions.socialIconFontColor}
+                            id="socialIconFontColorInput"
+                            label="Social icon font color"
+                            name="socialIconFontColor"
+                    />
 
-                        <ColorInput
-                                bind:value={themeOptions.btnFontColor}
-                                id="btnFontColorInput"
-                                label="Button font color"
-                                name="btnFontColor"
-                        />
+                    <ColorInput
+                            bind:value={themeOptions.socialIconBackgroundColor}
+                            id="socialIconBackgroundColorInput"
+                            label="Social icon background color"
+                            name="socialIconBackgroundColor"
+                    />
 
-                        <ColorInput
-                                bind:value={themeOptions.btnBackgroundColor}
-                                id="btnBackgroundColorInput"
-                                label="Button backgrund color"
-                                name="btnBackgroundColor"
-                        />
-                    </div>
+                    <ColorInput
+                            bind:value={themeOptions.btnFontColor}
+                            id="btnFontColorInput"
+                            label="Button font color"
+                            name="btnFontColor"
+                    />
 
-                    <div id="item-2">
-                        <h4 class="pb-3 pt-3">Social Icons</h4>
-                    </div>
+                    <ColorInput
+                            bind:value={themeOptions.btnBackgroundColor}
+                            id="btnBackgroundColorInput"
+                            label="Button backgrund color"
+                            name="btnBackgroundColor"
+                    />
+                </div>
 
-                    <div id="item-3">
-                        <h4 class="pb-3 pt-3">Contact information</h4>
-                        <Switch
-                                bind:checked={themeOptions.displayPhone}
-                                id="displayPhone"
-                                label="Display phone"
-                                name="displayPhone"
-                        />
-                        <Switch
-                                bind:checked={themeOptions.displaySms}
-                                id="displaySms"
-                                label="Display sms"
-                                name="displaySms"
-                        />
-                        <Switch
-                                bind:checked={themeOptions.displayEmail}
-                                id="displayEmail"
-                                label="Display email"
-                                name="displayEmail"
-                        />
-                        <Switch
-                                bind:checked={themeOptions.displayWeb}
-                                id="displayWeb"
-                                label="Display web"
-                                name="displayWeb"
-                        />
-                        <Switch
-                                bind:checked={themeOptions.displayAddress}
-                                id="displayAddress"
-                                label="Display address"
-                                name="displayAddress"
-                        />
-                    </div>
+                <div id="item-2">
+                    <h4 class="pb-3 pt-3">Social Icons</h4>
+                </div>
 
-                    <div id="item-4">
-                        <h4 class="pb-3 pt-3">Map</h4>
-                        <Switch
-                                bind:checked={themeOptions.displayMap}
-                                id="displayMap"
-                                label="Display map"
-                                name="displayMap"
-                        />
-                    </div>
+                <div id="item-3">
+                    <h4 class="pb-3 pt-3">Contact information</h4>
+                    <Switch
+                            bind:checked={themeOptions.displayPhone}
+                            id="displayPhone"
+                            label="Display phone"
+                            name="displayPhone"
+                    />
+                    <Switch
+                            bind:checked={themeOptions.displaySms}
+                            id="displaySms"
+                            label="Display sms"
+                            name="displaySms"
+                    />
+                    <Switch
+                            bind:checked={themeOptions.displayEmail}
+                            id="displayEmail"
+                            label="Display email"
+                            name="displayEmail"
+                    />
+                    <Switch
+                            bind:checked={themeOptions.displayWeb}
+                            id="displayWeb"
+                            label="Display web"
+                            name="displayWeb"
+                    />
+                    <Switch
+                            bind:checked={themeOptions.displayAddress}
+                            id="displayAddress"
+                            label="Display address"
+                            name="displayAddress"
+                    />
+                </div>
 
-                    <div id="item-5">
-                        <h4 class="pb-3 pt-3">Contact button</h4>
-                        <Switch
-                                bind:checked={themeOptions.displayContactBtn}
-                                id="displayContactBtn"
-                                label="Display contact button"
-                                name="displayContactBtn"
-                        />
-                    </div>
+                <div id="item-4">
+                    <h4 class="pb-3 pt-3">Map</h4>
+                    <Switch
+                            bind:checked={themeOptions.displayMap}
+                            id="displayMap"
+                            label="Display map"
+                            name="displayMap"
+                    />
+                </div>
+
+                <div id="item-5">
+                    <h4 class="pb-3 pt-3">Contact button</h4>
+                    <Switch
+                            bind:checked={themeOptions.displayContactBtn}
+                            id="displayContactBtn"
+                            label="Display contact button"
+                            name="displayContactBtn"
+                    />
                 </div>
 
                 <div id="item-6">

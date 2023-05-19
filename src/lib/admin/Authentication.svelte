@@ -28,7 +28,7 @@
     if (!user.errors) {
       Cookies.set('user', JSON.stringify(user), { expires: 365 });
       displaySuccess('Successfully login');
-      await goto('/admin');
+      await goto('/admin', {replaceState: false});
     } else {
       displayWarning('Wrong credentials');
     }

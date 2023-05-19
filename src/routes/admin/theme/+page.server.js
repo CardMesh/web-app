@@ -71,14 +71,11 @@ export const actions = {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
 
       if (response.ok) {
-        console.log('Form submitted successfully.');
         return { success: true };
       }
 
-      console.error('Error submitting form: Server responded with an error.', response);
       return { success: false };
     } catch (error) {
-      console.error('Error submitting form:', error);
       return { success: false };
     }
   },
@@ -103,13 +100,10 @@ export const actions = {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/upload`, options);
 
       if (response.ok) {
-        console.log('Form submitted successfully.');
         return { success: true };
       }
-      console.error('Error submitting form: Server responded with an error.');
       return { success: false };
     } catch (error) {
-      console.error('Error submitting form:', error);
       return { success: false };
     }
   },

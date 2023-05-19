@@ -24,7 +24,7 @@
 
 <div class="d-flex flex-nowrap">
     {#if screenWidth >= 992}
-        <div class="col-4 ms-auto float-preview">
+        <div class="col-4 ms-auto float-preview" style="z-index: 1020">
             <Preview {vCardOptions} {themeOptions} {logo}/>
         </div>
     {/if}
@@ -36,6 +36,5 @@
         right: 0;
         bottom: 50%;
         transform: translateY(50%);
-        z-index: 1030;
     }
 </style>

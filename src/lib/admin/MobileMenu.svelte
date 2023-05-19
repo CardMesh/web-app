@@ -6,7 +6,7 @@
 
   const handleLogout = () => {
     Cookies.remove('user');
-    goto('/login');
+    goto('/login', {replaceState: false});
   };
 </script>
 

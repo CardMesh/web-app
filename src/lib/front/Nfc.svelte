@@ -41,12 +41,14 @@
           showOverlay = false;
         }
       }
+    } else {
+      displayWarning('Unfortunately, writing with Web NFC isn\'t supported on your device.');
     }
   };
 </script>
 
 {#if showOverlay}
-    <div class="modal-dialog overlay text-center" on:click={handleClick}>
+    <div class="modal-dialog overlay text-center z-3" on:click={handleClick}>
         <div class="modal-content">
             <div class="modal-body mb-5">
                 <svg viewBox="0 0 190.99 134.53" class="responsive-svg color-svg"
@@ -87,7 +89,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 99999;
         pointer-events: auto; /* enable pointer events on overlay */
     }
 

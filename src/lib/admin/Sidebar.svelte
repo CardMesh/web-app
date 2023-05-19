@@ -1,11 +1,11 @@
 <script>
-	import { EditIcon, HomeIcon, LogOutIcon, SlidersIcon, UsersIcon } from 'svelte-feather-icons';
-	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
-	import Cookies from 'js-cookie';
-	import { displaySuccess } from '../../js/toast.js';
+  import { EditIcon, HomeIcon, LogOutIcon, SlidersIcon, UsersIcon } from 'svelte-feather-icons';
+  import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
+  import Cookies from 'js-cookie';
+  import { displaySuccess } from '../../js/toast.js';
 
-	// TODO add this method to the report.. Beskrive teknisk udfordring..
+  // TODO add this method to the report.. Beskrive teknisk udfordring..
   const resetPopoverState = () => {
     const popoverDiv = document.querySelectorAll('div.bs-popover-auto');
 
@@ -30,7 +30,7 @@
   const handleLogout = () => {
     resetPopoverState();
     Cookies.remove('user');
-    goto('/login');
+    goto('/login', { replaceState: false });
     displaySuccess('Successfully logged out');
   };
 

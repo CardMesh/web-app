@@ -326,12 +326,11 @@
     </nav>
 
     <button
-            class="btn btn-action rounded-circle d-flex align-items-center justify-content-center px-4 float-button"
+            class="btn btn-action rounded-circle d-flex align-items-center justify-content-center px-4 float-button z-0"
             data-bs-content="btn"
             data-bs-placement="top"
             data-bs-target="#createUserModal"
             data-bs-toggle="modal"
-            role="button"
     >
         <div class="d-flex text-light bg-primary bubble">
             <UserPlusIcon size="2x"/>
@@ -355,7 +354,6 @@
         position: fixed;
         bottom: 30px;
         right: 30px;
-        z-index: 9999;
     }
 
     @media (max-width: 642px) {
