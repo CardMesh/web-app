@@ -203,12 +203,12 @@
             </thead>
             <tbody class="table-group-divider">
             {#each data.users.data as user}
-                <tr class="text-nowrap">
-                    <th class="align-middle" scope="row">{user.uuid}</th>
-                    <td class="align-middle">{user.role}</td>
-                    <td class="align-middle">{user.enabled}</td>
-                    <td class="align-middle">{user.name}</td>
-                    <td class="align-middle">{user.email}</td>
+                <tr>
+                    <th class="align-middle text-nowrap" scope="row">{user.uuid}</th>
+                    <td class="align-middle text-nowrap">{user.role}</td>
+                    <td class="align-middle text-nowrap">{user.enabled}</td>
+                    <td class="align-middle text-nowrap">{user.name}</td>
+                    <td class="align-middle text-nowrap">{user.email}</td>
                     <td class="d-flex justify-content-end">
                         <a
                                 class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
@@ -348,7 +348,12 @@
     <div class="alert alert-light" role="alert">A simple light alert—check it out!</div>
     <div class="alert alert-dark" role="alert">A simple dark alert—check it out!</div>
     -->
+
+
+    <!-- Small modal -->
+
 </AdminMain>
+
 
 <style>
     .float-button {
@@ -370,7 +375,7 @@
         padding: 20px;
     }
 
-    .btn-action {
+    :global(.btn-action) {
         width: 50px !important;
         max-width: 100% !important;
         max-height: 100% !important;
@@ -380,7 +385,7 @@
         font-size: 10px;
     }
 
-    .btn-action:hover {
+    :global(.btn-action:hover) {
         color: white;
         background-color: grey;
     }

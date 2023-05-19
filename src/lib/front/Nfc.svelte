@@ -12,8 +12,7 @@
   export let profileUrl = '';
 
   const writeTag = async () => {
-  //  if ('NDEFReader' in window) {
-    if (true) {
+    if ('NDEFReader' in window) {
       showOverlay = true;
 
       const ndef = new NDEFReader();
@@ -27,7 +26,7 @@
         displaySuccess('NFC tag written!');
         showOverlay = false;
       } catch (error) {
-        showOverlay = true;
+        showOverlay = true; // An error is triggered if the card reader is initiated twice, but it remains operational nonetheless.
       }
     } else {
       displayWarning('Web NFC is not supported.');
@@ -38,8 +37,8 @@
 </script>
 
 {#if showOverlay}
-    <div class="overlay text-center" on:click={handleClick}>
-        <div class="modal-dialog">
+    <div class=" text-center" on:click={handleClick}>
+        <div class="modal-dialog overlay">
             <div class="modal-content">
                 <div class="modal-body mb-5">
                     <svg viewBox="0 0 190.99 134.53" class="responsive-svg color-svg"
@@ -71,21 +70,6 @@
 </button>
 
 <style>
-    .btn-action {
-        width: 50px !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
-        height: 50px !important;
-        text-align: center;
-        padding: 0;
-        font-size: 10px;
-    }
-
-    .btn-action:hover {
-        color: white;
-        background-color: grey;
-    }
-
     .overlay {
         position: fixed;
         top: 0;
@@ -97,6 +81,7 @@
         align-items: center;
         justify-content: center;
         z-index: 99999;
+        pointer-events: auto; /* enable pointer events on overlay */
     }
 
     .responsive-svg {
@@ -107,5 +92,13 @@
 
     .color-svg path {
         fill: #6bb187;
+    }
+
+    .modal-content {
+        max-width: 100% !important;
+    }
+
+    body.showOverlay {
+        pointer-events: none; /* disable pointer events on everything else when overlay is active */
     }
 </style>
