@@ -9,7 +9,7 @@
   let svgString = '';
   onMount(() => {
     svgString = new QRCode({
-      content: `${profileUrl}?entryPoint=qr`,
+      content: `${profileUrl}?source=qr`,
       join: true,
       ecl: 'M',
       size: 256,

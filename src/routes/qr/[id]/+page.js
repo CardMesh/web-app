@@ -30,7 +30,7 @@ export const load = async ({
   return {
     vCards: fetchVcard(),
     qrCode: new QRCode({
-      content: `${profileUrl}?entryPoint=qr`,
+      content: `${profileUrl}?source=qr`,
       join: true,
       ecl: 'M',
       width: 300,

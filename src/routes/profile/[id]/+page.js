@@ -5,6 +5,7 @@ export const prerender = 'auto';
 export const load = async ({
   fetch,
   params,
+  url,
 }) => {
   const fetchVcard = async () => {
     const options = {
@@ -33,6 +34,24 @@ export const load = async ({
 
     return response.json();
   };
+
+  const fetchClicks = async () => {
+    const data = { source: url.searchParams.get('source') };
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${params.id}/statistics/clicks`, options);
+
+    return response.json();
+  };
+
+  await fetchClicks();
 
   return {
     vCardOptions: fetchVcard(),

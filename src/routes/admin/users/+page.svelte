@@ -234,7 +234,7 @@
 
                         <Nfc
                                 c="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
-                                profileUrl="{`${PUBLIC_BASE_URL}/profile/${user.uuid}?entryPoint=nfc`}"
+                                profileUrl="{`${PUBLIC_BASE_URL}/profile/${user.uuid}?source=nfc`}"
                         >
                             <div class="d-flex text-success">
                                 <CreditCardIcon size="2x"/>
