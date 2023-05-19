@@ -5,11 +5,13 @@
   import Cookies from 'js-cookie';
   import QRCode from 'qrcode-svg';
   import { PUBLIC_BASE_URL } from '$env/static/public';
-  import Nfc from '$lib/front/Nfc.svelte';
+  import StackedBarLineChart from '$lib/front/StackedBarLineChart.svelte';
 
   let svgString = '';
   const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
   let profileUrl = `${PUBLIC_BASE_URL}/profile/${uuid}`;
+
+  export let data;
 
   onMount(() => {
     svgString = new QRCode({
@@ -65,8 +67,17 @@
         <div class="col-sm-6 mb-3 mb-sm-0">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Statistics</h5>
-                    <PieChart/>
+                    <h5 class="card-title">Total clicks by type</h5>
+                    <PieChart totalClicksByType="{data.clicks.data.totalClicksByType}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Last 7 days of activity</h5>
+                    <StackedBarLineChart clickCountsByDate="{data.clicks.data.clickCountsByDate}"/>
                 </div>
             </div>
         </div>
