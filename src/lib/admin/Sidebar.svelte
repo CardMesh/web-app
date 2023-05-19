@@ -30,7 +30,7 @@
   const handleLogout = () => {
     resetPopoverState();
     Cookies.remove('user');
-    goto('/login', { replaceState: false });
+    goto('/login', { replaceState: true });
     displaySuccess('Successfully logged out');
   };
 

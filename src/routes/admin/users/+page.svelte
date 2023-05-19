@@ -161,6 +161,17 @@
                                 <input
                                         bind:group={role}
                                         class="form-check-input"
+                                        id="roleEditorRadio"
+                                        name="role"
+                                        type="radio"
+                                        value="editorc"
+                                />
+                                <label class="form-check-label" for="roleEditorRadio">Editor</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input
+                                        bind:group={role}
+                                        class="form-check-input"
                                         id="roleAdminRadio"
                                         name="role"
                                         type="radio"

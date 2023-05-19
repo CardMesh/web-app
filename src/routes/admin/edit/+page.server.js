@@ -17,6 +17,8 @@ export const load = async ({
       },
     };
 
+    console.log(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcard-options`);
+
     const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcard-options`, options);
     return response.json();
   };

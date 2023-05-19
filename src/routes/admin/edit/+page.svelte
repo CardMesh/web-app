@@ -21,7 +21,7 @@
   export let data;
 
   export let vCardOptions = { ...data.vCards.data };
-
+  console.log(vCardOptions);
   export let themeOptions = data.theme.data[0];
 
   let isLoading = false;
