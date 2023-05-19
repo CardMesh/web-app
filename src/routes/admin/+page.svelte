@@ -103,19 +103,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">NFC</h5>
-                    <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                    </p>
-
-                    <Nfc c="btn btn-primary" profileUrl="{`${profileUrl}?entryPoint=nfc`}">
-                        Ready to write
-                    </Nfc>
-                </div>
-            </div>
         </div>
     </div>
 </AdminMain>
