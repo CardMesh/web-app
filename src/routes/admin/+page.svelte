@@ -6,6 +6,7 @@
   import QRCode from 'qrcode-svg';
   import { PUBLIC_BASE_URL } from '$env/static/public';
   import StackedBarLineChart from '$lib/front/StackedBarLineChart.svelte';
+  import { ActivityIcon, LinkIcon, SmartphoneIcon } from 'svelte-feather-icons';
 
   let svgString = '';
   const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
@@ -63,8 +64,56 @@
         <h1 class="h2">Dashboard</h1>
     </div>
 
-    <div class="row">
-        <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="row mb-4">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
+                  <span class="fs-3 mb-3">
+                    <LinkIcon size="2x"/>
+                    Link
+                  </span>
+                    <a class="btn btn-primary" href={profileUrl} target="_blank">Open business card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
+      <span class="fs-3 mb-3">
+        <SmartphoneIcon size="2x"/>
+        QR
+      </span>
+
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-primary me-3" on:click={downloadSvgAsPng(svgString, 'qr.png')}>
+                            Download QR code
+                        </button>
+
+                        <a class="btn btn-primary" href={`${PUBLIC_BASE_URL}/qr/${uuid}`} role="button" target="_blank">
+                            Show QR
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
+                  <span class="fs-3 mb-3">
+                    <ActivityIcon size="2x"/>
+                    Total clicks
+                  </span>
+                    <h2 class="display-6">{data.clicks.data.totalClicks}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-4 mb-3 mb-sm-0">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Total clicks by type</h5>
@@ -73,7 +122,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="col-sm-8 mb-3 mb-sm-0">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Last 7 days of activity</h5>
@@ -81,39 +130,13 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-6">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">URL</h5>
-                    <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                    </p>
-                    <a class="btn btn-primary" href={profileUrl} target="_blank">Open business card</a>
-                </div>
-            </div>
-
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">QR-code</h5>
-                    <div class="mb-3">{@html svgString}</div>
-                    <div class="button-container">
-                        <button class="btn btn-primary mb-3" on:click={downloadSvgAsPng(svgString, 'qr.png')}>
-                            Download QR code in PNG
-                        </button>
-                    </div>
-                    <div class="button-container">
-                        <a
-                                class="btn btn-primary"
-                                href={`${PUBLIC_BASE_URL}/qr/${uuid}`}
-                                role="button"
-                                target="_blank"
-                        >
-                            Show QR code on a new page
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+
 </AdminMain>
+
+
+<style>
+    .card {
+        min-height: 170px;
+    }
+</style>

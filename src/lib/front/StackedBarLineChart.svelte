@@ -19,8 +19,8 @@
         labels: dates,
         datasets: [
           {
-            label: 'QR',
-            data: qrCounts,
+            label: 'Web',
+            data: webCounts,
             backgroundColor: '#ea6947',
           },
           {
@@ -29,13 +29,14 @@
             backgroundColor: '#0091d5',
           },
           {
-            label: 'Web',
-            data: webCounts,
+            label: 'QR',
+            data: qrCounts,
             backgroundColor: '#dbae59',
           },
         ],
       },
       options: {
+        maintainAspectRatio: false,
         responsive: true,
         scales: {
           x: {
@@ -54,3 +55,10 @@
 <div class="chart">
     <canvas bind:this={canvas}/>
 </div>
+
+<style>
+    .chart {
+        height: 300px;
+        margin: 0 auto;
+    }
+</style>

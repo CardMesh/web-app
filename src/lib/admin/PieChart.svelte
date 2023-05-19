@@ -29,6 +29,13 @@
   });
 </script>
 
-<div class="chart-container">
+<div class="chart">
     <canvas bind:this={canvas}/>
 </div>
+
+<style>
+    .chart {
+        height: 300px;
+        margin: 0 auto;
+    }
+</style>
