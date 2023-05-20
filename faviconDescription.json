@@ -1,0 +1,66 @@
+{
+  "masterPicture": "./logo.svg",
+  "iconsPath": "/static",
+  "design": {
+    "ios": {
+      "pictureAspect": "backgroundAndMargin",
+      "backgroundColor": "#74da9e",
+      "margin": "28%",
+      "assets": {
+        "ios6AndPriorIcons": false,
+        "ios7AndLaterIcons": false,
+        "precomposedIcons": false,
+        "declareOnlyDefaultIcon": true
+      },
+      "appName": "CardMesh"
+    },
+    "desktopBrowser": {
+      "design": "background",
+      "backgroundColor": "#74da9e",
+      "backgroundRadius": 0.45,
+      "imageScale": 0.8
+    },
+    "windows": {
+      "pictureAspect": "whiteSilhouette",
+      "backgroundColor": "#74da9e",
+      "onConflict": "override",
+      "assets": {
+        "windows80Ie10Tile": false,
+        "windows10Ie11EdgeTiles": {
+          "small": false,
+          "medium": true,
+          "big": false,
+          "rectangle": false
+        }
+      },
+      "appName": "CardMesh"
+    },
+    "androidChrome": {
+      "pictureAspect": "shadow",
+      "themeColor": "#74da9e",
+      "manifest": {
+        "name": "CardMesh",
+        "display": "standalone",
+        "orientation": "notSet",
+        "onConflict": "override",
+        "declared": true
+      },
+      "assets": {
+        "legacyIcon": true,
+        "lowResolutionIcons": false
+      }
+    },
+    "safariPinnedTab": {
+      "pictureAspect": "silhouette",
+      "themeColor": "#74da9e"
+    }
+  },
+  "settings": {
+    "compression": 5,
+    "scalingAlgorithm": "Mitchell",
+    "errorOnImageTooSmall": false,
+    "readmeFile": false,
+    "htmlCodeFile": false,
+    "usePathAsIs": false
+  }
+}

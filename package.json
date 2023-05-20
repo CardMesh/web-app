@@ -14,6 +14,7 @@
   "homepage": "https://cardmesh.fly.dev",
   "scripts": {
     "build": "vite build",
+    "build:fav": "real-favicon generate faviconDescription.json faviconData.json static/ && rm faviconData.json",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
     "deploy": "flyctl secrets import < .env.production && flyctl deploy --build-arg NODE_ENV=production --remote-only",
@@ -39,6 +40,7 @@
     "vcf": "^2.1.1"
   },
   "devDependencies": {
+    "cli-real-favicon": "^0.0.8",
     "@fontsource/fira-mono": "^4.5.10",
     "@neoconfetti/svelte": "^1.0.0",
     "@playwright/test": "^1.33.0",
