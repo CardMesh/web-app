@@ -8,11 +8,8 @@
 </script>
 
 <svelte:head>
-    <title>{`${options.firstName} ${options.lastName} - Personal Profile`}</title>
-    <meta
-            content="`Discover ${options.firstName} ${options.lastName}'s personal business card, including contact information, social media profiles, and a brief bio. Connect with ${options.firstName} and learn more about their background.`"
-            name="description"
-    />
+    <title>QR Code</title>
+    <meta content="QR code" name="description"/>
 </svelte:head>
 
 <div class="qr-container">
