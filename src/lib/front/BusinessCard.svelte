@@ -1,12 +1,12 @@
 <script>
-	import { GlobeIcon, MailIcon, MapPinIcon, MessageSquareIcon, PhoneIcon, UserPlusIcon } from 'svelte-feather-icons';
-	import Divider from '$lib/common/Divider.svelte';
-	import VCardButton from '$lib/front/VCard.svelte';
-	import Map from '$lib/front/Map.svelte';
-	import { PUBLIC_REST_API_URL } from '$env/static/public';
-	import SocialIconLink from '$lib/common/SocialIconLink.svelte';
+  import { GlobeIcon, MailIcon, MapPinIcon, MessageSquareIcon, PhoneIcon, UserPlusIcon } from 'svelte-feather-icons';
+  import Divider from '$lib/common/Divider.svelte';
+  import VCardButton from '$lib/front/VCard.svelte';
+  import Map from '$lib/front/Map.svelte';
+  import { PUBLIC_REST_API_URL } from '$env/static/public';
+  import SocialIconLink from '$lib/common/SocialIconLink.svelte';
 
-	export let view = 'demo';
+  export let view = 'demo';
 
   export let vCardOptions;
 
@@ -28,6 +28,15 @@
   $: formattedNumber = `${
     vCardOptions.contact.phone.countryCode ? `(+${vCardOptions.contact.phone.countryCode})` : ''
   } ${vCardOptions.contact.phone.number}`;
+
+  const address = [
+    vCardOptions.location.street,
+    vCardOptions.location.postalCode,
+    vCardOptions.location.city,
+  ];
+
+  let addressLink;
+  $: addressLink = 'https://www.google.com/maps/place/' + address.join('+');
 </script>
 
 <div style="background-color: {themeOptions.backgroundColor}">
@@ -95,7 +104,7 @@
                     {/if}
 
                     <div class="d-flex flex-column my-auto">
-                        <span>{formattedNumber}</span>
+                        <a href="tel:{telLink}">{formattedNumber}</a>
                     </div>
                 </li>
             {/if}
@@ -113,7 +122,7 @@
                     </a>
 
                     <div class="d-flex flex-column my-auto">
-                        <span>{vCardOptions.contact.email}</span>
+                        <a href="mailto:{vCardOptions.contact.email}">{vCardOptions.contact.email}</a>
                     </div>
                 </li>
             {/if}
@@ -132,7 +141,7 @@
                     </a>
 
                     <div class="d-flex flex-column my-auto">
-                        <span>{vCardOptions.contact.web}</span>
+                        <a href={vCardOptions.contact.web} target="_blank">{vCardOptions.contact.web}</a>
                     </div>
                 </li>
             {/if}
@@ -142,7 +151,7 @@
                     <a
                             aria-label="View location on Google Maps"
                             class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
-                            href="https://www.google.com/maps/place/Guldstjernevej+4+2400+K%C3%B8benhavn"
+                            href="{addressLink}"
                             role="button"
                             target="_blank"
                             style="background-color: {themeOptions.socialIconBackgroundColor}; color: {themeOptions.socialIconFontColor}"
@@ -150,15 +159,16 @@
                         <MapPinIcon size="1.2x"/>
                     </a>
 
-                    <div class="d-flex flex-column my-auto">
+                    <a href="{addressLink}" target="_blank">
+                        <div class="d-flex flex-column my-auto">
 						<span
                         >{vCardOptions.location.street}{vCardOptions.location.storey
                           ? ', ' + vCardOptions.location.storey
-                          : ''}</span
-                        >
-                        <span>{vCardOptions.location.postalCode} {vCardOptions.location.city}{vCardOptions.location.state ? `, ${vCardOptions.location.state}` : ''}</span>
-                        <span>{vCardOptions.location.country}</span>
-                    </div>
+                          : ''}</span>
+                            <span>{vCardOptions.location.postalCode} {vCardOptions.location.city}{vCardOptions.location.state ? `, ${vCardOptions.location.state}` : ''}</span>
+                            <span>{vCardOptions.location.country}</span>
+                        </div>
+                    </a>
                 </li>
             {/if}
 
