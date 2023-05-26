@@ -101,10 +101,6 @@
                     />
                 </div>
 
-                <div id="item-2">
-                    <h4 class="pb-3 pt-3">Social Icons</h4>
-                </div>
-
                 <div id="item-3">
                     <h4 class="pb-3 pt-3">Contact information</h4>
                     <Switch

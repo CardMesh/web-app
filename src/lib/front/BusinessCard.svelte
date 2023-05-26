@@ -156,9 +156,8 @@
                           ? ', ' + vCardOptions.location.storey
                           : ''}</span
                         >
-                        <span>{vCardOptions.location.city}</span>
-                        <span>{vCardOptions.location.state}</span>
-                        <span>{vCardOptions.location.postalCode}, {vCardOptions.location.country}</span>
+                        <span>{vCardOptions.location.postalCode} {vCardOptions.location.city}{vCardOptions.location.state ? `, ${vCardOptions.location.state}` : ''}</span>
+                        <span>{vCardOptions.location.country}</span>
                     </div>
                 </li>
             {/if}

@@ -1,6 +1,14 @@
-import { expect, test } from '@playwright/test';
+import { render, cleanup, screen } from '@testing-library/svelte';
+import Nfc from '$lib/front/Nfc.svelte';
 
-test('about page has expected h1', async ({ page }) => {
-  await page.goto('/about');
-  await expect(page.getByRole('heading', { name: 'About this app' })).toBeVisible();
-});
+// Run cleanup after each test
+afterEach(cleanup);
+
+// Write your tests
+describe('MyComponent', () => {
+  it('should render correctly', () => {
+    render(Nfc);
+
+    // Assert something about the rendered component
+    expect(screen.getByText('Hello, World!')).toBeInTheDocument();
+  });
