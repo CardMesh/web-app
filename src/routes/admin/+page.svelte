@@ -53,7 +53,7 @@
 </script>
 
 <svelte:head>
-    <title>Dashboard</title>
+    <title>Personal Dashboard</title>
     <meta content="Dashboard"/>
 </svelte:head>
 
@@ -61,7 +61,7 @@
     <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
     >
-        <h1 class="h2">Dashboard</h1>
+        <h1 class="h2">Personal Dashboard</h1>
     </div>
 
     <div class="row mb-4">

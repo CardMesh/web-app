@@ -39,7 +39,6 @@
     <div class="container" style="max-width: 600px" tabindex="-1">
         <div>
             <div class="rounded-2 shadow">
-
                 <div class="center-container pt-5">
                 <svg
                         class="logo-svg me-4"
