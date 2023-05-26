@@ -155,6 +155,19 @@
                     />
                 </div>
 
+                <!--        <div id="item-5"> -->
+                <div class="input-group mb-3">
+                    <div class="form-floating flex-grow-1">
+                        <input bind:value="{themeOptions.buttonText}"
+                               class="form-control"
+                               id="addToContactText"
+                               name="buttonText"
+                               placeholder=""
+                               type="text"/>
+                        <label for="addToContactText">Button text</label>
+                    </div>
+                </div>
+
                 <div id="item-6">
                     <h4 class="pb-3 pt-3">Logo</h4>
                     <label class="form-label" for="logoHeightRange">Logo size</label>

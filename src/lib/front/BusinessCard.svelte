@@ -200,7 +200,7 @@
                     color={themeOptions.btnFontColor}
             >
                 <UserPlusIcon size="1x"/>
-                Add to contacts
+                {themeOptions.buttonText}
             </VCardButton>
         </div>
     {/if}
