@@ -1,5 +1,5 @@
 <script>
-  import { GlobeIcon, MailIcon, MapPinIcon, MessageSquareIcon, UserPlusIcon } from 'svelte-feather-icons';
+  import { GlobeIcon, MailIcon, MapPinIcon, MessageSquareIcon, UserPlusIcon, PhoneIcon } from 'svelte-feather-icons';
   import Divider from '$lib/layout/Divider.svelte';
   import VCardButton from '$lib/vCard/VCard.svelte';
   import Map from '$lib/maps/Map.svelte';
@@ -87,7 +87,7 @@
                                     backgroundColor="{themeOptions.socialIconBackgroundColor}"
                                     fontColor="{themeOptions.socialIconFontColor}"
                             >
-                                <MessageSquareIcon size="1.2x"/>
+                                <PhoneIcon size="1.2x"/>
                             </IconLink>
                         {/if}
 

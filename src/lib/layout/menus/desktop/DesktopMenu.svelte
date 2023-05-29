@@ -1,5 +1,5 @@
 <script>
-  import { EditIcon, LogOutIcon, PieChartIcon, UsersIcon } from 'svelte-feather-icons';
+  import { EditIcon, LogOutIcon, PieChartIcon, SlidersIcon, UsersIcon } from 'svelte-feather-icons';
   import { goto } from '$app/navigation';
   import Cookies from 'js-cookie';
   import { displaySuccess } from '../../../../js/toast.js';
@@ -67,7 +67,7 @@
 
             <li class="nav-item">
                 <DesktopMenuItem href="/admin/theme" name="Theme">
-                    <EditIcon class="align-middle text-warning" size="2x"/>
+                    <SlidersIcon class="text-warning align-middle" size="2x"/>
                 </DesktopMenuItem>
             </li>
         {/if}
