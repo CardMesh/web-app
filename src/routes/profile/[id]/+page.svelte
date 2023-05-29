@@ -3,22 +3,22 @@
   import ProductionView from '$lib/vCard/views/ProductionView.svelte';
 
   export let data;
-  const vCardOptions = data.vCardOptions.data;
+  const vCard = data.vCard.data;
 
-  export let themeOptions = data.theme.data;
+  export let theme = data.theme.data;
 
   export let logo;
 </script>
 
 <ProductionView>
-    <BusinessCard {logo} {themeOptions} {vCardOptions} view="prod"/>
+    <BusinessCard {logo} {theme} {vCard} view="prod"/>
 </ProductionView>
 
 <svelte:head>
-    <title>{`${vCardOptions.name.firstName} ${vCardOptions.name.lastName} - Personal Profile`}</title>
+    <title>{`${vCard.name.firstName} ${vCard.name.lastName} - Personal Profile`}</title>
     <meta
-            content="`Discover ${vCardOptions.name.firstName} ${vCardOptions.name
-			.lastName}'s personal business card, including contact information, social media profiles, and a brief bio. Connect with ${vCardOptions
+            content="`Discover ${vCard.name.firstName} ${vCard.name
+			.lastName}'s personal business card, including contact information, social media profiles, and a brief bio. Connect with ${vCard
 			.name.firstName} and learn more about their background.`"
             name="description"
     />

@@ -30,9 +30,9 @@
     };
   };
 
-  let vCardOptions = data.vCards.data;
+  let vCard = data.vCards.data;
 
-  export let themeOptions = data.theme.data;
+  export let theme = data.theme.data;
 
   let logo;
 </script>
@@ -49,95 +49,95 @@
             <form action="?/save" method="POST" use:enhance={save}>
                 <Heading size="h4" tag="h4">General</Heading>
                 <ColorInput
-                        bind:value={themeOptions.fontColor}
+                        bind:value={theme.fontColor}
                         id="fontInput"
                         label="Font color"
                         name="fontColor"
                 />
                 <ColorInput
-                        bind:value={themeOptions.backgroundColor}
+                        bind:value={theme.backgroundColor}
                         id="backgroundColorInput"
                         label="Background color"
                         name="backgroundColor"
                 />
                 <ColorInput
-                        bind:value={themeOptions.secondaryFontColor}
+                        bind:value={theme.secondaryFontColor}
                         id="secondaryFontInput"
                         label="Secondary font color"
                         name="secondaryFontColor"
                 />
                 <ColorInput
-                        bind:value={themeOptions.socialIconFontColor}
+                        bind:value={theme.socialIconFontColor}
                         id="socialIconFontColorInput"
                         label="Social icon font color"
                         name="socialIconFontColor"
                 />
                 <ColorInput
-                        bind:value={themeOptions.socialIconBackgroundColor}
+                        bind:value={theme.socialIconBackgroundColor}
                         id="socialIconBackgroundColorInput"
                         label="Social icon background color"
                         name="socialIconBackgroundColor"
                 />
                 <ColorInput
-                        bind:value={themeOptions.btnFontColor}
+                        bind:value={theme.btnFontColor}
                         id="btnFontColorInput"
                         label="Button font color"
                         name="btnFontColor"
                 />
                 <ColorInput
-                        bind:value={themeOptions.btnBackgroundColor}
+                        bind:value={theme.btnBackgroundColor}
                         id="btnBackgroundColorInput"
                         label="Button backgrund color"
                         name="btnBackgroundColor"
                 />
                 <Heading size="h4" tag="h4">Contact information</Heading>
                 <Switch
-                        bind:checked={themeOptions.displayPhone}
+                        bind:checked={theme.displayPhone}
                         id="displayPhone"
                         label="Display phone"
                         name="displayPhone"
                 />
                 <Switch
-                        bind:checked={themeOptions.displaySms}
+                        bind:checked={theme.displaySms}
                         id="displaySms"
                         label="Display sms"
                         name="displaySms"
                 />
                 <Switch
-                        bind:checked={themeOptions.displayEmail}
+                        bind:checked={theme.displayEmail}
                         id="displayEmail"
                         label="Display email"
                         name="displayEmail"
                 />
                 <Switch
-                        bind:checked={themeOptions.displayWeb}
+                        bind:checked={theme.displayWeb}
                         id="displayWeb"
                         label="Display web"
                         name="displayWeb"
                 />
                 <Switch
-                        bind:checked={themeOptions.displayAddress}
+                        bind:checked={theme.displayAddress}
                         id="displayAddress"
                         label="Display address"
                         name="displayAddress"
                 />
                 <Heading size="h4" tag="h4">Map</Heading>
                 <Switch
-                        bind:checked={themeOptions.displayMap}
+                        bind:checked={theme.displayMap}
                         id="displayMap"
                         label="Display map"
                         name="displayMap"
                 />
                 <Heading size="h4" tag="h4">Contact button</Heading>
                 <Switch
-                        bind:checked={themeOptions.displayContactBtn}
+                        bind:checked={theme.displayContactBtn}
                         id="displayContactBtn"
                         label="Display contact button"
                         name="displayContactBtn"
                 />
-                <TextInput bind:value="{themeOptions.buttonText}" displayName="Button text" name="buttonText"/>
+                <TextInput bind:value="{theme.buttonText}" displayName="Button text" name="buttonText"/>
                 <Heading size="h4" tag="h4">Logo</Heading>
-                <RangeInput bind:value="{themeOptions.logoHeight}" displayName="Size" max="50" min="10"
+                <RangeInput bind:value="{theme.logoHeight}" displayName="Size" max="50" min="10"
                             name="logoHeight"/>
                  <Button {isLoading}>Save</Button>
             </form>
@@ -146,5 +146,5 @@
             <UploadFile bind:logo/>
         </div>
     </div>
-    <DisplayPreview {logo} {themeOptions} {vCardOptions}/>
+    <DisplayPreview {logo} {theme} {vCard}/>
 </AdminMain>

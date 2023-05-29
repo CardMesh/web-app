@@ -54,7 +54,7 @@ export const load = async ({
   await fetchClicks();
 
   return {
-    vCardOptions: fetchVcard(),
+    vCard: fetchVcard(),
     theme: fetchTheme(),
   };
 };

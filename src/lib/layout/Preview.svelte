@@ -2,13 +2,13 @@
   import MobileView from '$lib/vCard/views/MobileView.svelte';
   import BusinessCard from '$lib/vCard/BusinessCard.svelte';
 
-  export let vCardOptions;
+  export let vCard;
 
-  export let themeOptions;
+  export let theme;
 
   export let logo;
 </script>
 
 <MobileView>
-    <BusinessCard {logo} {themeOptions} {vCardOptions}/>
+    <BusinessCard {logo} {theme} {vCard}/>
 </MobileView>

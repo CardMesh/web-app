@@ -6,9 +6,9 @@
 
   let screenWidth = false;
 
-  export let vCardOptions;
+  export let vCard;
 
-  export let themeOptions;
+  export let theme;
 
   export let logo;
 
@@ -26,7 +26,7 @@
 <div class="d-flex flex-nowrap">
     {#if screenWidth >= 992}
         <div class="col-4 ms-auto float-preview" style="z-index: 1020">
-            <Preview {vCardOptions} {themeOptions} {logo}/>
+            <Preview {vCard} {theme} {logo}/>
         </div>
     {/if}
 </div>

@@ -1,14 +1,14 @@
 <script>
   import { displayError, displaySuccess, displayWarning } from '../../js/toast.js';
 
-  export let vCardOptions;
+  export let vCard;
 
   const updateCoordinates = async () => {
     const address = [
-      vCardOptions.location.street,
-      vCardOptions.location.postalCode,
-      vCardOptions.location.city,
-      vCardOptions.location.country
+      vCard.location.street,
+      vCard.location.postalCode,
+      vCard.location.city,
+      vCard.location.country
     ];
 
     let formattedAddress = address
@@ -34,15 +34,15 @@
     }
 
     displaySuccess('Coordinates updated');
-    vCardOptions.location.coordinates.latitude = coordinates[0].lat;
-    vCardOptions.location.coordinates.longitude = coordinates[0].lon;
+    vCard.location.coordinates.latitude = coordinates[0].lat;
+    vCard.location.coordinates.longitude = coordinates[0].lon;
   };
 </script>
 
 <div class="input-group mb-3">
     <div class="form-floating">
         <input
-                bind:value={vCardOptions.location.coordinates.latitude}
+                bind:value={vCard.location.coordinates.latitude}
                 class="form-control"
                 id="latitudeInput"
                 name="latitude"
@@ -54,7 +54,7 @@
 
     <div class="form-floating">
         <input
-                bind:value={vCardOptions.location.coordinates.longitude}
+                bind:value={vCard.location.coordinates.longitude}
                 class="form-control"
                 id="longitudeInput"
                 name="longitude"

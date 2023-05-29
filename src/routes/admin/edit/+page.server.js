@@ -37,7 +37,7 @@ export const load = async ({
   };
 
   return {
-    vCards: fetchVcard(),
+    vCard: fetchVcard(),
     theme: fetchTheme(),
   };
 };
@@ -51,7 +51,7 @@ export const actions = {
     const { token } = JSON.parse(cookies.get('access')).data;
     const formData = await request.formData();
 
-    const vCardOptions = {
+    const vCard = {
       name: {
         firstName: formData.get('firstName'),
         middleName: formData.get('middleName'),
@@ -108,7 +108,7 @@ export const actions = {
         'Content-Type': 'application/json',
         Authorization: token,
       },
-      body: JSON.stringify(vCardOptions),
+      body: JSON.stringify(vCard),
     };
 
     try {

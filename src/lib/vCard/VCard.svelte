@@ -2,7 +2,7 @@
   import { PUBLIC_REST_API_URL } from '$env/static/public';
   import { onMount } from 'svelte';
 
-  export let vCardOptions;
+  export let vCard;
   export let className;
   export let backgroundColor;
   export let color;
@@ -22,7 +22,7 @@
       return 3;
     };
 
-    link = `${PUBLIC_REST_API_URL}/uploads/users/${vCardOptions.uuid}/vcard${detectOperatingSystem()}.vcf`;
+    link = `${PUBLIC_REST_API_URL}/uploads/users/${vCard.uuid}/vcard${detectOperatingSystem()}.vcf`;
   });
 </script>
 

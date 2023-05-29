@@ -28,9 +28,9 @@
 
   export let data;
 
-  export let vCardOptions = { ...data.vCards.data };
+  export let vCard = data.vCard.data;
 
-  export let themeOptions = data.theme.data;
+  export let theme = data.theme.data;
 
   let isLoading = false;
   const save = () => {
@@ -55,72 +55,72 @@
     <div class="row">
         <div class="col-lg-8">
             <form action="?/save{uuid ? `&uuid=${uuid}` : ''}" method="POST" use:enhance={save}>
-                <TextInput bind:value={vCardOptions.name.firstName} displayName="First Name"
+                <TextInput bind:value={vCard.name.firstName} displayName="First Name"
                            name="firstName"></TextInput>
-                <TextInput bind:value={vCardOptions.name.middleName} displayName="Middle Name"
+                <TextInput bind:value={vCard.name.middleName} displayName="Middle Name"
                            name="middleName"></TextInput>
-                <TextInput bind:value={vCardOptions.name.lastName} displayName="Last Name" name="lastName"></TextInput>
-                <TextInput bind:value={vCardOptions.professional.role} displayName="Role" name="role"></TextInput>
-                <TextInput bind:value={vCardOptions.professional.title} displayName="Title" name="title"></TextInput>
-                <TextInput bind:value={vCardOptions.name.suffix} displayName="Suffix" name="suffix"></TextInput>
-                <TextInput bind:value={vCardOptions.personal.pronouns} displayName="Pronouns"
+                <TextInput bind:value={vCard.name.lastName} displayName="Last Name" name="lastName"></TextInput>
+                <TextInput bind:value={vCard.professional.role} displayName="Role" name="role"></TextInput>
+                <TextInput bind:value={vCard.professional.title} displayName="Title" name="title"></TextInput>
+                <TextInput bind:value={vCard.name.suffix} displayName="Suffix" name="suffix"></TextInput>
+                <TextInput bind:value={vCard.personal.pronouns} displayName="Pronouns"
                            name="pronouns"></TextInput>
-                <TextInput bind:value={vCardOptions.professional.company} displayName="Company"
+                <TextInput bind:value={vCard.professional.company} displayName="Company"
                            name="company"></TextInput>
-                <TextareaInput bind:value={vCardOptions.professional.bio} displayName="Bio" name="bio"/>
+                <TextareaInput bind:value={vCard.professional.bio} displayName="Bio" name="bio"/>
                 <PhoneInput
-                        bind:countryCode={vCardOptions.contact.phone.countryCode}
-                        bind:extension={vCardOptions.contact.phone.extension}
-                        bind:number={vCardOptions.contact.phone.number}
+                        bind:countryCode={vCard.contact.phone.countryCode}
+                        bind:extension={vCard.contact.phone.extension}
+                        bind:number={vCard.contact.phone.number}
                 />
-                <EmailInput bind:value={vCardOptions.contact.email} displayName="Email" name="email"></EmailInput>
-                <TextInput bind:value={vCardOptions.location.street} displayName="Street" name="street"></TextInput>
-                <TextInput bind:value="{vCardOptions.location.storey}" displayName="Storey" name="storey"/>
-                <TextInput bind:value="{vCardOptions.location.postalCode}" displayName="Postal Code" name="postalCode"/>
-                <TextInput bind:value="{vCardOptions.location.city}" displayName="City" name="city"/>
-                <TextInput bind:value="{vCardOptions.location.state}" displayName="State" name="state"/>
-                <TextInput bind:value="{vCardOptions.location.country}" displayName="Country" name="country"/>
-                <TimeZoneSelect timeZone="{vCardOptions.location.timeZone}"/>
-                <CoordinatesInput {vCardOptions}/>
-                <TextInput bind:value="{vCardOptions.contact.web}" displayName="Web" name="web"></TextInput>
-                <DateInput bind:value="{vCardOptions.personal.birthday}" displayName="Birthday" name="birthday"/>
+                <EmailInput bind:value={vCard.contact.email} displayName="Email" name="email"></EmailInput>
+                <TextInput bind:value={vCard.location.street} displayName="Street" name="street"></TextInput>
+                <TextInput bind:value="{vCard.location.storey}" displayName="Storey" name="storey"/>
+                <TextInput bind:value="{vCard.location.postalCode}" displayName="Postal Code" name="postalCode"/>
+                <TextInput bind:value="{vCard.location.city}" displayName="City" name="city"/>
+                <TextInput bind:value="{vCard.location.state}" displayName="State" name="state"/>
+                <TextInput bind:value="{vCard.location.country}" displayName="Country" name="country"/>
+                <TimeZoneSelect timeZone="{vCard.location.timeZone}"/>
+                <CoordinatesInput {vCard}/>
+                <TextInput bind:value="{vCard.contact.web}" displayName="Web" name="web"></TextInput>
+                <DateInput bind:value="{vCard.personal.birthday}" displayName="Birthday" name="birthday"/>
                 <SocialIconTextInput
-                        bind:value={vCardOptions.socialMedia.twitter}
+                        bind:value={vCard.socialMedia.twitter}
                         id="twitterInput"
                         label="Twitter link"
                         name="twitter"
                         network="twitter"
                 />
                 <SocialIconTextInput
-                        bind:value={vCardOptions.socialMedia.facebook}
+                        bind:value={vCard.socialMedia.facebook}
                         id="facebookInput"
                         label="Facebook link"
                         name="facebook"
                         network="facebook"
                 />
                 <SocialIconTextInput
-                        bind:value={vCardOptions.socialMedia.linkedin}
+                        bind:value={vCard.socialMedia.linkedin}
                         id="linkedinInput"
                         label="LinkedIn link"
                         name="linkedin"
                         network="linkedin"
                 />
                 <SocialIconTextInput
-                        bind:value={vCardOptions.socialMedia.instagram}
+                        bind:value={vCard.socialMedia.instagram}
                         id="instagramInput"
                         label="Instagram link"
                         name="instagram"
                         network="instagram"
                 />
                 <SocialIconTextInput
-                        bind:value={vCardOptions.socialMedia.pinterest}
+                        bind:value={vCard.socialMedia.pinterest}
                         id="pinterestInput"
                         label="Pinterest link"
                         name="pinterest"
                         network="pinterest"
                 />
                 <SocialIconTextInput
-                        bind:value={vCardOptions.socialMedia.github}
+                        bind:value={vCard.socialMedia.github}
                         id="githubInput"
                         label="Github link"
                         name="github"
@@ -129,7 +129,7 @@
                 <Button {isLoading}>Save</Button>
             </form>
         </div>
-        <DisplayPreview {themeOptions} {vCardOptions}/> <!-- TODO logo is missing -->
+        <DisplayPreview {theme} {vCard}/> <!-- TODO logo is missing -->
     </div>
 </AdminMain>
 
