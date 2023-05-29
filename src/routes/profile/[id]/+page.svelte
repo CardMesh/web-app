@@ -1,13 +1,11 @@
-<!-- <meta name="format-detection" content="telephone=no"> -->
-
 <script>
-	import BusinessCard from '$lib/front/BusinessCard.svelte';
-	import ProductionView from '$lib/front/ProductionView.svelte';
+  import BusinessCard from '$lib/vCard/BusinessCard.svelte';
+  import ProductionView from '$lib/vCard/views/ProductionView.svelte';
 
-	export let data;
+  export let data;
   const vCardOptions = data.vCardOptions.data;
 
-  export let themeOptions = data.theme.data[0]; // TODO remove?
+  export let themeOptions = data.theme.data[0];
 
   export let logo;
 </script>
@@ -37,37 +35,37 @@
 
     @-webkit-keyframes Background {
         0% {
-            background-position: 0% 50%;
+            background-position: 0 50%;
         }
         50% {
             background-position: 100% 50%;
         }
         100% {
-            background-position: 0% 50%;
+            background-position: 0 50%;
         }
     }
 
     @-moz-keyframes Background {
         0% {
-            background-position: 0% 50%;
+            background-position: 0 50%;
         }
         50% {
             background-position: 100% 50%;
         }
         100% {
-            background-position: 0% 50%;
+            background-position: 0 50%;
         }
     }
 
     @keyframes Background {
         0% {
-            background-position: 0% 50%;
+            background-position: 0 50%;
         }
         50% {
             background-position: 100% 50%;
         }
         100% {
-            background-position: 0% 50%;
+            background-position: 0 50%;
         }
     }
 </style>

@@ -5,7 +5,7 @@ export const load = async ({
   cookies,
   url,
 }) => {
-  const { token } = JSON.parse(cookies.get('user')).data;
+  const { token } = JSON.parse(cookies.get('access')).data;
   const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
 
   const fetchVcard = async () => {
@@ -46,17 +46,17 @@ export const actions = {
     request,
     cookies,
   }) => {
-    const { token } = JSON.parse(cookies.get('user')).data;
+    const { token } = JSON.parse(cookies.get('access')).data;
     const formData = await request.formData();
 
     const data = Object.fromEntries(Array.from(formData.entries()));
-    data.displayMap = !!data.displayMap; // typecast to boolean
-    data.displayPhone = !!data.displayPhone; // typecast to boolean
-    data.displaySms = !!data.displaySms; // typecast to boolean
-    data.displayEmail = !!data.displayEmail; // typecast to boolean
-    data.displayWeb = !!data.displayWeb; // typecast to boolean
-    data.displayAddress = !!data.displayAddress; // typecast to boolean
-    data.displayContactBtn = !!data.displayContactBtn; // typecast to boolean
+    data.displayMap = Boolean(data.displayMap);
+    data.displayPhone = Boolean(data.displayPhone);
+    data.displaySms = Boolean(data.displaySms);
+    data.displayEmail = Boolean(data.displayEmail);
+    data.displayWeb = Boolean(data.displayWeb);
+    data.displayAddress = Boolean(data.displayAddress);
+    data.displayContactBtn = Boolean(data.displayContactBtn);
 
     const options = {
       method: 'PUT',
@@ -84,9 +84,9 @@ export const actions = {
     request,
     cookies,
   }) => {
-    const { token } = JSON.parse(cookies.get('user')).data;
+    const { token } = JSON.parse(cookies.get('access')).data;
+    const { themeId } = JSON.parse(cookies.get('user')).data;
     const formData = await request.formData();
-    // formData.append('height', 50);
 
     const options = {
       method: 'POST',
@@ -97,7 +97,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/upload`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}/images`, options);
 
       if (response.ok) {
         return { success: true };

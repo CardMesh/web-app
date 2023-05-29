@@ -3,12 +3,16 @@
   import { SvelteToast } from '@zerodevx/svelte-toast';
   import { enhance } from '$app/forms';
   import { goto } from '$app/navigation';
+  import EmailInput from '$lib/forms/EmailInput.svelte';
+  import PasswordInput from '$lib/forms/PasswordInput.svelte';
+  import Button from '$lib/forms/Button.svelte';
+  import Heading from '$lib/layout/Heading.svelte';
 
   export let data;
 
   let email = data.email;
   let token = data.token;
-  let password;
+  let password = '';
 
   const save = () => {
     return async ({
@@ -19,7 +23,7 @@
 
       if (result.type === 'success') {
         displaySuccess('Successfully saved!');
-        await goto('/login', {replaceState: false});
+        await goto('/login', { replaceState: false });
       }
     };
   };
@@ -30,38 +34,17 @@
         <div>
             <div class="rounded-2 shadow">
                 <div class="p-5 pb-4 border-bottom-0">
-                    <h1 class="fw-bold mb-0 fs-2">Set your new password</h1>
+                    <Heading size="h2" tag="h1">Set your new password</Heading>
                 </div>
 
                 <div class="p-5 pt-0">
                     <form action="?/save" method="POST" use:enhance={save}>
-                        <div class="form-floating mb-3">
-                            <input
-                                    bind:value={email}
-                                    class="form-control rounded-3"
-                                    disabled
-                                    id="floatingInput"
-                                    placeholder=""
-                                    type="email"
-                            />
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input
-                                    bind:value={password}
-                                    class="form-control rounded-3"
-                                    id="floatingPassword"
-                                    name="password"
-                                    placeholder=""
-                                    type="password"
-                            />
-                            <label for="floatingPassword">New password</label>
-                        </div>
+                        <EmailInput disabled="true" displayName="Email" name="disabledEmail" value={email}/>
+                        <PasswordInput displayName="New Password" name="password" value={password}/>
                         <input hidden name="token" type="text" value={token}/>
                         <input hidden name="email" type="text" value={email}/>
-                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">
-                            Reset password
-                        </button>
+
+                        <Button>Reset password</Button>
                     </form>
                 </div>
             </div>

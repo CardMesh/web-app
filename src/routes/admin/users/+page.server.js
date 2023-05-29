@@ -5,7 +5,7 @@ export const load = async ({
   cookies,
   url,
 }) => {
-  const { token } = JSON.parse(cookies.get('user')).data;
+  const { token } = JSON.parse(cookies.get('access')).data;
 
   const fetchUsers = async () => {
     const params = new URLSearchParams(url.search);
@@ -47,7 +47,7 @@ export const actions = {
     request,
     cookies,
   }) => {
-    const { token } = JSON.parse(cookies.get('user')).data;
+    const { token } = JSON.parse(cookies.get('access')).data;
     const formData = await request.formData();
     const data = Object.fromEntries(Array.from(formData.entries()));
 
@@ -76,7 +76,7 @@ export const actions = {
     request,
     cookies,
   }) => {
-    const { token } = JSON.parse(cookies.get('user')).data;
+    const { token } = JSON.parse(cookies.get('access')).data;
     const formData = await request.formData();
 
     const options = {
@@ -106,7 +106,7 @@ export const actions = {
     request,
     cookies,
   }) => {
-    const { token } = JSON.parse(cookies.get('user')).data;
+    const { token } = JSON.parse(cookies.get('access')).data;
     const formData = await request.formData();
 
     const options = {
@@ -119,7 +119,7 @@ export const actions = {
         email: formData.get('email'),
         name: formData.get('name'),
         role: formData.get('role'),
-        sendMail: !!formData.get('sendMail'),
+        sendMail: Boolean(formData.get('sendMail')),
       }),
     };
 

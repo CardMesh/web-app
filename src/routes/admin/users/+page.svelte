@@ -1,5 +1,5 @@
 <script>
-  import AdminMain from '$lib/admin/AdminMain.svelte';
+  import AdminMain from '$lib/layout/AdminMain.svelte';
   import {
     AlertTriangleIcon,
     CreditCardIcon,
@@ -12,9 +12,13 @@
   } from 'svelte-feather-icons';
   import { displaySuccess } from '../../../js/toast.js';
   import { enhance } from '$app/forms';
-  import { goto } from '$app/navigation';
-  import Nfc from '$lib/front/Nfc.svelte';
+  import Nfc from '$lib/nfc/Nfc.svelte';
   import { PUBLIC_BASE_URL } from '$env/static/public';
+  import SearchInput from '$lib/forms/SearchInput.svelte';
+  import Heading from '$lib/layout/Heading.svelte';
+  import Pagination from '$lib/pagination/Pagination.svelte';
+  import TextInput from '$lib/forms/TextInput.svelte';
+  import EmailInput from '$lib/forms/EmailInput.svelte';
 
   export let data;
 
@@ -50,6 +54,7 @@
       nextPage,
       prevPage
     } = data.users.pagination;
+
     pagination = {
       page,
       totalPages,
@@ -60,28 +65,8 @@
   }
 
   let searchQuery = '';
+
   let searchInput;
-
-  const search = () => {
-    const url = new URL(window.location.href);
-    url.searchParams.set('search', searchQuery);
-
-    goto(url.toString(), { keepFocus: true });
-  };
-
-  function buildPaginationParams(page) {
-    const params = new URLSearchParams();
-    if (page) {
-      params.append('page', page);
-    }
-    if (pagination.limit) {
-      params.append('limit', pagination.limit);
-    }
-    if (searchQuery) {
-      params.append('search', searchQuery);
-    }
-    return `?${params.toString()}`;
-  }
 </script>
 
 <svelte:head>
@@ -90,24 +75,9 @@
 </svelte:head>
 
 <AdminMain>
-    <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-    >
-        <h1 class="h2">Users</h1>
-    </div>
+    <Heading size="h2" tag="h1">Users</Heading>
 
-    <div class="form-floating mb-3">
-        <input
-                bind:this={searchInput}
-                bind:value={searchQuery}
-                class="form-control"
-                id="searchInput"
-                on:input={search}
-                placeholder="Search..."
-                type="text"
-        />
-        <label for="searchInput">Search</label>
-    </div>
+    <SearchInput name="Search" {searchInput} {searchQuery}></SearchInput>
 
     <div
             aria-hidden="true"
@@ -119,19 +89,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="createUserModalLabel">Create user</h1>
-                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"/>
+                    <Heading className="modal-title" id="createUserModalLabel" size="h4" tag="h3">Create user</Heading>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
                     <form action="?/create" method="POST" use:enhance={save}>
-                        <div class="mb-3">
-                            <label class="col-form-label" for="nameInput">Name:</label>
-                            <input class="form-control" id="nameInput" name="name" type="text"/>
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label" for="nameEmail">Email:</label>
-                            <input class="form-control" id="nameEmail" name="email" type="email"/>
-                        </div>
+                        <TextInput displayName="Name" name="name"></TextInput>
+                        <EmailInput displayName="Email" name="email"></EmailInput>
 
                         <div class="form-check form-switch mb-3">
                             <input
@@ -164,7 +128,7 @@
                                         id="roleEditorRadio"
                                         name="role"
                                         type="radio"
-                                        value="editorc"
+                                        value="editor"
                                 />
                                 <label class="form-check-label" for="roleEditorRadio">Editor</label>
                             </div>
@@ -191,8 +155,7 @@
                             <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
                             <button class="btn btn-primary" data-bs-dismiss="modal" type="submit"
                             >Create user
-                            </button
-                            >
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -204,22 +167,18 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Role</th>
-                <th scope="col">Enabled</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Role</th>
                 <th class="text-end" scope="col">Actions</th>
             </tr>
             </thead>
             <tbody class="table-group-divider">
             {#each data.users.data as user}
                 <tr>
-                    <th class="align-middle text-nowrap" scope="row">{user.uuid}</th>
-                    <td class="align-middle text-nowrap">{user.role}</td>
-                    <td class="align-middle text-nowrap">{user.enabled}</td>
                     <td class="align-middle text-nowrap">{user.name}</td>
                     <td class="align-middle text-nowrap">{user.email}</td>
+                    <td class="align-middle text-nowrap">{user.role}</td>
                     <td class="d-flex justify-content-end">
                         <a
                                 class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
@@ -233,7 +192,7 @@
                         </a>
 
                         <Nfc
-                                c="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
+                                className="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
                                 profileUrl="{`${PUBLIC_BASE_URL}/profile/${user.uuid}?source=nfc`}"
                         >
                             <div class="d-flex text-success">
@@ -274,7 +233,6 @@
                             </ul>
                         </div>
 
-                        <!-- Modal -->
                         <div
                                 class="modal fade"
                                 id="{user.uuid}Modal"
@@ -285,7 +243,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="{user.uuid}ModalLabel">Modal title</h1>
+                                        <h1 class="modal-title fs-5" id="{user.uuid}ModalLabel">Delete {user.name}</h1>
                                         <button
                                                 type="button"
                                                 class="btn-close"
@@ -312,29 +270,7 @@
         </table>
     </div>
 
-    <nav aria-label="..." class="mt-4">
-        <ul class="pagination">
-            <li class="page-item">
-                <a
-                        class="page-link {pagination.prevPage ?? 'disabled'}"
-                        href={buildPaginationParams(pagination.prevPage)}>Previous</a
-                >
-            </li>
-
-            {#each Array(pagination.totalPages) as _, i (i)}
-                <li class="page-item {pagination.page === i + 1 ? 'active' : ''}">
-                    <a class="page-link" href={buildPaginationParams(i + 1)}>{i + 1}</a>
-                </li>
-            {/each}
-
-            <li class="page-item">
-                <a
-                        class="page-link {pagination.nextPage ?? 'disabled'}"
-                        href={buildPaginationParams(pagination.nextPage)}>Next</a
-                >
-            </li>
-        </ul>
-    </nav>
+    <Pagination pagination="{pagination}" searchQuery="{searchQuery}"/>
 
     <button
             class="btn btn-action rounded-circle d-flex align-items-center justify-content-center px-4 float-button z-0"
@@ -348,16 +284,6 @@
         </div>
     </button>
 
-    <!--
-    <div class="alert alert-primary" role="alert">A simple primary alert—check it out!</div>
-    <div class="alert alert-secondary" role="alert">A simple secondary alert—check it out!</div>
-    <div class="alert alert-success" role="alert">A simple success alert—check it out!</div>
-    <div class="alert alert-danger" role="alert">A simple danger alert—check it out!</div>
-    <div class="alert alert-warning" role="alert">A simple warning alert—check it out!</div>
-    <div class="alert alert-info" role="alert">A simple info alert—check it out!</div>
-    <div class="alert alert-light" role="alert">A simple light alert—check it out!</div>
-    <div class="alert alert-dark" role="alert">A simple dark alert—check it out!</div>
-    -->
 </AdminMain>
 
 <style>

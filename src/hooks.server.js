@@ -3,10 +3,11 @@ export async function handle({
   resolve,
 }) {
   const user = event.cookies.get('user') ?? '{}';
+  const access = event.cookies.get('access') ?? '{}';
 
   const theme = JSON.parse(user)?.data?.theme || 'dark';
 
-  if (event.url.pathname.startsWith('/admin') && !JSON.parse(user)?.data?.token) {
+  if (event.url.pathname.startsWith('/admin') && !JSON.parse(access)?.data?.token) {
     return new Response('Redirect', {
       status: 303,
       headers: { Location: '/login' },

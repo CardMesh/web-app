@@ -18,48 +18,7 @@ $warning-bg-subtle: $warning;
 $danger-bg-subtle: $danger;
 $light-bg-subtle: $gray-800;
 $dark-bg-subtle: mix($gray-800, $black);
-// scss-docs-end theme-bg-subtle-variables
-
-// scss-docs-start theme-border-subtle-variables
-//$primary-border-subtle: shade-color($primary, 40%);
-//$secondary-border-subtle: shade-color($secondary, 40%);
-//$success-border-subtle: shade-color($success, 40%);
-//$info-border-subtle: shade-color($info, 40%);
-//$warning-border-subtle: shade-color($warning, 40%);
-//$danger-border-subtle: shade-color($danger, 40%);
-//$light-border-subtle: $gray-700;
-//$dark-border-subtle: $gray-800;
-// scss-docs-end theme-border-subtle-variables
-
-//$body-color: $gray-500;
 $body-bg: $gray-400;
-//$body-secondary-color: rgba($body-color, .75);
-//$body-secondary-bg: $gray-800;
-//$body-tertiary-color: rgba($body-color, .5);
 $body-tertiary-bg: $gray-300;
-//$body-emphasis-color: $white;
 $border-color: $gray-600;
-//$border-color-translucent: rgba($white, .15);
-//$headings-color: null;
-//$link-color: tint-color($primary, 40%);
-//$link-hover-color: shift-color($link-color, -$link-shade-percentage);
-//$code-color: tint-color($code-color, 40%);
-
-//
-// Forms
-//
-//$form-select-indicator-color: $body-color;
-//
-//$form-switch-color: rgba($white, .25);
-//// scss-docs-start form-validation-colors
-//$form-valid-color: $success;
-//$form-valid-border-color: $green-300;
-//$form-invalid-color: $red-300;
-//$form-invalid-border-color: $red-300;
-//// scss-docs-end form-validation-colors
-//
-////
-//// Accordion
-////
-//$accordion-icon-color: $primary-text-emphasis;
-//$accordion-icon-active-color: $primary-text-emphasis;
+// scss-docs-end theme-bg-subtle-variables

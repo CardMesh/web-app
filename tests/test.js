@@ -1,5 +1,5 @@
 import { render, cleanup, screen } from '@testing-library/svelte';
-import Nfc from '$lib/front/Nfc.svelte';
+import Nfc from '$lib/nfc/Nfc.svelte';
 
 // Run cleanup after each test
 afterEach(cleanup);

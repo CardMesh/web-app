@@ -1,12 +1,13 @@
 <script>
-  import AdminMain from '$lib/admin/AdminMain.svelte';
-  import PieChart from '$lib/admin/PieChart.svelte';
+  import AdminMain from '$lib/layout/AdminMain.svelte';
+  import PieChart from '$lib/charts/PieChart.svelte';
   import { onMount } from 'svelte';
   import Cookies from 'js-cookie';
   import QRCode from 'qrcode-svg';
   import { PUBLIC_BASE_URL } from '$env/static/public';
-  import StackedBarLineChart from '$lib/front/StackedBarLineChart.svelte';
+  import StackedBarLineChart from '$lib/charts/StackedBarLineChart.svelte';
   import { ActivityIcon, LinkIcon, SmartphoneIcon } from 'svelte-feather-icons';
+  import Heading from '$lib/layout/Heading.svelte';
 
   let svgString = '';
   const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
@@ -58,11 +59,7 @@
 </svelte:head>
 
 <AdminMain>
-    <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-    >
-        <h1 class="h2">Personal Dashboard</h1>
-    </div>
+    <Heading size="h2" tag="h1">Personal Dashboard</Heading>
 
     <div class="row mb-4">
         <div class="col-sm-4 mb-3 mb-sm-0">
@@ -98,7 +95,6 @@
             </div>
         </div>
 
-
         <div class="col-sm-4 mb-3 mb-sm-0">
             <div class="card">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
@@ -116,7 +112,7 @@
         <div class="col-sm-4 mb-3 mb-sm-0">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Total clicks by type</h5>
+                    <Heading noTop="true" size="h4" tag="h2">Total clicks by type</Heading>
                     <PieChart totalClicksByType="{data.clicks.data.totalClicksByType}"/>
                 </div>
             </div>
@@ -125,15 +121,13 @@
         <div class="col-sm-8 mb-3 mb-sm-0">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Last 7 days of activity</h5>
+                    <Heading noTop="true" size="h4" tag="h2">Last 7 days of activity</Heading>
                     <StackedBarLineChart clickCountsByDate="{data.clicks.data.clickCountsByDate}"/>
                 </div>
             </div>
         </div>
     </div>
-
 </AdminMain>
-
 
 <style>
     .card {

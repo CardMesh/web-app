@@ -1,0 +1,57 @@
+<script>
+  import { displaySuccess } from '../../js/toast.js';
+  import { enhance } from '$app/forms';
+  import Button from '$lib/forms/Button.svelte';
+
+  let fileInput;
+  let selectedFile;
+
+  export let logo;
+
+  let isLoading = false;
+
+  const onFileSelected = (e) => {
+    selectedFile = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onload = (e) => {
+      logo = e.target.result;
+    };
+  };
+
+  const save = () => {
+    isLoading = true;
+    return async ({
+      update,
+      result
+    }) => {
+      await update({ reset: false });
+
+      if (result.type === 'success') {
+        displaySuccess('Successfully saved!');
+      }
+
+      isLoading = false;
+    };
+  };
+</script>
+
+<form action="?/uploadLogo" method="POST" use:enhance={save}>
+    <div class="mb-3">
+        <input
+                accept=".jpg, .jpeg, .png"
+                bind:this={fileInput}
+                class="form-control"
+                id="formFile"
+                name="file"
+                on:change={(e) => onFileSelected(e)}
+                type="file"
+        />
+        <small>Accepts .jpg, .jpeg, .png</small>
+    </div>
+
+    <input hidden name="height" value="50"/>
+    <input hidden name="name" value="logo"/>
+
+    <Button {isLoading}>Upload image</Button>
+</form>

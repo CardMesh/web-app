@@ -5,8 +5,7 @@ export const load = async ({
   cookies,
   url,
 }) => {
-  const { token } = JSON.parse(cookies.get('user')).data;
-
+  const { token } = JSON.parse(cookies.get('access')).data;
   const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
 
   const clicks = async () => {
