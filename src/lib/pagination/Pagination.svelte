@@ -12,16 +12,27 @@
     if (pagination.limit) {
       params.append('limit', pagination.limit);
     }
-    console.log(searchQuery);
+
     if (searchQuery) {
       params.append('search', searchQuery);
     }
 
     return `?${params.toString()}`;
   };
+
+  const getVisiblePages = () => {
+    let startPage = Math.max(pagination.page - 2, 1);
+    let endPage = Math.min(startPage + 4, pagination.totalPages);
+
+    if (endPage - startPage < 4) {
+      startPage = Math.max(endPage - 4, 1);
+    }
+
+    return { startPage, endPage };
+  };
 </script>
 
-<nav aria-label="..." class="mt-4">
+<nav aria-label="Pagination for users" class="py-4">
     <ul class="pagination">
         <li class="page-item">
             <a
@@ -31,9 +42,11 @@
         </li>
 
         {#each Array(pagination.totalPages) as _, i (i)}
-            <li class="page-item {pagination.page === i + 1 ? 'active' : ''}">
-                <a class="page-link" href={buildPaginationParams(i + 1)}>{i + 1}</a>
-            </li>
+            {#if i + 1 >= getVisiblePages().startPage && i + 1 <= getVisiblePages().endPage}
+                <li class="page-item {pagination.page === i + 1 ? 'active' : ''}">
+                    <a class="page-link" href={buildPaginationParams(i + 1)}>{i + 1}</a>
+                </li>
+            {/if}
         {/each}
 
         <li class="page-item">
