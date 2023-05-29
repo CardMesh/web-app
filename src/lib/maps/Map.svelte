@@ -18,27 +18,32 @@
   export let longitude;
 
   onMount(async () => {
-    // Dynamically import the Leaflet library
-    leaflet = await import('leaflet');
+    try {
+      // Dynamically import the Leaflet library
+      leaflet = await import('leaflet');
 
-    // Create the map and set the view
-    map = leaflet.map('map')
-      .setView([latitude, longitude], 11);
+      // Create the map and set the view
+      map = leaflet.map('map')
+        .setView([latitude, longitude], 11);
 
-    // Add the OpenStreetMap tile layer
-    leaflet
-      .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-      })
-      .addTo(map);
+      // Add the OpenStreetMap tile layer
+      leaflet
+        .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution:
+            'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        })
+        .addTo(map);
 
-    // Create a custom marker icon
-    customMarkerIcon = createCustomMarkerIcon();
+      // Create a custom marker icon
+      customMarkerIcon = createCustomMarkerIcon();
 
-    // Add a marker
-    marker = leaflet.marker([latitude, longitude], { icon: customMarkerIcon })
-      .addTo(map);
+      // Add a marker
+      marker = leaflet.marker([latitude, longitude], { icon: customMarkerIcon })
+        .addTo(map);
+    } catch (error) {
+      // nothing
+    }
+
   });
 
   $: {
