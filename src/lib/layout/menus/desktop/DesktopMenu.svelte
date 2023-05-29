@@ -34,7 +34,6 @@
     goto('/login', { replaceState: true });
     displaySuccess('Successfully logged out');
   };
-  console.log(JSON.parse(Cookies.get('user')));
   let role = JSON.parse(Cookies.get('user')).data.role;
 </script>
 

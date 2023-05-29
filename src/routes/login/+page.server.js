@@ -56,6 +56,5 @@ export const actions = {
       displayWarning('Error during login');
       return { success: false };
     }
-  }
-  ,
+  },
 };

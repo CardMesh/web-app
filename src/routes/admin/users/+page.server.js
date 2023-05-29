@@ -10,7 +10,7 @@ export const load = async ({
   const fetchUsers = async () => {
     const params = new URLSearchParams(url.search);
     const page = params.get('page');
-    const limit = params.get('limit') ?? 5;
+    const limit = params.get('limit') ?? 10;
     const search = params.get('search');
 
     const options = {

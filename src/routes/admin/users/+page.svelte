@@ -77,7 +77,7 @@
 <AdminMain>
     <Heading size="h2" tag="h1">Users</Heading>
 
-    <SearchInput name="Search" {searchInput} {searchQuery}></SearchInput>
+    <SearchInput name="Search" {searchInput} bind:searchQuery={searchQuery}></SearchInput>
 
     <div
             aria-hidden="true"
@@ -270,7 +270,7 @@
         </table>
     </div>
 
-    <Pagination pagination="{pagination}" searchQuery="{searchQuery}"/>
+    <Pagination {pagination} {searchQuery}/>
 
     <button
             class="btn btn-action rounded-circle d-flex align-items-center justify-content-center px-4 float-button z-0"
@@ -279,11 +279,10 @@
             data-bs-target="#createUserModal"
             data-bs-toggle="modal"
     >
-        <div class="d-flex text-light bg-primary bubble">
+        <span class="d-flex text-light bg-primary bubble">
             <UserPlusIcon size="2x"/>
-        </div>
+        </span>
     </button>
-
 </AdminMain>
 
 <style>

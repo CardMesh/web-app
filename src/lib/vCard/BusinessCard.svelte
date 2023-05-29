@@ -55,6 +55,7 @@
                 class="position-relative mt-2"
                 src={logo}
                 style="max-height: {theme.logoHeight}px"
+                onerror="this.src = 'https://placehold.co/100x50'"
         />
 
         <Divider/>
@@ -66,6 +67,7 @@
                     height="130"
                     src="{avatar}"
                     width="130"
+                    onerror="this.src = 'https://placehold.co/130x130'"
             />
         </div>
 
@@ -220,7 +222,7 @@
 
   .fixed-bottom-demo {
     position: sticky;
-    bottom: 0;
+    bottom: -1px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -232,7 +234,7 @@
   @media (max-width: 500px) {
     .fixed-bottom-prod {
       position: fixed;
-      right: 0;
+      right: -1px;
       bottom: 0;
       left: 0;
       z-index: 1030;
