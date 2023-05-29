@@ -8,6 +8,10 @@
 
   export let logo;
 
+  export let imageHeight;
+
+  export let imageName;
+
   let isLoading = false;
 
   const onFileSelected = (e) => {
@@ -36,22 +40,21 @@
   };
 </script>
 
-<form action="?/uploadLogo" method="POST" use:enhance={save}>
+<form action="?/uploadLogo" method="POST" use:enhance={save}> <!-- todo: rename to uploadImage -->
     <div class="mb-3">
         <input
                 accept=".jpg, .jpeg, .png"
                 bind:this={fileInput}
                 class="form-control"
-                id="formFile"
-                name="file"
+                name="image"
                 on:change={(e) => onFileSelected(e)}
                 type="file"
         />
         <small>Accepts .jpg, .jpeg, .png</small>
     </div>
 
-    <input hidden name="height" value="50"/>
-    <input hidden name="name" value="logo"/>
+    <input hidden name="imageHeight" value="{imageHeight}"/>
+    <input hidden name="imageName" value="{imageName}"/>
 
     <Button {isLoading}>Upload image</Button>
 </form>

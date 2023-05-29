@@ -14,6 +14,7 @@
   import TextareaInput from '$lib/forms/TextareaInput.svelte';
   import Heading from '$lib/layout/Heading.svelte';
   import Button from '$lib/forms/Button.svelte';
+  import UploadFile from '$lib/forms/UploadFile.svelte';
 
   let uuid;
   $: if (browser) {
@@ -48,6 +49,8 @@
       isLoading = false;
     };
   };
+
+  let avatar;
 </script>
 
 <AdminMain>
@@ -128,12 +131,17 @@
                 />
                 <Button {isLoading}>Save</Button>
             </form>
+
+            <Heading border="true" size="h2" tag="h2">Images</Heading>
+            <Heading tag="h4" size="h4">Upload avatar</Heading>
+            <UploadFile bind:logo="{avatar}" imageHeight="130" imageName="avatar"/> <!-- rename logo- -->
         </div>
-        <DisplayPreview {theme} {vCard}/> <!-- TODO logo is missing -->
+
+        <DisplayPreview {theme} {vCard} {avatar}/>
     </div>
 </AdminMain>
 
 <svelte:head>
-    <title>Edit</title>
-    <meta content="Edit"/>
+    <title>Edit v-card</title>
+    <meta content="Edit v-card"/>
 </svelte:head>

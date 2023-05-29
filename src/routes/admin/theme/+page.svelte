@@ -143,7 +143,7 @@
             </form>
             <Heading border="true" size="h2" tag="h2">Images</Heading>
               <Heading tag="h4" size="h4">Upload logo</Heading>
-            <UploadFile bind:logo/>
+            <UploadFile bind:logo imageName="logo" imageHeight="50" />
         </div>
     </div>
     <DisplayPreview {logo} {theme} {vCard}/>

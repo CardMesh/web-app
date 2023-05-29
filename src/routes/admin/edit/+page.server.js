@@ -125,4 +125,32 @@ export const actions = {
       return { success: false };
     }
   },
+
+  uploadLogo: async ({
+    request,
+    cookies,
+  }) => {
+    const { token } = JSON.parse(cookies.get('access')).data;
+    const { uuid } = JSON.parse(cookies.get('user')).data;
+    const formData = await request.formData();
+
+    const options = {
+      method: 'POST',
+      headers: {
+        Authorization: token,
+      },
+      body: formData,
+    };
+
+    try {
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/images`, options);
+
+      if (response.ok) {
+        return { success: true };
+      }
+      return { success: false };
+    } catch (error) {
+      return { success: false };
+    }
+  },
 };

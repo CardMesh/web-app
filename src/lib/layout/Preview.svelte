@@ -7,8 +7,10 @@
   export let theme;
 
   export let logo;
+
+  export let avatar;
 </script>
 
 <MobileView>
-    <BusinessCard {logo} {theme} {vCard}/>
+    <BusinessCard {logo} {theme} {vCard} {avatar}/>
 </MobileView>

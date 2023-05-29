@@ -1,5 +1,5 @@
 <script>
-  import { GlobeIcon, MailIcon, MapPinIcon, MessageSquareIcon, UserPlusIcon, PhoneIcon } from 'svelte-feather-icons';
+  import { GlobeIcon, MailIcon, MapPinIcon, MessageSquareIcon, PhoneIcon, UserPlusIcon } from 'svelte-feather-icons';
   import Divider from '$lib/layout/Divider.svelte';
   import VCardButton from '$lib/vCard/VCard.svelte';
   import Map from '$lib/maps/Map.svelte';
@@ -11,9 +11,11 @@
 
   export let vCard;
 
-  export let theme;
+  export let theme; // WIP
 
   export let logo = `${PUBLIC_REST_API_URL}/uploads/themes/${theme.themeId}/logo.webp`;
+
+  export let avatar = `${PUBLIC_REST_API_URL}/uploads/users/${vCard.uuid}/avatar.webp`;
 
   let displayMode = view === 'demo' ? 'fixed-bottom-demo' : 'fixed-bottom-prod';
 
@@ -59,10 +61,10 @@
 
         <div class="d-flex justify-content-center align-items-center">
             <img
-                    alt="My Image"
+                    alt="{vCard.name.firstName} {vCard.name.lastName}"
                     class="rounded-circle"
                     height="130"
-                    src="https://avatars.githubusercontent.com/u/26626066"
+                    src="{avatar}"
                     width="130"
             />
         </div>

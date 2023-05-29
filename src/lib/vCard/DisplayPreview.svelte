@@ -12,6 +12,8 @@
 
   export let logo;
 
+  export let avatar;
+
   onMount(() => {
     const handleResize = () => {
       screenWidth = window.innerWidth;
@@ -26,7 +28,7 @@
 <div class="d-flex flex-nowrap">
     {#if screenWidth >= 992}
         <div class="col-4 ms-auto float-preview" style="z-index: 1020">
-            <Preview {vCard} {theme} {logo}/>
+            <Preview {vCard} {theme} {logo} {avatar}/>
         </div>
     {/if}
 </div>
