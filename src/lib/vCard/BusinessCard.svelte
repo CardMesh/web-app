@@ -34,10 +34,16 @@
     vCard.location.street,
     vCard.location.postalCode,
     vCard.location.city,
+    vCard.location.country
   ];
 
+  const formattedAddress = address
+    .join(' ')
+    .replace(/[^\p{L}\p{N}\s]/gu, '')
+    .replace(/\s/g, '+');
+
   let addressLink;
-  $: addressLink = 'https://www.google.com/maps/place/' + address.join('+');
+  $: addressLink = 'https://www.google.com/maps/place/' + formattedAddress;
 </script>
 
 <div style="background-color: {theme.backgroundColor}">

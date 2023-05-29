@@ -11,11 +11,11 @@
       vCard.location.country
     ];
 
-    let formattedAddress = address
+    const formattedAddress = address
       .join(' ')
       .replace(/[^\p{L}\p{N}\s]/gu, '')
       .replace(/\s/g, '+')
-      .toLowerCase(); // TODO reuse
+      .toLowerCase();
 
     const response = await fetch(
       `https://nominatim.openstreetmap.org/search?format=json&q=${formattedAddress}`
