@@ -3,6 +3,7 @@
   import ProductionView from '$lib/vCard/views/ProductionView.svelte';
 
   export let data;
+
   const vCard = data.vCard.data;
 
   export let theme = data.theme.data;
