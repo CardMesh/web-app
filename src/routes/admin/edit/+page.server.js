@@ -6,6 +6,7 @@ export const load = async ({
   url,
 }) => {
   const { token } = JSON.parse(cookies.get('access')).data;
+  const { themeId } = JSON.parse(cookies.get('user')).data;
   const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
 
   const fetchVcard = async () => {
@@ -30,7 +31,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}`, options);
 
     return response.json();
   };

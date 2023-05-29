@@ -5,7 +5,7 @@
   export let data;
   const vCardOptions = data.vCardOptions.data;
 
-  export let themeOptions = data.theme.data[0];
+  export let themeOptions = data.theme.data;
 
   export let logo;
 </script>

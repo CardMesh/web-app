@@ -32,7 +32,7 @@
 
   let vCardOptions = data.vCards.data;
 
-  export let themeOptions = data.theme.data[0];
+  export let themeOptions = data.theme.data;
 
   let logo;
 </script>

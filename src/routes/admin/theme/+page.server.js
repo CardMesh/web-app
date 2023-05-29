@@ -7,6 +7,7 @@ export const load = async ({
 }) => {
   const { token } = JSON.parse(cookies.get('access')).data;
   const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
+  const { themeId } = JSON.parse(cookies.get('user')).data;
 
   const fetchVcard = async () => {
     const options = {
@@ -30,7 +31,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}`, options);
 
     return response.json();
   };
@@ -47,6 +48,7 @@ export const actions = {
     cookies,
   }) => {
     const { token } = JSON.parse(cookies.get('access')).data;
+    const { themeId } = JSON.parse(cookies.get('user')).data;
     const formData = await request.formData();
 
     const data = Object.fromEntries(Array.from(formData.entries()));
@@ -68,7 +70,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}`, options);
 
       if (response.ok) {
         return { success: true };

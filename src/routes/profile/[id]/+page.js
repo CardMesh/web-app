@@ -30,7 +30,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/1`, options);
 
     return response.json();
   };
