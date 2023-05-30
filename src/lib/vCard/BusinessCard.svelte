@@ -11,9 +11,15 @@
 
   export let vCard;
 
-  export let theme; // WIP
+  export let theme;
 
   export let logo = `${PUBLIC_REST_API_URL}/uploads/themes/${theme.themeId}/logo.webp`;
+
+  let logoExists = true;
+
+  function handleLogoError() {
+    logoExists = false;
+  }
 
   export let avatar = `${PUBLIC_REST_API_URL}/uploads/users/${vCard.uuid}/avatar.webp`;
 
@@ -55,6 +61,7 @@
                 class="position-relative mt-2"
                 src={logo}
                 style="max-height: {theme.logoHeight}px"
+                height="{theme.logoHeight}"
                 onerror="this.src = 'https://placehold.co/100x50'"
         />
 

@@ -12,7 +12,7 @@
 </script>
 
 <div class="d-flex mb-3 {border ? 'pb-2 border-bottom' : ''} {noTop ? '': 'pt-3'}" id="{id}">
-    <component class="{size}" this={Component}>
+    <component class="{size}" this={Component}> <!-- TODO refactor -->
         <slot/>
     </component>
 </div>

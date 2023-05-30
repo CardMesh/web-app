@@ -56,7 +56,7 @@
             </DesktopMenuItem>
         </li>
         <li class="nav-item">
-            <DesktopMenuItem href="/admin/edit" name="Edit">
+            <DesktopMenuItem href="/admin/edit" name="vCard">
                 <EditIcon class="align-middle" size="2x"/>
             </DesktopMenuItem>
         </li>

@@ -54,7 +54,7 @@
 </script>
 
 <AdminMain>
-    <Heading size="h2" tag="h1">Edit</Heading>
+    <Heading size="h2" tag="h1">Edit vCard</Heading>
     <div class="row">
         <div class="col-lg-8">
             <form action="?/save{uuid ? `&uuid=${uuid}` : ''}" method="POST" use:enhance={save}>
@@ -142,6 +142,6 @@
 </AdminMain>
 
 <svelte:head>
-    <title>Edit v-card</title>
-    <meta content="Edit v-card"/>
+    <title>Edit vCard</title>
+    <meta content="Edit vCard"/>
 </svelte:head>

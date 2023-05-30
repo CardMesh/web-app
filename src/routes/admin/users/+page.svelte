@@ -203,9 +203,9 @@
                         <div class="btn-group">
                             <button type="button" class="btn btn-action rounded-circle" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                <div class="d-flex align-items-center justify-content-center text-secondary">
+                                <span class="d-flex align-items-center justify-content-center text-secondary">
                                     <MoreVerticalIcon size="2x"/>
-                                </div>
+                                </span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a role="button" href="/admin/edit?uuid={user.uuid}" class="dropdown-item"
@@ -248,8 +248,7 @@
                                                 type="button"
                                                 class="btn-close"
                                                 data-bs-dismiss="modal"
-                                                aria-label="Close"
-                                        />
+                                                aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         Are you sure, that you want to delete <strong>{user.name}</strong>

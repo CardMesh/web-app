@@ -43,11 +43,11 @@
 </svelte:head>
 
 <AdminMain>
-    <Heading border="true" size="h2" tag="h1">Themes</Heading>
+    <Heading border="true" size="h2" tag="h1">Edit theme</Heading>
     <div class="row">
         <div class="col-lg-8">
             <form action="?/save" method="POST" use:enhance={save}>
-                <Heading size="h4" tag="h4">General</Heading>
+                <Heading size="h4" tag="h4">Colors</Heading>
                 <ColorInput
                         bind:value={theme.fontColor}
                         id="fontInput"
@@ -87,7 +87,7 @@
                 <ColorInput
                         bind:value={theme.btnBackgroundColor}
                         id="btnBackgroundColorInput"
-                        label="Button backgrund color"
+                        label="Button background color"
                         name="btnBackgroundColor"
                 />
                 <Heading size="h4" tag="h4">Contact information</Heading>
