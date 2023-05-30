@@ -6,7 +6,7 @@
   import QRCode from 'qrcode-svg';
   import { PUBLIC_BASE_URL } from '$env/static/public';
   import StackedBarLineChart from '$lib/charts/StackedBarLineChart.svelte';
-  import { ActivityIcon, LinkIcon, SmartphoneIcon } from 'svelte-feather-icons';
+  import { ActivityIcon, GridIcon, SmartphoneIcon } from 'svelte-feather-icons';
   import Heading from '$lib/layout/Heading.svelte';
 
   let svgString = '';
@@ -66,8 +66,8 @@
             <div class="card">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
                   <span class="fs-3 mb-3">
-                    <LinkIcon size="2x"/>
-                    Link
+                    <SmartphoneIcon size="2x"/>
+                    Business Card
                   </span>
                     <a class="btn btn-primary" href={profileUrl} target="_blank">Open business card</a>
                 </div>
@@ -78,17 +78,17 @@
             <div class="card">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
       <span class="fs-3 mb-3">
-        <SmartphoneIcon size="2x"/>
+        <GridIcon size="2x"/>
         QR
       </span>
 
                     <div class="d-flex justify-content-between">
                         <button class="btn btn-primary me-3" on:click={downloadSvgAsPng(svgString, 'qr.png')}>
-                            Download QR code
+                            Download QR-code
                         </button>
 
                         <a class="btn btn-primary" href={`${PUBLIC_BASE_URL}/qr/${uuid}`} role="button" target="_blank">
-                            Show QR
+                            Show QR-code
                         </a>
                     </div>
                 </div>

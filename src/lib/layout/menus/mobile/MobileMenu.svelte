@@ -1,5 +1,5 @@
 <script>
-  import { EditIcon, HomeIcon, LogOutIcon, SlidersIcon, UsersIcon } from 'svelte-feather-icons';
+  import { EditIcon, LogOutIcon, PieChartIcon, SlidersIcon, UsersIcon } from 'svelte-feather-icons';
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import Cookies from 'js-cookie';
@@ -20,14 +20,14 @@
                     href="/admin"
                     role="button"
             >
-                <HomeIcon class="align-middle" size="2x"/>
+                <PieChartIcon class="align-middle" size="2x"/>
             </a>
         </li>
         <li class="nav-item">
             <a
-                    aria-current={$page.url.pathname === '/admin/edit' ? 'page' : undefined}
+                    aria-current={$page.url.pathname === '/admin/vcard' ? 'page' : undefined}
                     class="btn btn-nav d-flex align-items-center justify-content-center mx-auto"
-                    href="/admin/edit"
+                    href="/admin/vcard"
                     role="button"
             >
                 <EditIcon class="align-middle" size="2x"/>

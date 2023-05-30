@@ -28,7 +28,10 @@
       startPage = Math.max(endPage - 4, 1);
     }
 
-    return { startPage, endPage };
+    return {
+      startPage,
+      endPage
+    };
   };
 </script>
 

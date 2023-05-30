@@ -139,11 +139,11 @@
                 <Heading size="h4" tag="h4">Logo</Heading>
                 <RangeInput bind:value="{theme.logoHeight}" displayName="Size" max="50" min="10"
                             name="logoHeight"/>
-                 <Button {isLoading}>Save</Button>
+                <Button {isLoading}>Save</Button>
             </form>
             <Heading border="true" size="h2" tag="h2">Images</Heading>
-              <Heading tag="h4" size="h4">Upload logo</Heading>
-            <UploadFile bind:logo imageName="logo" imageHeight="50" />
+            <Heading size="h4" tag="h4">Upload logo</Heading>
+            <UploadFile bind:logo imageHeight="50" imageName="logo"/>
         </div>
     </div>
     <DisplayPreview {logo} {theme} {vCard}/>

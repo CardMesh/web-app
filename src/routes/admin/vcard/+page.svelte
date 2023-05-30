@@ -133,11 +133,11 @@
             </form>
 
             <Heading border="true" size="h2" tag="h2">Images</Heading>
-            <Heading tag="h4" size="h4">Upload avatar</Heading>
+            <Heading size="h4" tag="h4">Upload avatar</Heading>
             <UploadFile bind:logo="{avatar}" imageHeight="130" imageName="avatar"/> <!-- rename logo- -->
         </div>
 
-        <DisplayPreview {theme} {vCard} {avatar}/>
+        <DisplayPreview {avatar} {theme} {vCard}/>
     </div>
 </AdminMain>
 

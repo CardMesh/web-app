@@ -12,5 +12,5 @@
 </script>
 
 <MobileView>
-    <BusinessCard {logo} {theme} {vCard} {avatar}/>
+    <BusinessCard {avatar} {logo} {theme} {vCard}/>
 </MobileView>

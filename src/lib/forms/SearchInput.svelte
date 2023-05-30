@@ -10,7 +10,7 @@
   const search = () => {
     const url = new URL(window.location.href);
     url.searchParams.set('search', searchQuery);
-    url.searchParams.set('page', "1");
+    url.searchParams.set('page', '1');
 
     goto(url.toString(), { keepFocus: true });
   };

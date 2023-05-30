@@ -77,7 +77,7 @@
 <AdminMain>
     <Heading size="h2" tag="h1">Users</Heading>
 
-    <SearchInput name="Search" {searchInput} bind:searchQuery={searchQuery}></SearchInput>
+    <SearchInput bind:searchQuery={searchQuery} name="Search" {searchInput}></SearchInput>
 
     <div
             aria-hidden="true"
@@ -208,7 +208,7 @@
                                 </span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a role="button" href="/admin/edit?uuid={user.uuid}" class="dropdown-item"
+                                <li><a role="button" href="/admin/vcard?uuid={user.uuid}" class="dropdown-item"
                                        type="button">
                                     <Edit2Icon size="1x" class="me-2"/>
                                     Edit</a>

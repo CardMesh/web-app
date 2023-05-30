@@ -59,10 +59,10 @@
         <img
                 alt={vCard.professional.company}
                 class="position-relative mt-2"
-                src={logo}
-                style="max-height: {theme.logoHeight}px"
                 height="{theme.logoHeight}"
                 onerror="this.src = 'https://placehold.co/100x50'"
+                src={logo}
+                style="max-height: {theme.logoHeight}px"
         />
 
         <Divider/>
@@ -72,9 +72,9 @@
                     alt="{vCard.name.firstName} {vCard.name.lastName}"
                     class="rounded-circle"
                     height="130"
+                    onerror="this.src = 'https://placehold.co/130x130'"
                     src="{avatar}"
                     width="130"
-                    onerror="this.src = 'https://placehold.co/130x130'"
             />
         </div>
 

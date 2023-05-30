@@ -56,7 +56,7 @@
             </DesktopMenuItem>
         </li>
         <li class="nav-item">
-            <DesktopMenuItem href="/admin/edit" name="vCard">
+            <DesktopMenuItem href="/admin/vcard" name="vCard">
                 <EditIcon class="align-middle" size="2x"/>
             </DesktopMenuItem>
         </li>
@@ -87,7 +87,7 @@
 
     <ul class="nav nav-pills nav-flush flex-column text-center pb-4">
         <li class="nav-item">
-            <DesktopMenuItem name="Logout" click="{handleLogout}" >
+            <DesktopMenuItem click="{handleLogout}" name="Logout">
                 <LogOutIcon class="align-middle text-danger" size="2x"/>
             </DesktopMenuItem>
         </li>

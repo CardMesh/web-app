@@ -1,11 +1,11 @@
 <script>
-    export let ariaLabel = '';
+  export let ariaLabel = '';
 
-    export let href;
+  export let href;
 
-    export let backgroundColor;
+  export let backgroundColor;
 
-    export let fontColor;
+  export let fontColor;
 </script>
 
 <a
