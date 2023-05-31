@@ -3,8 +3,8 @@
 </script>
 
 <svelte:head>
-    <title>QR Code</title>
-    <meta content="QR code" name="description"/>
+    <title>QR-code</title>
+    <meta content="QR-code" name="description"/>
 </svelte:head>
 
 <div class="qr-container">

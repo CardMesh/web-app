@@ -38,8 +38,8 @@
 </script>
 
 <svelte:head>
-    <title>Users</title>
-    <meta content="Users"/>
+    <title>Edit theme</title>
+    <meta content="Edit theme"/>
 </svelte:head>
 
 <AdminMain>

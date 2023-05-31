@@ -54,7 +54,7 @@
 </script>
 
 <AdminMain>
-    <Heading size="h2" tag="h1">Edit vCard</Heading>
+    <Heading border="true" size="h2" tag="h1">Edit vCard</Heading>
     <div class="row">
         <div class="col-lg-8">
             <form action="?/save{uuid ? `&uuid=${uuid}` : ''}" method="POST" use:enhance={save}>

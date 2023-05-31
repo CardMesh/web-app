@@ -55,7 +55,7 @@
 
 <svelte:head>
     <title>Personal Dashboard</title>
-    <meta content="Dashboard"/>
+    <meta content="Personal Dashboard"/>
 </svelte:head>
 
 <AdminMain>
