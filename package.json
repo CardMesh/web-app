@@ -14,7 +14,8 @@
   "homepage": "https://cardmesh.fly.dev",
   "scripts": {
     "build": "vite build",
-    "build:fav": "real-favicon generate faviconDescription.json faviconData.json static/ && rm faviconData.json",
+    "build:bootstrap": "cross-env mkdir -p ./static/js/ && cp ./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js ./static/js/",
+    "build:favicons": "real-favicon generate faviconDescription.json faviconData.json static/ && rm faviconData.json",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
     "deploy": "flyctl secrets import < .env.production && flyctl deploy --build-arg NODE_ENV=production --remote-only",
@@ -31,10 +32,12 @@
     "@zerodevx/svelte-toast": "^0.9.3",
     "chart.js": "^4.3.0",
     "country-telephone-data": "^0.6.3",
+    "cross-env": "^7.0.3",
+    "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
     "moment-timezone": "^0.5.43",
     "qrcode-svg": "^1.1.0",
-    "svelte-icons-pack": "^2.1.0",
+    "svelte-icons-pack": "^2.1.0"
   },
   "devDependencies": {
     "@fontsource/fira-mono": "^5.0.2",
