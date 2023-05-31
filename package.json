@@ -27,20 +27,16 @@
     "test:unit": "vitest"
   },
   "dependencies": {
-    "@icons-pack/svelte-simple-icons": "^3.0.0",
     "@rodneylab/svelte-social-icons": "^0.0.25",
     "@zerodevx/svelte-toast": "^0.9.3",
     "chart.js": "^4.3.0",
     "country-telephone-data": "^0.6.3",
-    "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
     "moment-timezone": "^0.5.43",
     "qrcode-svg": "^1.1.0",
     "svelte-icons-pack": "^2.1.0",
-    "vcf": "^2.1.1"
   },
   "devDependencies": {
-    "cli-real-favicon": "^0.0.8",
     "@fontsource/fira-mono": "^5.0.2",
     "@neoconfetti/svelte": "^1.0.0",
     "@playwright/test": "^1.34.3",
