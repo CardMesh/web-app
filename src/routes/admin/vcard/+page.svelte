@@ -84,7 +84,12 @@
                 <TextInput bind:value="{vCard.location.state}" displayName="State" name="state"/>
                 <TextInput bind:value="{vCard.location.country}" displayName="Country" name="country"/>
                 <TimeZoneSelect timeZone="{vCard.location.timeZone}"/>
-                <CoordinatesInput {vCard}/>
+                <CoordinatesInput bind:city="{vCard.location.city}"
+                                  bind:country="{vCard.location.country}"
+                                  bind:latitude="{vCard.location.coordinates.latitude}"
+                                  bind:longitude="{vCard.location.coordinates.longitude}"
+                                  bind:postalCode="{vCard.location.postalCode}"
+                                  bind:street="{vCard.location.street}"/>
                 <TextInput bind:value="{vCard.contact.web}" displayName="Web" name="web"></TextInput>
                 <DateInput bind:value="{vCard.personal.birthday}" displayName="Birthday" name="birthday"/>
                 <SocialIconTextInput

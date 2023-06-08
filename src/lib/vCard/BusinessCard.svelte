@@ -52,6 +52,12 @@
 
   let addressLink;
   $: addressLink = 'https://www.google.com/maps/place/' + formattedAddress;
+
+  let latitude;
+  $: latitude = vCard.location.coordinates.latitude;
+
+  let longitude;
+  $: longitude = vCard.location.coordinates.longitude;
 </script>
 
 <div style="background-color: {theme.backgroundColor}">
@@ -187,11 +193,11 @@
 
             <Divider/>
 
-            {#if theme.displayMap && vCard.location.coordinates.latitude.length !== 0 && vCard.location.coordinates.longitude.length !== 0}
+            {#if theme.displayMap && latitude.length !== 0 && longitude.length !== 0}
                 <div class="card overflow-hidden">
                     <Map
-                            latitude={vCard.location.coordinates.latitude}
-                            longitude={vCard.location.coordinates.longitude}
+                            bind:latitude={latitude}
+                            bind:longitude={longitude}
                     />
                 </div>
             {/if}

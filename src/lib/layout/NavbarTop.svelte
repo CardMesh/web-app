@@ -13,21 +13,3 @@
         </span>
     </div>
 </div>
-
-<style>
-    .logo-svg path {
-        animation: color-float 20s infinite;
-    }
-
-    @keyframes color-float {
-        0% {
-            fill: #6bb187;
-        }
-        50% {
-            fill: #0091d5;
-        }
-        100% {
-            fill: #6bb187;
-        }
-    }
-</style>

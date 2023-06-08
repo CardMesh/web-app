@@ -41,13 +41,12 @@
       marker = leaflet.marker([latitude, longitude], { icon: customMarkerIcon })
         .addTo(map);
     } catch (error) {
-      // nothing
+      // Nothing
     }
-
   });
 
   $: {
-    if (map && marker && leaflet) {
+    if (map && marker && leaflet && latitude && longitude) {
       map.setView([latitude, longitude], 11);
       marker.setLatLng([latitude, longitude]);
     }
