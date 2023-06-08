@@ -1,11 +1,21 @@
 <script>
-  import { EditIcon, LogOutIcon, PieChartIcon, SlidersIcon, UsersIcon } from 'svelte-feather-icons';
+  import {
+    ArrowUpCircleIcon,
+    CheckCircleIcon,
+    EditIcon,
+    LogOutIcon,
+    PieChartIcon,
+    SlidersIcon,
+    UsersIcon
+  } from 'svelte-feather-icons';
   import { goto } from '$app/navigation';
   import Cookies from 'js-cookie';
   import { displaySuccess } from '../../../../js/toast.js';
   import Logo from '$lib/logo/Logo.svelte';
   import DesktopMenuItem from '$lib/layout/menus/desktop/DesktopMenuItem.svelte';
   import MenuDivider from '$lib/layout/menus/MenuDivider.svelte';
+  import { onMount } from 'svelte';
+  import semver from 'semver';
 
   const resetPopoverState = () => {
     const popoverDiv = document.querySelectorAll('div.bs-popover-auto');
@@ -27,6 +37,24 @@
       element._bootstrap = new bootstrap.Popover(element);
     });
   };
+
+  let currentVersion = '1.0.0';
+
+  let hasUpgrade = false;
+
+  onMount(async () => {
+    try {
+      const fetchLatestVersion = await fetch(
+        `https://api.github.com/repos/CardMesh/web-app/releases/latest`
+      );
+
+      const latestVersion = await fetchLatestVersion.json();
+
+      hasUpgrade = semver.gt(latestVersion['tag_name'], currentVersion);
+    } catch (err) {
+      hasUpgrade = false;
+    }
+  });
 
   const handleLogout = () => {
     resetPopoverState();
@@ -93,11 +121,20 @@
         </li>
     </ul>
 
-    <ul class="nav nav-pills nav-flush flex-column text-center pb-2">
-        <li class="nav-item">
-            <span class="small text-muted">1.0.0</span>
-        </li>
-    </ul>
+    {#if 'admin' === role}
+        <ul class="nav nav-pills nav-flush flex-column text-center pb-2">
+            <li class="nav-item">
+                <span class="small text-muted">{currentVersion}</span>
+                {#if hasUpgrade}
+                    <a href="https://github.com/CardMesh/rest-api/releases/latest" target="_blank">
+                        <ArrowUpCircleIcon class="align-middle text-info" size="0.8x"/>
+                    </a>
+                {:else}
+                    <CheckCircleIcon class="align-middle text-success" size="0.8x"/>
+                {/if}
+            </li>
+        </ul>
+    {/if}
 </div>
 
 <style>
