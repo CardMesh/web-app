@@ -102,6 +102,36 @@ export const actions = {
     }
   },
 
+  delete: async ({
+    request,
+    cookies,
+  }) => {
+    const { token } = JSON.parse(cookies.get('access')).data;
+    const formData = await request.formData();
+
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+      body: JSON.stringify({
+        uuid: formData.get('uuid'),
+      }),
+    };
+
+    try {
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${formData.get('uuid')}`, options);
+
+      if (response.ok) {
+        return { success: true };
+      }
+      return { success: false };
+    } catch (error) {
+      return { success: false };
+    }
+  },
+
   create: async ({
     request,
     cookies,

@@ -40,6 +40,22 @@
     };
   };
 
+  const deleteUser = () => {
+    isLoading = true;
+    return async ({
+      update,
+      result
+    }) => {
+      await update({ reset: false });
+
+      if (result.type === 'success') {
+        displaySuccess('Successfully deleted!');
+      }
+
+      isLoading = false;
+    };
+  };
+
   let text;
 
   let role = 'user';
@@ -252,12 +268,22 @@
                                     </div>
                                     <div class="modal-body">
                                         Are you sure, that you want to delete <strong>{user.name}</strong>
+                                        <div class="alert alert-warning mt-3" role="alert">
+                                            <AlertTriangleIcon class="me-3"/>
+                                            This action cannot be undone.
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                        >No
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            No
                                         </button>
-                                        <button type="button" class="btn btn-primary">Yes</button>
+
+                                        <form action="?/delete" method="POST" use:enhance={deleteUser}>
+                                            <input type="text" value={user.uuid} name="uuid" hidden/>
+                                            <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">
+                                                Yes, I am sure!
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
