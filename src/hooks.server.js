@@ -1,3 +1,5 @@
+import { redirect } from '@sveltejs/kit';
+
 export async function handle({
   event,
   resolve,
@@ -8,10 +10,7 @@ export async function handle({
   const theme = JSON.parse(user)?.data?.theme || 'dark';
 
   if (event.url.pathname.startsWith('/admin') && (!JSON.parse(access)?.data?.token || !JSON.parse(user)?.data)) {
-    return new Response('Redirect', {
-      status: 303,
-      headers: { Location: '/login' },
-    });
+    throw redirect(302, '/login');
   }
 
   return resolve(event, {
