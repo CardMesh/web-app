@@ -1,5 +1,6 @@
 <script>
   import { goto } from '$app/navigation';
+  import { SearchIcon } from 'svelte-feather-icons';
 
   export let searchInput;
 
@@ -43,6 +44,10 @@
             placeholder=""
             type="text"
     />
-    <label bind:this={searchInput} for="searchInput"
-           use:handleKeydown={{focus: () => searchInput.focus()}}>{name}</label>
+    <label bind:this={searchInput}
+           for="searchInput"
+           use:handleKeydown={{focus: () => searchInput.focus()}}
+    >
+        <SearchIcon size="1x"/> {name} <span class="badge bg-secondary">CTRL K</span>
+    </label>
 </div>
