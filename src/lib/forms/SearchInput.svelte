@@ -7,6 +7,23 @@
 
   export let name;
 
+  const handleKeydown = (options) => {
+    const onKeyDown = event => {
+      if (event.ctrlKey && event.key === 'k') {
+        options.focus();
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+
+    return {
+      destroy() {
+        document.removeEventListener('keydown', onKeyDown);
+      }
+    };
+  };
+
   const search = () => {
     const url = new URL(window.location.href);
     url.searchParams.set('search', searchQuery);
@@ -26,5 +43,6 @@
             placeholder=""
             type="text"
     />
-    <label for="searchInput">{name}</label>
+    <label bind:this={searchInput} for="searchInput"
+           use:handleKeydown={{focus: () => searchInput.focus()}}>{name}</label>
 </div>
