@@ -1,10 +1,10 @@
 {
   "masterPicture": "./logo.svg",
-  "iconsPath": "/static",
+  "iconsPath": "/",
   "design": {
     "ios": {
       "pictureAspect": "backgroundAndMargin",
-      "backgroundColor": "#74da9e",
+      "backgroundColor": "#74aa9c",
       "margin": "28%",
       "assets": {
         "ios6AndPriorIcons": false,
@@ -16,13 +16,13 @@
     },
     "desktopBrowser": {
       "design": "background",
-      "backgroundColor": "#74da9e",
+      "backgroundColor": "#74aa9c",
       "backgroundRadius": 0.45,
       "imageScale": 0.8
     },
     "windows": {
       "pictureAspect": "whiteSilhouette",
-      "backgroundColor": "#74da9e",
+      "backgroundColor": "#74aa9c",
       "onConflict": "override",
       "assets": {
         "windows80Ie10Tile": false,
@@ -37,7 +37,7 @@
     },
     "androidChrome": {
       "pictureAspect": "shadow",
-      "themeColor": "#74da9e",
+      "themeColor": "#74aa9c",
       "manifest": {
         "name": "CardMesh",
         "display": "standalone",
@@ -52,7 +52,7 @@
     },
     "safariPinnedTab": {
       "pictureAspect": "silhouette",
-      "themeColor": "#74da9e"
+      "themeColor": "#74aa9c"
     }
   },
   "settings": {
