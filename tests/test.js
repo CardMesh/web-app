@@ -1,14 +1,9 @@
-import { render, cleanup, screen } from '@testing-library/svelte';
-import Nfc from '$lib/nfc/Nfc.svelte';
+import { expect, test } from '@playwright/test';
 
-// Run cleanup after each test
-afterEach(cleanup);
+test('has title', async ({ page }) => {
+  await page.goto('/login');
 
-// Write your tests
-describe('MyComponent', () => {
-  it('should render correctly', () => {
-    render(Nfc);
-
-    // Assert something about the rendered component
-    expect(screen.getByText('Hello, World!')).toBeInTheDocument();
-  });
+  // Expect a title "to contain" a substring.
+  await expect(page)
+    .toHaveTitle('Login');
+});

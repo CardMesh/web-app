@@ -64,6 +64,11 @@
 </div>
 <SvelteToast/>
 
+<svelte:head>
+    <title>Login</title>
+    <meta content="Login" name="description"/>
+</svelte:head>
+
 <style>
     .center-container {
         display: flex;
