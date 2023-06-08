@@ -73,8 +73,8 @@
             class="d-block pe-3 ps-3 link-body-emphasis text-decoration-none"
             href="/admin"
     >
-        <div class="d-flex align-items-center justify-content-center">
-            <Logo size="80" text="false"/>
+        <div class="d-flex align-items-center justify-content-center mt-2">
+            <Logo size="57" text="false"/>
         </div>
     </a>
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
