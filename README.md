@@ -5,7 +5,7 @@
 [![Forks](https://img.shields.io/github/forks/CardMesh/web-app.svg)](https://github.com/CardMesh/web-app/network/members)
 [![Stargazers](https://img.shields.io/github/stars/CardMesh/web-app.svg)](https://github.com/CardMesh/web-app/stargazers)
 [![Issues](https://img.shields.io/github/issues/CardMesh/web-app.svg)](https://github.com/CardMesh/web-app/issues)
-[![MIT License](https://img.shields.io/github/license/CardMesh/web-app.svg)](https://github.com/CardMesh/web-app/blob/develop/LICENSE.txt)
+[![MIT License](https://img.shields.io/github/license/CardMesh/web-app.svg)](https://github.com/CardMesh/web-app/blob/develop/LICENSE)
 
 CardMesh is an app aimed at modernizing the sharing of business cards within a company. It displays digital business
 cards in a web browser, accessible via NFC tags, QR codes, or direct URLs.
