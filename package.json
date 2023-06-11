@@ -29,7 +29,7 @@
     "deploy": "flyctl secrets import < .env.production && flyctl deploy --build-arg NODE_ENV=production --remote-only"
   },
   "devDependencies": {
-    "@fontsource/fira-mono": "^5.0.2",
+    "@fontsource/fira-mono": "^5.0.3",
     "@neoconfetti/svelte": "^1.0.0",
     "@playwright/test": "^1.35.0",
     "@popperjs/core": "^2.11.8",
