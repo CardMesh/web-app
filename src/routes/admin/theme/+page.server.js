@@ -50,14 +50,39 @@ export const actions = {
     const { themeId } = JSON.parse(cookies.get('user')).data;
     const formData = await request.formData();
 
-    const data = Object.fromEntries(Array.from(formData.entries()));
-    data.displayMap = Boolean(data.displayMap);
-    data.displayPhone = Boolean(data.displayPhone);
-    data.displaySms = Boolean(data.displaySms);
-    data.displayEmail = Boolean(data.displayEmail);
-    data.displayWeb = Boolean(data.displayWeb);
-    data.displayAddress = Boolean(data.displayAddress);
-    data.displayContactBtn = Boolean(data.displayContactBtn);
+    const data = {
+      themeId: 1,
+      color: {
+        font: {
+          primary: formData.get('fontColor'),
+          secondary: formData.get('secondaryFontColor'),
+        },
+        background: formData.get('backgroundColor'),
+        socialIcons: {
+          font: formData.get('socialIconFontColor'),
+          background: formData.get('socialIconBackgroundColor'),
+        },
+        vCardBtn: {
+          font: formData.get('btnFontColor'),
+          background: formData.get('btnBackgroundColor'),
+        },
+      },
+      display: {
+        phone: formData.get('displayPhone') === 'on',
+        sms: formData.get('displaySms') === 'on',
+        email: formData.get('displayEmail') === 'on',
+        web: formData.get('displayWeb') === 'on',
+        address: formData.get('displayAddress') === 'on',
+        map: formData.get('displayMap') === 'on',
+        vCardBtn: formData.get('displayContactBtn') === 'on',
+      },
+      logo: {
+        height: formData.get('logoHeight'),
+      },
+      vCardBtn: {
+        text: formData.get('buttonText'),
+      },
+    };
 
     const options = {
       method: 'PUT',

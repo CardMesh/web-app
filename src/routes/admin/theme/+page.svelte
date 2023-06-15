@@ -49,95 +49,95 @@
             <form action="?/save" method="POST" use:enhance={save}>
                 <Heading size="h4" tag="h4">Colors</Heading>
                 <ColorInput
-                        bind:value={theme.fontColor}
+                        bind:value={theme.color.font.primary}
                         id="fontInput"
                         label="Font color"
                         name="fontColor"
                 />
                 <ColorInput
-                        bind:value={theme.backgroundColor}
+                        bind:value={theme.color.background}
                         id="backgroundColorInput"
                         label="Background color"
                         name="backgroundColor"
                 />
                 <ColorInput
-                        bind:value={theme.secondaryFontColor}
+                        bind:value={theme.color.font.secondary}
                         id="secondaryFontInput"
                         label="Secondary font color"
                         name="secondaryFontColor"
                 />
                 <ColorInput
-                        bind:value={theme.socialIconFontColor}
+                        bind:value={theme.color.socialIcons.font}
                         id="socialIconFontColorInput"
                         label="Social icon font color"
                         name="socialIconFontColor"
                 />
                 <ColorInput
-                        bind:value={theme.socialIconBackgroundColor}
+                        bind:value={theme.color.socialIcons.background}
                         id="socialIconBackgroundColorInput"
                         label="Social icon background color"
                         name="socialIconBackgroundColor"
                 />
                 <ColorInput
-                        bind:value={theme.btnFontColor}
+                        bind:value={theme.color.vCardBtn.font}
                         id="btnFontColorInput"
                         label="Button font color"
                         name="btnFontColor"
                 />
                 <ColorInput
-                        bind:value={theme.btnBackgroundColor}
+                        bind:value={theme.color.vCardBtn.background}
                         id="btnBackgroundColorInput"
                         label="Button background color"
                         name="btnBackgroundColor"
                 />
                 <Heading size="h4" tag="h4">Contact information</Heading>
                 <Switch
-                        bind:checked={theme.displayPhone}
+                        bind:checked={theme.display.phone}
                         id="displayPhone"
                         label="Display phone"
                         name="displayPhone"
                 />
                 <Switch
-                        bind:checked={theme.displaySms}
+                        bind:checked={theme.display.sms}
                         id="displaySms"
                         label="Display sms"
                         name="displaySms"
                 />
                 <Switch
-                        bind:checked={theme.displayEmail}
+                        bind:checked={theme.display.email}
                         id="displayEmail"
                         label="Display email"
                         name="displayEmail"
                 />
                 <Switch
-                        bind:checked={theme.displayWeb}
+                        bind:checked={theme.display.web}
                         id="displayWeb"
                         label="Display web"
                         name="displayWeb"
                 />
                 <Switch
-                        bind:checked={theme.displayAddress}
+                        bind:checked={theme.display.address}
                         id="displayAddress"
                         label="Display address"
                         name="displayAddress"
                 />
                 <Heading size="h4" tag="h4">Map</Heading>
                 <Switch
-                        bind:checked={theme.displayMap}
+                        bind:checked={theme.display.map}
                         id="displayMap"
                         label="Display map"
                         name="displayMap"
                 />
                 <Heading size="h4" tag="h4">Contact button</Heading>
                 <Switch
-                        bind:checked={theme.displayContactBtn}
+                        bind:checked={theme.display.vCardBtn}
                         id="displayContactBtn"
                         label="Display contact button"
                         name="displayContactBtn"
                 />
-                <TextInput bind:value="{theme.buttonText}" displayName="Button text" name="buttonText"/>
+                <TextInput bind:value="{theme.vCardBtn.text}" displayName="Button text" name="buttonText"/>
                 <Heading size="h4" tag="h4">Logo</Heading>
-                <RangeInput bind:value="{theme.logoHeight}" displayName="Size" max="50" min="10"
+                <RangeInput bind:value="{theme.logo.height}" displayName="Size" max="50" min="10"
                             name="logoHeight"/>
                 <Button {isLoading}>Save</Button>
             </form>

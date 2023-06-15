@@ -60,7 +60,7 @@ export const actions = {
       },
       professional: {
         title: formData.get('title'),
-        company: 'Example Company',
+        company: formData.get('company'),
         role: formData.get('role'),
         bio: formData.get('bio'),
       },

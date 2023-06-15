@@ -60,15 +60,15 @@
   $: longitude = vCard.location.coordinates.longitude;
 </script>
 
-<div style="background-color: {theme.backgroundColor}">
+<div style="background-color: {theme.color.background}">
     <div class="container">
         <img
                 alt={vCard.professional.company}
                 class="position-relative mt-2"
-                height="{theme.logoHeight}"
+                height="{theme.logo.height}"
                 onerror="this.src = 'https://placehold.co/100x50'"
                 src={logo}
-                style="max-height: {theme.logoHeight}px"
+                style="max-height: {theme.logo.height}px"
         />
 
         <Divider/>
@@ -84,7 +84,7 @@
             />
         </div>
 
-        <div class="text-center" style="color: {theme.secondaryFontColor}">
+        <div class="text-center" style="color: {theme.color.font.secondary}">
             <h1>{vCard.name.firstName} {vCard.name.lastName}</h1>
             <small><em>{vCard.personal.pronouns}</em></small>
             <p>{vCard.professional.role} {vCard.professional.bio}</p>
@@ -99,27 +99,27 @@
 
         <Divider/>
 
-        <ul class="list-unstyled m-0" style="color: {theme.fontColor}">
+        <ul class="list-unstyled m-0" style="color: {theme.color.font.primary}">
             {#if vCard.contact.phone.number.length !== 0}
-                {#if theme.displayPhone || theme.displaySms}
+                {#if theme.display.phone || theme.display.sms}
                     <li class="d-flex align-middle pb-3">
-                        {#if theme.displayPhone}
+                        {#if theme.display.phone}
                             <IconLink
                                     href="tel:{telLink}"
                                     ariaLabel="Call {vCard.contact.phone.number}"
-                                    backgroundColor="{theme.socialIconBackgroundColor}"
-                                    fontColor="{theme.socialIconFontColor}"
+                                    backgroundColor="{theme.color.socialIcons.background}"
+                                    fontColor="{theme.color.socialIcons.font}"
                             >
                                 <PhoneIcon size="1.2x"/>
                             </IconLink>
                         {/if}
 
-                        {#if theme.displaySms}
+                        {#if theme.display.sms}
                             <IconLink
                                     href="sms:+{vCard.contact.phone.countryCode}{vCard.contact.phone.number}"
                                     ariaLabel="Send SMS to {vCard.contact.phone.number}"
-                                    backgroundColor="{theme.socialIconBackgroundColor}"
-                                    fontColor="{theme.socialIconFontColor}"
+                                    backgroundColor="{theme.color.socialIcons.background}"
+                                    fontColor="{theme.color.socialIcons.font}"
                             >
                                 <MessageSquareIcon size="1.2x"/>
                             </IconLink>
@@ -132,13 +132,13 @@
                 {/if}
             {/if}
 
-            {#if theme.displayEmail && vCard.contact.email.length !== 0}
+            {#if theme.display.email && vCard.contact.email.length !== 0}
                 <li class="d-flex align-middle pb-3">
                     <IconLink
                             href="mailto:{vCard.contact.email}"
                             ariaLabel="Email {vCard.contact.email}"
-                            backgroundColor="{theme.socialIconBackgroundColor}"
-                            fontColor="{theme.socialIconFontColor}"
+                            backgroundColor="{theme.color.socialIcons.background}"
+                            fontColor="{theme.color.socialIcons.font}"
                     >
                         <MailIcon size="1.2x"/>
                     </IconLink>
@@ -149,13 +149,13 @@
                 </li>
             {/if}
 
-            {#if theme.displayWeb && vCard.contact.web.length !== 0}
+            {#if theme.display.web && vCard.contact.web.length !== 0}
                 <li class="d-flex align-middle pb-3">
                     <IconLink
                             href="{vCard.contact.web}"
                             ariaLabel="Visit {vCard.contact.web}"
-                            backgroundColor="{theme.socialIconBackgroundColor}"
-                            fontColor="{theme.socialIconFontColor}"
+                            backgroundColor="{theme.color.socialIcons.background}"
+                            fontColor="{theme.color.socialIcons.font}"
                     >
                         <GlobeIcon size="1.2x"/>
                     </IconLink>
@@ -166,14 +166,14 @@
                 </li>
             {/if}
 
-            {#if theme.displayAddress}
+            {#if theme.display.address}
                 {#if vCard.location.street.length !== 0 || vCard.location.postalCode.length !== 0 || vCard.location.city.length !== 0 || vCard.location.state.length !== 0}
                     <li class="d-flex align-middle pb-3">
                         <IconLink
                                 href="{addressLink}"
                                 ariaLabel="View location on Google Maps"
-                                backgroundColor="{theme.socialIconBackgroundColor}"
-                                fontColor="{theme.socialIconFontColor}"
+                                backgroundColor="{theme.color.socialIcons.background}"
+                                fontColor="{theme.color.socialIcons.font}"
                         >
                             <MapPinIcon size="1.2x"/>
                         </IconLink>
@@ -194,7 +194,7 @@
 
         <Divider/>
 
-        {#if theme.displayMap && latitude.length !== 0 && longitude.length !== 0}
+        {#if theme.display.map && latitude.length !== 0 && longitude.length !== 0}
             <div class="card overflow-hidden">
                 <Map
                         bind:latitude={latitude}
@@ -206,16 +206,16 @@
 
     <div style="padding-top: 30px"></div>
 
-    {#if theme.displayContactBtn}
+    {#if theme.display.vCardBtn}
         <div class="{displayMode} p-0" style="z-index: 1000">
             <VCardButton
                     className="btn w-100 rounded-0 py-3"
                     {vCard}
-                    backgroundColor={theme.btnBackgroundColor}
-                    color={theme.btnFontColor}
+                    backgroundColor={theme.color.vCardBtn.background}
+                    color={theme.color.vCardBtn.font}
             >
                 <UserPlusIcon size="1x"/>
-                {theme.buttonText}
+                {theme.vCardBtn.text}
             </VCardButton>
         </div>
     {/if}
