@@ -1,5 +1,5 @@
 <script>
-  import { displaySuccess } from '../../js/toast.js';
+  import { displaySuccess, displayWarning } from '../../js/toast.js';
   import { SvelteToast } from '@zerodevx/svelte-toast';
   import { enhance } from '$app/forms';
   import { goto } from '$app/navigation';
@@ -21,9 +21,11 @@
     }) => {
       await update({ reset: false });
 
-      if (result.type === 'success') {
+      if (result.data.success) {
         displaySuccess('Successfully saved!');
         await goto('/login', { replaceState: false });
+      } else {
+        displayWarning('Something went wrong. Please try again.')
       }
     };
   };

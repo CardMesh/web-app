@@ -1,5 +1,5 @@
 <script>
-  import { displaySuccess } from '../../js/toast.js';
+  import { displaySuccess, displayWarning } from '../../js/toast.js';
   import { enhance } from '$app/forms';
   import Button from '$lib/forms/Button.svelte';
 
@@ -31,8 +31,10 @@
     }) => {
       await update({ reset: false });
 
-      if (result.type === 'success') {
-        displaySuccess('Successfully saved!');
+      if (result.data.success) {
+        displaySuccess('Successfully uploaded!');
+      } else {
+        displayWarning('Something went wrong. Please try again.')
       }
 
       isLoading = false;

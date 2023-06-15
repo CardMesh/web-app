@@ -13,7 +13,7 @@
 		<SocialIcons alt="" height="24" {network} width="24"/>
 	</span>
     <div class="form-floating flex-grow-1">
-        <input bind:value class="form-control" id="{id}" name="{name}" placeholder="" type="text"/>
+        <input bind:value class="form-control" id="{id}" name="{name}" placeholder="" type="url"/>
         <label for={id}>{label}</label>
     </div>
 </div>

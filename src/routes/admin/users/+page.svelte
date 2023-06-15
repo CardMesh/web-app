@@ -10,7 +10,7 @@
     TrashIcon,
     UserPlusIcon
   } from 'svelte-feather-icons';
-  import { displaySuccess } from '../../../js/toast.js';
+  import { displaySuccess, displayWarning } from '../../../js/toast.js';
   import { enhance } from '$app/forms';
   import Nfc from '$lib/nfc/Nfc.svelte';
   import { PUBLIC_BASE_URL } from '$env/static/public';
@@ -32,8 +32,10 @@
     }) => {
       await update({ reset: false });
 
-      if (result.type === 'success') {
+      if (result.data.success) {
         displaySuccess('Successfully saved!');
+      } else {
+        displayWarning('Something went wrong. Please try again.')
       }
 
       isLoading = false;
@@ -48,8 +50,10 @@
     }) => {
       await update({ reset: false });
 
-      if (result.type === 'success') {
+      if (result.data.success) {
         displaySuccess('Successfully deleted!');
+      } else {
+        displayWarning('Something went wrong. Please try again.')
       }
 
       isLoading = false;

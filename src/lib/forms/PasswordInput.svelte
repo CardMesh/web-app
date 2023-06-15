@@ -5,6 +5,8 @@
   export let name;
   export let displayName;
 
+  export let required = false;
+
   let isPasswordVisible = false;
 
   const togglePasswordVisibility = () => {
@@ -21,6 +23,8 @@
                 placeholder=""
                 type={isPasswordVisible ? 'text' : 'password'}
                 value={value}
+                minlength="8"
+                required="{required}"
         />
         <label for="{name}Input">{displayName}</label>
     </div>

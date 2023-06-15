@@ -60,7 +60,7 @@
     resetPopoverState();
     Cookies.remove('user');
     goto('/login', { replaceState: true });
-    displaySuccess('Successfully logged out');
+    displaySuccess('Successfully logged out!');
   };
   let role = JSON.parse(Cookies.get('user')).data.role;
 </script>

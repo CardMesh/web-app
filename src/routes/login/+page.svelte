@@ -7,24 +7,26 @@
   import Button from '$lib/forms/Button.svelte';
   import { enhance } from '$app/forms';
   import { goto } from '$app/navigation';
-  import { displaySuccess } from '../../js/toast.js';
+  import { displaySuccess, displayWarning } from '../../js/toast.js';
 
-  let email = 'demo@demo.com'; // TODO remove
-  let password = 'Demodemo!'; // TODO remove
+  let email = '';
+  let password = '';
 
   let isLoading = false;
 
   const save = () => {
-    isLoading = true;
     return async ({
       update,
       result
     }) => {
       await update({ reset: false });
 
-      if (result.type === 'success') {
+      if (result.data.success) {
         await goto('/admin');
-        displaySuccess('Successfully logged in');
+        displaySuccess('Successfully logged in!');
+        isLoading = false;
+      } else {
+        displayWarning('Wrong credentials. Please try again.')
         isLoading = false;
       }
     };
@@ -47,10 +49,10 @@
                     <form action="?/login" method="POST" use:enhance={save}>
 
                         <div class="form-floating mb-3">
-                            <EmailInput bind:value={email} displayName="Email" name="email"/>
+                            <EmailInput bind:value={email} displayName="Email" name="email" required="true"/>
                         </div>
                         <div class="form-floating mb-3">
-                            <PasswordInput bind:value={password} displayName="Password" name="password"/>
+                            <PasswordInput bind:value={password} displayName="Password" name="password" required="true"/>
                         </div>
 
                         <Button isLoading="{isLoading}">

@@ -1,7 +1,7 @@
 <script>
   import AdminMain from '$lib/layout/AdminMain.svelte';
   import { enhance } from '$app/forms';
-  import { displaySuccess } from '../../../js/toast.js';
+  import { displaySuccess, displayWarning } from '../../../js/toast.js';
   import { browser } from '$app/environment';
   import DisplayPreview from '$lib/vCard/DisplayPreview.svelte';
   import SocialIconTextInput from '$lib/forms/SocialIconTextInput.svelte';
@@ -42,8 +42,10 @@
     }) => {
       await update({ reset: false });
 
-      if (result.type === 'success') {
+      if (result.data.success) {
         displaySuccess('Successfully saved!');
+      } else {
+        displayWarning('Something went wrong. Please try again.')
       }
 
       isLoading = false;
