@@ -43,7 +43,7 @@ cards in a web browser, accessible via NFC tags, QR codes, or direct URLs.
 git clone git@github.com:CardMesh/web-app.git && cd web-app
 ```
 
-**2. Configure your private `.env` file, following the `.env-sample sample`**
+**2. Configure your private `.env` file, following the `.env.example` sample**
 
 **3. Run the app**
 
