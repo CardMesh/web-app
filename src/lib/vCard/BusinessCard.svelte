@@ -190,18 +190,18 @@
                     </li>
                 {/if}
             {/if}
-
-            <Divider/>
-
-            {#if theme.displayMap && latitude.length !== 0 && longitude.length !== 0}
-                <div class="card overflow-hidden">
-                    <Map
-                            bind:latitude={latitude}
-                            bind:longitude={longitude}
-                    />
-                </div>
-            {/if}
         </ul>
+
+        <Divider/>
+
+        {#if theme.displayMap && latitude.length !== 0 && longitude.length !== 0}
+            <div class="card overflow-hidden">
+                <Map
+                        bind:latitude={latitude}
+                        bind:longitude={longitude}
+                />
+            </div>
+        {/if}
     </div>
 
     <div style="padding-top: 30px"></div>

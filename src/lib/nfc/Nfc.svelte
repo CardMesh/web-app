@@ -12,37 +12,37 @@
   export let profileUrl = '';
 
   const writeTag = async () => {
-    if ('NDEFReader' in window) {
-      showOverlay = true;
+    if (!('NDEFReader' in window)) {
+      return displayWarning('Unfortunately, writing with Web NFC isn\'t supported on your device.');
+    }
 
-      const ndef = new NDEFReader();
-      try {
-        await ndef.write({
-          records: [{
-            recordType: 'url',
-            data: profileUrl
-          }]
-        });
+    showOverlay = true;
 
+    const ndef = new NDEFReader();
+    try {
+      await ndef.write({
+        records: [{
+          recordType: 'url',
+          data: profileUrl
+        }]
+      });
+
+      showOverlay = false;
+      displaySuccess('Your NFC tag has been successfully written!');
+
+      // This workaround prevents the phone from reading the NFC tag immediately after the write operation.
+      const abortController = new AbortController();
+      await ndef.scan({ signal: abortController.signal });
+    } catch (error) {
+      if (error instanceof DOMException && error.message.includes('Failed to write due to an IO error: null')) {
         showOverlay = false;
-        displaySuccess('Your NFC tag has been successfully written!');
-
-        // This workaround prevents the phone from reading the NFC tag immediately after the write operation.
-        const abortController = new AbortController();
-        await ndef.scan({ signal: abortController.signal });
-      } catch (error) {
-        if (error instanceof DOMException && error.message.includes('Failed to write due to an IO error: null')) {
-          showOverlay = false;
-          displayError('It seems like the tag was removed a bit too soon. Please give it another try.');
-        } else if (error instanceof AbortError && error.message.includes('Push is cancelled due to a new push request.')) {
-          showOverlay = true;
-        } else {
-          displayWarning('Unfortunately, writing with Web NFC isn\'t supported on your device.');
-          showOverlay = false;
-        }
+        displayError('It seems like the tag was removed a bit too soon. Please give it another try.');
+      } else if (error instanceof AbortError && error.message.includes('Push is cancelled due to a new push request.')) {
+        showOverlay = true;
+      } else {
+        displayWarning('Unfortunately, writing with Web NFC isn\'t supported on your device.');
+        showOverlay = false;
       }
-    } else {
-      displayWarning('Unfortunately, writing with Web NFC isn\'t supported on your device.');
     }
   };
 </script>
