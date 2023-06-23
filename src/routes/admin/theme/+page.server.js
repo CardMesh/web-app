@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
 export const load = async ({
@@ -7,7 +8,11 @@ export const load = async ({
 }) => {
   const { token } = JSON.parse(cookies.get('access')).data;
   const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
-  const { themeId } = JSON.parse(cookies.get('user')).data;
+  const { themeId, role } = JSON.parse(cookies.get('user')).data;
+
+  if (!['admin', 'editor'].includes(role)) {
+    throw redirect(302, '/admin');
+  }
 
   const fetchVcard = async () => {
     const options = {
@@ -32,6 +37,7 @@ export const load = async ({
     };
 
     const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}`, options);
+
     return response.json();
   };
 

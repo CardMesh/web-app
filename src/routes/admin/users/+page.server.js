@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
 export const load = async ({
@@ -34,6 +35,11 @@ export const load = async ({
     }
 
     const response = await fetch(apiUrl.toString(), options);
+
+    if (response.status === 403) {
+      throw redirect(302, '/admin');
+    }
+
     return response.json();
   };
 

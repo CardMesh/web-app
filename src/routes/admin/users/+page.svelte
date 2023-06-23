@@ -33,7 +33,7 @@
       await update({ reset: false });
 
       if (result.data.success) {
-        displaySuccess('Successfully saved!');
+        displaySuccess('Mail successfully sent!');
       } else {
         displayWarning('Something went wrong. Please try again.')
       }
