@@ -52,7 +52,7 @@ export const actions = {
     const formData = await request.formData();
 
     const vCard = {
-      name: {
+      person: {
         firstName: formData.get('firstName'),
         middleName: formData.get('middleName'),
         lastName: formData.get('lastName'),

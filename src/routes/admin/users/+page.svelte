@@ -19,8 +19,10 @@
   import Pagination from '$lib/pagination/Pagination.svelte';
   import TextInput from '$lib/forms/TextInput.svelte';
   import EmailInput from '$lib/forms/EmailInput.svelte';
+  import Cookies from 'js-cookie';
 
   export let data;
+  const userId = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
 
   let isLoading = false;
 
@@ -242,14 +244,16 @@
                                         </button>
                                     </form>
                                 </li>
-                                <li>
-                                    <button
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#{user.uuid}Modal" class="dropdown-item" type="button">
-                                        <TrashIcon size="1x" class="me-2"/>
-                                        Delete
-                                    </button>
-                                </li>
+                                {#if userId !== user.uuid}
+                                    <li>
+                                        <button
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#{user.uuid}Modal" class="dropdown-item" type="button">
+                                            <TrashIcon size="1x" class="me-2"/>
+                                            Delete
+                                        </button>
+                                    </li>
+                                {/if}
                             </ul>
                         </div>
 

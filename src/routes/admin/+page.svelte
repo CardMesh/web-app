@@ -8,7 +8,6 @@
   import StackedBarLineChart from '$lib/charts/StackedBarLineChart.svelte';
   import { ActivityIcon, GridIcon, SmartphoneIcon } from 'svelte-feather-icons';
   import Heading from '$lib/layout/Heading.svelte';
-  import { SvelteToast } from '@zerodevx/svelte-toast';
 
   let svgString = '';
   const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
