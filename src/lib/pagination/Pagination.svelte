@@ -44,7 +44,7 @@
             >
         </li>
 
-        {#each Array(pagination.totalPages) as _, i (i)}
+        {#each Array(pagination.totalPages) as _, i}
             {#if i + 1 >= getVisiblePages().startPage && i + 1 <= getVisiblePages().endPage}
                 <li class="page-item {pagination.page === i + 1 ? 'active' : ''}">
                     <a class="page-link" href={buildPaginationParams(i + 1)}>{i + 1}</a>

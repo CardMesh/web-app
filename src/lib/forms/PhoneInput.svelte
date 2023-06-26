@@ -7,7 +7,7 @@
 
   export let extension = '';
 
-  const sortedCountries = [...allCountries]
+  const sortedCountries = allCountries
     .filter(
       (country, index, self) => index === self.findIndex((c) => c.dialCode === country.dialCode)
     )

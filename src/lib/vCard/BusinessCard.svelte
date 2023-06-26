@@ -75,7 +75,7 @@
 
         <div class="d-flex justify-content-center align-items-center">
             <img
-                    alt="{vCard.name.firstName} {vCard.name.lastName}"
+                    alt="{vCard.person.firstName} {vCard.person.lastName}"
                     class="rounded-circle"
                     height="130"
                     onerror="this.src = 'https://placehold.co/130x130'"
@@ -85,7 +85,7 @@
         </div>
 
         <div class="text-center" style="color: {theme.color.font.secondary}">
-            <h1>{vCard.name.firstName} {vCard.name.lastName}</h1>
+            <h1>{vCard.person.firstName} {vCard.person.lastName}</h1>
             <small><em>{vCard.personal.pronouns}</em></small>
             <p>{vCard.professional.role} {vCard.professional.bio}</p>
         </div>

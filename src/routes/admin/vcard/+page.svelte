@@ -60,14 +60,14 @@
     <div class="row">
         <div class="col-lg-8">
             <form action="?/save{uuid ? `&uuid=${uuid}` : ''}" method="POST" use:enhance={save}>
-                <TextInput bind:value={vCard.name.firstName} displayName="First Name"
+                <TextInput bind:value={vCard.person.firstName} displayName="First Name"
                            name="firstName"></TextInput>
-                <TextInput bind:value={vCard.name.middleName} displayName="Middle Name"
+                <TextInput bind:value={vCard.person.middleName} displayName="Middle Name"
                            name="middleName"></TextInput>
-                <TextInput bind:value={vCard.name.lastName} displayName="Last Name" name="lastName"></TextInput>
+                <TextInput bind:value={vCard.person.lastName} displayName="Last Name" name="lastName"></TextInput>
                 <TextInput bind:value={vCard.professional.role} displayName="Role" name="role"></TextInput>
                 <TextInput bind:value={vCard.professional.title} displayName="Title" name="title"></TextInput>
-                <TextInput bind:value={vCard.name.suffix} displayName="Suffix" name="suffix"></TextInput>
+                <TextInput bind:value={vCard.person.suffix} displayName="Suffix" name="suffix"></TextInput>
                 <TextInput bind:value={vCard.personal.pronouns} displayName="Pronouns"
                            name="pronouns"></TextInput>
                 <TextInput bind:value={vCard.professional.company} displayName="Company"

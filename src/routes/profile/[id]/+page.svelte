@@ -16,9 +16,9 @@
 </ProductionView>
 
 <svelte:head>
-    <title>{`${vCard.name.firstName} ${vCard.name.lastName} - Personal Profile`}</title>
+    <title>{`${vCard.person.firstName} ${vCard.person.lastName} - Personal Profile`}</title>
     <meta
-            content="`Discover ${vCard.name.firstName} ${vCard.name
+            content="`Discover ${vCard.person.firstName} ${vCard.person
 			.lastName}'s personal business card, including contact information, social media profiles, and a brief bio. Connect with ${vCard
 			.name.firstName} and learn more about their background.`"
             name="description"
