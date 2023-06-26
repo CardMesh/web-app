@@ -1,0 +1,27 @@
+export const browserLanguage = navigator.language.substring(0, 2) || 'en';
+
+export const translations = {
+  en: 'Add to contacts',
+  es: 'Agregar a contactos',
+  fr: 'Ajouter aux contacts',
+  de: 'Zu Kontakten hinzufügen',
+  it: 'Aggiungi ai contatti',
+  pt: 'Adicionar aos contatos',
+  nl: 'Toevoegen aan contacten',
+  sv: 'Lägg till i kontakter',
+  ja: '連絡先に追加',
+  ko: '연락처에 추가',
+  zh: '添加到通讯录',
+  ru: 'Добавить в контакты',
+  ar: 'إضافة إلى جهات الاتصال',
+  hi: 'संपर्कों में जोड़ें',
+  bn: 'যোগ করুন কন্টাক্টে',
+  he: 'הוסף לאנשי קשר',
+  tr: 'Kişilere ekle',
+  vi: 'Thêm vào danh bạ',
+  pl: 'Dodaj do kontaktów',
+  cs: 'Přidat do kontaktů',
+  ro: 'Adaugă în contacte',
+  hu: 'Hozzáadás a névjegyekhez',
+  da: 'Tilføj til kontakter',
+};

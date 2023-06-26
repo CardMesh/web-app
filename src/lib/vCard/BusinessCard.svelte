@@ -7,6 +7,15 @@
   import SocialIconLink from '$lib/forms/SocialIconLink.svelte';
   import IconLink from '$lib/layout/IconLink.svelte';
 
+  import { onMount } from 'svelte';
+
+  let addContactText = '';
+
+  onMount(async () => {
+    const translations = await import('../../js/translations.js');
+    addContactText = translations.translations[translations.browserLanguage];
+  });
+
   export let view = 'demo';
 
   export let vCard;
@@ -215,7 +224,7 @@
                     color={theme.color.vCardBtn.font}
             >
                 <UserPlusIcon size="1x"/>
-                {theme.vCardBtn.text}
+                {addContactText}
             </VCardButton>
         </div>
     {/if}

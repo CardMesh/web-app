@@ -6,7 +6,6 @@
   import Switch from '$lib/forms/Switch.svelte';
   import ColorInput from '$lib/forms/ColorInput.svelte';
   import UploadFile from '$lib/forms/UploadFile.svelte';
-  import TextInput from '$lib/forms/TextInput.svelte';
   import RangeInput from '$lib/forms/RangeInput.svelte';
   import Heading from '$lib/layout/Heading.svelte';
   import Button from '$lib/forms/Button.svelte';
@@ -137,7 +136,6 @@
                         label="Display contact button"
                         name="displayContactBtn"
                 />
-                <TextInput bind:value="{theme.vCardBtn.text}" displayName="Button text" name="buttonText"/>
                 <Heading size="h4" tag="h4">Logo</Heading>
                 <RangeInput bind:value="{theme.logo.height}" displayName="Size" max="50" min="10"
                             name="logoHeight"/>
