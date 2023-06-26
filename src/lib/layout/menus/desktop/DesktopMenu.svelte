@@ -77,7 +77,7 @@
             <Logo size="57" text="false"/>
         </div>
     </a>
-    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center mt-2">
         <li class="nav-item">
             <DesktopMenuItem href="/admin" name="Dashboard">
                 <PieChartIcon class="align-middle" size="2x"/>
