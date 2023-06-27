@@ -25,7 +25,7 @@
         displaySuccess('Successfully saved!');
         await goto('/login', { replaceState: false });
       } else {
-        displayWarning('Something went wrong. Please try again.')
+        displayWarning('Something went wrong. Please try again.');
       }
     };
   };

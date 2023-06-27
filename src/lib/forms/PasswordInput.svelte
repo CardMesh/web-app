@@ -19,12 +19,12 @@
         <input
                 class="form-control"
                 id="{name}Input"
+                minlength="8"
                 name="{name}"
                 placeholder=""
+                required="{required}"
                 type={isPasswordVisible ? 'text' : 'password'}
                 value={value}
-                minlength="8"
-                required="{required}"
         />
         <label for="{name}Input">{displayName}</label>
     </div>

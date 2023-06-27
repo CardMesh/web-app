@@ -26,18 +26,18 @@
 
   let isLoading = false;
 
-  const save = () => {
+  const send = () => {
     isLoading = true;
     return async ({
       update,
       result
     }) => {
       await update({ reset: false });
-
+      console.log(result.data);
       if (result.data.success) {
         displaySuccess('Mail successfully sent!');
       } else {
-        displayWarning('Something went wrong. Please try again.')
+        displayWarning('Something went wrong. Please try again.');
       }
 
       isLoading = false;
@@ -55,7 +55,7 @@
       if (result.data.success) {
         displaySuccess('Successfully deleted!');
       } else {
-        displayWarning('Something went wrong. Please try again.')
+        displayWarning('Something went wrong. Please try again.');
       }
 
       isLoading = false;
@@ -115,7 +115,7 @@
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="?/create" method="POST" use:enhance={save}>
+                    <form action="?/create" method="POST" use:enhance={send}>
                         <TextInput displayName="Name" name="name"></TextInput>
                         <EmailInput displayName="Email" name="email"></EmailInput>
 
@@ -236,7 +236,7 @@
                                     Edit</a>
                                 </li>
                                 <li>
-                                    <form action="?/send" method="POST" use:enhance={save}>
+                                    <form action="?/send" method="POST" use:enhance={send}>
                                         <input type="text" value={user.uuid} name="uuid" hidden/>
                                         <button class="dropdown-item" type="submit">
                                             <SendIcon size="1x" class="me-2"/>

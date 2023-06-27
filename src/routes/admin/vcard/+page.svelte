@@ -45,7 +45,7 @@
       if (result.data.success) {
         displaySuccess('Successfully saved!');
       } else {
-        displayWarning('Something went wrong. Please try again.')
+        displayWarning('Something went wrong. Please try again.');
       }
 
       isLoading = false;

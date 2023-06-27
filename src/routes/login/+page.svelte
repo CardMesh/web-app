@@ -26,7 +26,7 @@
         displaySuccess('Successfully logged in!');
         isLoading = false;
       } else {
-        displayWarning('Wrong credentials. Please try again.')
+        displayWarning('Wrong credentials. Please try again.');
         isLoading = false;
       }
     };
@@ -52,7 +52,8 @@
                             <EmailInput bind:value={email} displayName="Email" name="email" required="true"/>
                         </div>
                         <div class="form-floating mb-3">
-                            <PasswordInput bind:value={password} displayName="Password" name="password" required="true"/>
+                            <PasswordInput bind:value={password} displayName="Password" name="password"
+                                           required="true"/>
                         </div>
 
                         <Button isLoading="{isLoading}">

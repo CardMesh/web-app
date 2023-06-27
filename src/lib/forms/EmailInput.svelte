@@ -18,8 +18,8 @@
             id="{name}Input"
             name="{name}"
             placeholder=""
-            type="email"
             required="{required}"
+            type="email"
     />
     <label for="{name}Input">{displayName}</label>
 </div>

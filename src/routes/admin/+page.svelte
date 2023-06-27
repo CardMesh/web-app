@@ -6,11 +6,13 @@
   import QRCode from 'qrcode-svg';
   import { PUBLIC_BASE_URL } from '$env/static/public';
   import StackedBarLineChart from '$lib/charts/StackedBarLineChart.svelte';
-  import { ActivityIcon, GridIcon, SmartphoneIcon } from 'svelte-feather-icons';
+  import { ActivityIcon, DownloadIcon, ExternalLinkIcon, GridIcon, SmartphoneIcon } from 'svelte-feather-icons';
   import Heading from '$lib/layout/Heading.svelte';
 
   let svgString = '';
-  const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
+  const user = JSON.parse(Cookies.get('user') || '{}').data;
+  const uuid = user?.uuid;
+
   let profileUrl = `${PUBLIC_BASE_URL}/p/${uuid}`;
 
   export let data;
@@ -69,7 +71,14 @@
                     <SmartphoneIcon size="2x"/>
                     Business Card
                   </span>
-                    <a class="btn btn-primary" href={profileUrl} target="_blank">Open business card</a>
+                    <a class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
+                       href={profileUrl}
+                       target="_blank"
+                    >
+                        <div class="text-info">
+                            <ExternalLinkIcon size="2.5x"/>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -83,12 +92,20 @@
       </span>
 
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-primary me-3" on:click={downloadSvgAsPng(svgString, 'qr.png')}>
-                            Download QR-code
+                        <button class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
+                                on:click={downloadSvgAsPng(svgString, `${user.name}-QR.png`)}>
+                            <div class="text-info">
+                                <DownloadIcon size="2.5x"/>
+                            </div>
                         </button>
 
-                        <a class="btn btn-primary" href={`${PUBLIC_BASE_URL}/qr/${uuid}`} role="button" target="_blank">
-                            Show QR-code
+                        <a class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
+                           href={`${PUBLIC_BASE_URL}/qr/${uuid}`}
+                           role="button"
+                           target="_blank">
+                            <div class="text-info">
+                                <ExternalLinkIcon size="2.5x"/>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -132,5 +149,20 @@
 <style>
     .card {
         min-height: 170px;
+    }
+
+    .btn-action {
+        width: 50px;
+        max-width: 100%;
+        max-height: 100%;
+        height: 50px;
+        text-align: center;
+        padding: 0;
+        font-size: 10px;
+    }
+
+    .btn-action:hover {
+        color: white;
+        background-color: grey;
     }
 </style>

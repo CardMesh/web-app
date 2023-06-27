@@ -8,7 +8,10 @@ export const load = async ({
 }) => {
   const { token } = JSON.parse(cookies.get('access')).data;
   const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
-  const { themeId, role } = JSON.parse(cookies.get('user')).data;
+  const {
+    themeId,
+    role,
+  } = JSON.parse(cookies.get('user')).data;
 
   if (!['admin', 'editor'].includes(role)) {
     throw redirect(302, '/admin');
@@ -84,9 +87,6 @@ export const actions = {
       },
       logo: {
         height: formData.get('logoHeight'),
-      },
-      vCardBtn: {
-        text: formData.get('buttonText'),
       },
     };
 

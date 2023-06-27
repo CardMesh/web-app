@@ -1,11 +1,11 @@
 <script>
-  export let size = "80";
+  export let size = '80';
 
   export let logo = 'true';
 
   export let text = 'true';
 
-  const color = "#74aa9c"
+  const color = '#74aa9c';
 </script>
 
 {#if logo === "true"}
