@@ -1,4 +1,5 @@
 import { PUBLIC_REST_API_URL } from '$env/static/public';
+import { redirect } from '@sveltejs/kit';
 
 export const prerender = 'auto';
 
@@ -19,6 +20,11 @@ export const load = async ({
       `${PUBLIC_REST_API_URL}/api/users/${params.id}/vcard-options`,
       options,
     );
+
+    if (response.status === 404) {
+      throw redirect(302, '/404');
+    }
+
     return response.json();
   };
 

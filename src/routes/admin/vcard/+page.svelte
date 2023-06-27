@@ -68,7 +68,7 @@
                 <TextInput bind:value={vCard.professional.role} displayName="Role" name="role"></TextInput>
                 <TextInput bind:value={vCard.professional.title} displayName="Title" name="title"></TextInput>
                 <TextInput bind:value={vCard.person.suffix} displayName="Suffix" name="suffix"></TextInput>
-                <TextInput bind:value={vCard.personal.pronouns} displayName="Pronouns"
+                <TextInput bind:value={vCard.person.pronouns} displayName="Pronouns"
                            name="pronouns"></TextInput>
                 <TextInput bind:value={vCard.professional.company} displayName="Company"
                            name="company"></TextInput>
@@ -93,7 +93,7 @@
                                   bind:postalCode="{vCard.location.postalCode}"
                                   bind:street="{vCard.location.street}"/>
                 <TextInput bind:value="{vCard.contact.web}" displayName="Web" name="web"></TextInput>
-                <DateInput bind:value="{vCard.personal.birthday}" displayName="Birthday" name="birthday"/>
+                <DateInput bind:value="{vCard.person.birthday}" displayName="Birthday" name="birthday"/>
                 <SocialIconTextInput
                         bind:value={vCard.socialMedia.twitter}
                         id="twitterInput"

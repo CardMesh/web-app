@@ -57,6 +57,8 @@ export const actions = {
         middleName: formData.get('middleName'),
         lastName: formData.get('lastName'),
         suffix: formData.get('suffix'),
+        birthday: formData.get('birthday'),
+        pronouns: formData.get('pronouns'),
       },
       professional: {
         title: formData.get('title'),
@@ -93,10 +95,6 @@ export const actions = {
         instagram: formData.get('instagram'),
         pinterest: formData.get('pinterest'),
         github: formData.get('github'),
-      },
-      personal: {
-        birthday: formData.get('birthday'),
-        pronouns: formData.get('pronouns'),
       },
     };
 

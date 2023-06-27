@@ -95,7 +95,7 @@
 
         <div class="text-center" style="color: {theme.color.font.secondary}">
             <h1>{vCard.person.firstName} {vCard.person.lastName}</h1>
-            <small><em>{vCard.personal.pronouns}</em></small>
+            <small><em>{vCard.person.pronouns}</em></small>
             <p>{vCard.professional.role} {vCard.professional.bio}</p>
         </div>
 
