@@ -9,7 +9,7 @@ export const prerender = 'auto';
 export const load = async ({
   params,
 }) => {
-  const profileUrl = `${PUBLIC_BASE_URL}/profile/${params.id}`;
+  const profileUrl = `${PUBLIC_BASE_URL}/p/${params.id}`;
 
   return {
     qrCode: new QRCode({

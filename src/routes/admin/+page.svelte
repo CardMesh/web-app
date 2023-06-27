@@ -11,7 +11,7 @@
 
   let svgString = '';
   const uuid = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
-  let profileUrl = `${PUBLIC_BASE_URL}/profile/${uuid}`;
+  let profileUrl = `${PUBLIC_BASE_URL}/p/${uuid}`;
 
   export let data;
 

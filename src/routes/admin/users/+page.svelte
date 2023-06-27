@@ -205,7 +205,7 @@
                         <a
                                 class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
                                 role="button"
-                                href="/profile/{user.uuid}"
+                                href="/p/{user.uuid}"
                                 target="_blank"
                         >
                             <div class="d-flex text-info">
@@ -215,7 +215,7 @@
 
                         <Nfc
                                 className="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
-                                profileUrl="{`${PUBLIC_BASE_URL}/profile/${user.uuid}?source=nfc`}"
+                                profileUrl="{`${PUBLIC_BASE_URL}/p/${user.uuid}?source=nfc`}"
                         >
                             <div class="d-flex text-success">
                                 <CreditCardIcon size="2x"/>
