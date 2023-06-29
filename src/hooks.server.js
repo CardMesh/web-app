@@ -9,6 +9,10 @@ export async function handle({
 
   const theme = JSON.parse(user)?.data?.theme || 'dark';
 
+  if (user === '{}') {
+    event.cookies.delete('access');
+  }
+
   if (event.url.pathname.startsWith('/admin') && (!JSON.parse(access)?.data?.token || !JSON.parse(user)?.data)) {
     throw redirect(302, '/login');
   }
