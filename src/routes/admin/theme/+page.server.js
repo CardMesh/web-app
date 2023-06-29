@@ -22,7 +22,7 @@ export const load = async ({
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -35,7 +35,7 @@ export const load = async ({
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -94,7 +94,7 @@ export const actions = {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     };
@@ -123,7 +123,7 @@ export const actions = {
     const options = {
       method: 'POST',
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
       body: formData,
     };

@@ -18,7 +18,7 @@ export const load = async ({
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -35,6 +35,10 @@ export const load = async ({
     }
 
     const response = await fetch(apiUrl.toString(), options);
+
+    if (response.status === 404) {
+      throw redirect(302, '/login');
+    }
 
     if (response.status === 403) {
       throw redirect(302, '/admin');
@@ -61,7 +65,7 @@ export const actions = {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     };
@@ -89,7 +93,7 @@ export const actions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         uuid: formData.get('uuid'),
@@ -119,7 +123,7 @@ export const actions = {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         uuid: formData.get('uuid'),
@@ -149,7 +153,7 @@ export const actions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         email: formData.get('email'),

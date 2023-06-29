@@ -17,6 +17,8 @@
 
   export let data;
 
+  const clicks = data.clicks.data;
+
   onMount(() => {
     svgString = new QRCode({
       content: `${profileUrl}?source=qr`,
@@ -119,7 +121,7 @@
                     <ActivityIcon size="2x"/>
                     Total clicks
                   </span>
-                    <h2 class="display-6">{data.clicks.data.totalClicks}</h2>
+                    <h2 class="display-6">{clicks.totalClicks}</h2>
                 </div>
             </div>
         </div>
@@ -130,7 +132,7 @@
             <div class="card">
                 <div class="card-body">
                     <Heading noTop="true" size="h4" tag="h2">Total clicks by type</Heading>
-                    <PieChart totalClicksByType="{data.clicks.data.totalClicksByType}"/>
+                    <PieChart totalClicksByType="{clicks.totalClicksByType}"/>
                 </div>
             </div>
         </div>
@@ -139,7 +141,7 @@
             <div class="card">
                 <div class="card-body">
                     <Heading noTop="true" size="h4" tag="h2">Last 7 days of activity</Heading>
-                    <StackedBarLineChart clickCountsByDate="{data.clicks.data.clickCountsByDate}"/>
+                    <StackedBarLineChart clickCountsByDate="{clicks.clickCountsByDate}"/>
                 </div>
             </div>
         </div>

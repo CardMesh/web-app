@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import { PUBLIC_REST_API_URL } from '$env/static/public';
 
 export const load = async ({
@@ -14,11 +15,16 @@ export const load = async ({
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     };
 
     const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcard-options`, options);
+
+    if (response.status === 404) {
+      throw redirect(302, '/login');
+    }
+
     return response.json();
   };
 
@@ -27,7 +33,7 @@ export const load = async ({
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -104,7 +110,7 @@ export const actions = {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(vCard),
     };
@@ -135,7 +141,7 @@ export const actions = {
     const options = {
       method: 'POST',
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
       body: formData,
     };
