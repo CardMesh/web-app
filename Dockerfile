@@ -17,7 +17,7 @@ FROM base AS build
 
 # Install node modules
 COPY --link package.json package-lock.json ./
-RUN npm install --production=false
+RUN npm install --omit=dev
 
 # Copy application code
 COPY --link . .
