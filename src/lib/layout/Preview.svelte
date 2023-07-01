@@ -6,11 +6,11 @@
 
   export let theme;
 
-  export let logo;
+  export let logoPreview;
 
-  export let avatar;
+  export let avatarPreview;
 </script>
 
 <MobileView>
-    <BusinessCard {avatar} {logo} {theme} {vCard}/>
+    <BusinessCard {avatarPreview} {logoPreview} {theme} {vCard}/>
 </MobileView>

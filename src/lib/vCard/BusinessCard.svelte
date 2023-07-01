@@ -22,15 +22,9 @@
 
   export let theme;
 
-  export let logo = `${PUBLIC_REST_API_URL}/uploads/themes/${theme.themeId}/logo.webp`; // TODO remove
+  export let logoPreview;
 
-  let logoExists = true;
-
-  function handleLogoError() {
-    logoExists = false;
-  }
-
-  export let avatar = `${PUBLIC_REST_API_URL}/uploads/users/${vCard.uuid}/avatar.webp`; // TODO remove
+  export let avatarPreview;
 
   let displayMode = view === 'demo' ? 'fixed-bottom-demo' : 'fixed-bottom-prod';
 
@@ -71,27 +65,25 @@
 
 <div style="background-color: {theme.color.background}">
     <div class="container">
-        {#if theme?.logo?.format?.webp}
+        {#if theme.logo.format.webp || logoPreview}
             <img
                     alt={vCard.professional.company}
                     class="position-relative mt-2"
-                    height="{theme.logo.size.height}"
-                    src={`data:image/jpeg;base64,${theme.logo.format.webp}`}
-                    style="max-height: {theme.logo.height}px"
+                    height="{theme?.logo?.size?.height ?? 20}"
+                    src="{logoPreview ? logoPreview : `data:image/webp;base64,${theme.logo.format.webp}`}"
+                    style="max-height: {theme?.logo?.size?.height ?? 20}px"
             />
-            <!-- TODO: add -> width="{theme.logo.size.width}" -->
+            <Divider/>
         {/if}
 
-        <Divider/>
-
-        {#if vCard.avatar.format.webp}
+        {#if vCard.avatar.format.webp || avatarPreview}
             <div class="d-flex justify-content-center align-items-center">
                 <img
                         alt="{vCard.person.firstName} {vCard.person.lastName}"
                         class="rounded-circle"
-                        height="{vCard.avatar.size.height}"
-                        width="{vCard.avatar.size.width}"
-                        src={`data:image/jpeg;base64,${vCard.avatar.format.webp}`}
+                        height="{vCard?.avatar?.size?.height ?? 130}"
+                        width="{vCard?.avatar?.size?.width ?? 130}"
+                        src="{avatarPreview ? avatarPreview : `data:image/webp;base64,${vCard.avatar.format.webp}`}"
                 />
             </div>
         {/if}

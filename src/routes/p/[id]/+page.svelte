@@ -8,11 +8,10 @@
 
   export let theme = data.theme.data;
 
-  export let logo;
 </script>
 
 <ProductionView>
-    <BusinessCard {logo} {theme} {vCard} view="prod"/>
+    <BusinessCard {theme} {vCard} view="prod"/>
 </ProductionView>
 
 <svelte:head>

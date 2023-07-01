@@ -35,7 +35,7 @@
 
   export let theme = data.theme.data;
 
-  let logo;
+  let logoPreview;
 </script>
 
 <svelte:head>
@@ -137,16 +137,14 @@
                         name="displayContactBtn"
                 />
                 <Heading size="h4" tag="h4">Logo</Heading>
-                {#if theme.logo.size.height}
                 <RangeInput bind:value="{theme.logo.size.height}" displayName="Size" max="50" min="10"
                             name="logoHeight"/>
-                {/if}
                 <Button {isLoading}>Save</Button>
             </form>
             <Heading border="true" size="h2" tag="h2">Images</Heading>
             <Heading size="h4" tag="h4">Upload logo</Heading>
-            <UploadFile bind:logo imageHeight="50" imageName="logo"/>
+            <UploadFile bind:file={logoPreview} imageHeight="50" imageName="logo"/>
         </div>
     </div>
-    <DisplayPreview {logo} {theme} {vCard}/>
+    <DisplayPreview {logoPreview} {theme} {vCard}/>
 </AdminMain>

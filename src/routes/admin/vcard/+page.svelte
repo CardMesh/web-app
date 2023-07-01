@@ -52,7 +52,7 @@
     };
   };
 
-  let avatar;
+  let avatarPreview;
 </script>
 
 <AdminMain>
@@ -141,10 +141,10 @@
 
             <Heading border="true" size="h2" tag="h2">Images</Heading>
             <Heading size="h4" tag="h4">Upload avatar</Heading>
-            <UploadFile bind:logo="{avatar}" imageHeight="130" imageName="avatar"/> <!-- rename logo- -->
+            <UploadFile bind:file="{avatarPreview}" imageHeight="130" imageName="avatar"/>
         </div>
 
-        <DisplayPreview {avatar} {theme} {vCard}/>
+        <DisplayPreview {avatarPreview} {theme} {vCard}/>
     </div>
 </AdminMain>
 

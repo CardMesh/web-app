@@ -4,9 +4,10 @@
   import Button from '$lib/forms/Button.svelte';
 
   let fileInput;
+
   let selectedFile;
 
-  export let logo;
+  export let file;
 
   export let imageHeight;
 
@@ -19,7 +20,7 @@
     let reader = new FileReader();
     reader.readAsDataURL(selectedFile);
     reader.onload = (e) => {
-      logo = e.target.result;
+      file = e.target.result;
     };
   };
 
