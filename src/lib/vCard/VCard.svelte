@@ -22,7 +22,7 @@
       return 3;
     };
 
-    link = `${PUBLIC_REST_API_URL}/uploads/users/${vCard.uuid}/vcard${detectOperatingSystem()}.vcf`;
+    link = `${PUBLIC_REST_API_URL}/api/users/${vCard.uuid}/vcf?v=${detectOperatingSystem()}`;
   });
 </script>
 

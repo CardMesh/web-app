@@ -28,7 +28,8 @@
         />
         <label for="{name}Input">{displayName}</label>
     </div>
-    <button class="btn btn-outline-secondary" on:click|preventDefault={togglePasswordVisibility} tabindex="-1" type="button">
+    <button class="btn btn-outline-secondary" on:click|preventDefault={togglePasswordVisibility} tabindex="-1"
+            type="button">
     <span class="d-flex align-items-center">
       {#if isPasswordVisible}
         <EyeOffIcon size="1.2x"/>

@@ -14,6 +14,7 @@
 
 <div class="form-floating mb-3">
     <input
+            autofocus="{autofocus}"
             bind:value={value}
             class="form-control"
             disabled="{disabled}"
@@ -22,7 +23,6 @@
             placeholder=""
             required="{required}"
             type="email"
-            autofocus="{autofocus}"
     />
     <label for="{name}Input">{displayName}</label>
 </div>

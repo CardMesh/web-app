@@ -3,7 +3,6 @@
   import Divider from '$lib/layout/Divider.svelte';
   import VCardButton from '$lib/vCard/VCard.svelte';
   import Map from '$lib/maps/Map.svelte';
-  import { PUBLIC_REST_API_URL } from '$env/static/public';
   import SocialIconLink from '$lib/forms/SocialIconLink.svelte';
   import IconLink from '$lib/layout/IconLink.svelte';
 

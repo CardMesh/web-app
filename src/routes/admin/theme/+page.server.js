@@ -26,7 +26,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcard-options`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcards`, options);
     return response.json();
   };
 
@@ -103,7 +103,7 @@ export const actions = {
 
     try {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}`, options);
-      console.log(response);
+
       if (response.ok) {
         return { success: true };
       }

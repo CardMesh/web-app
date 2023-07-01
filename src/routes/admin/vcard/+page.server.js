@@ -19,7 +19,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcard-options`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcards`, options);
 
     if (response.status === 404) {
       throw redirect(302, '/login');
@@ -117,7 +117,7 @@ export const actions = {
 
     try {
       const response = await fetch(
-        `${PUBLIC_REST_API_URL}/api/users/${uuid}/vcard-options`,
+        `${PUBLIC_REST_API_URL}/api/users/${uuid}/vcards`,
         options,
       );
 
@@ -148,6 +148,7 @@ export const actions = {
 
     try {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/images`, options);
+
       if (response.ok) {
         return { success: true };
       }
