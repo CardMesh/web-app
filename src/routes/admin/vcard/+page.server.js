@@ -148,7 +148,6 @@ export const actions = {
 
     try {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/images`, options);
-
       if (response.ok) {
         return { success: true };
       }

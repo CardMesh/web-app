@@ -65,7 +65,7 @@
 
 <div style="background-color: {theme.color.background}">
     <div class="container">
-        {#if theme.logo.format.webp || logoPreview}
+        {#if theme?.logo?.format?.webp || logoPreview}
             <img
                     alt={vCard.professional.company}
                     class="position-relative mt-2"
@@ -73,10 +73,11 @@
                     src="{logoPreview ? logoPreview : `data:image/webp;base64,${theme.logo.format.webp}`}"
                     style="max-height: {theme?.logo?.size?.height ?? 20}px"
             />
-            <Divider/>
         {/if}
 
-        {#if vCard.avatar.format.webp || avatarPreview}
+        <Divider/>
+
+        {#if vCard?.avatar?.format?.webp || avatarPreview}
             <div class="d-flex justify-content-center align-items-center">
                 <img
                         alt="{vCard.person.firstName} {vCard.person.lastName}"

@@ -8,6 +8,8 @@
   export let disabled;
 
   export let required = false;
+
+  export let autofocus = true;
 </script>
 
 <div class="form-floating mb-3">
@@ -20,6 +22,7 @@
             placeholder=""
             required="{required}"
             type="email"
+            autofocus="{autofocus}"
     />
     <label for="{name}Input">{displayName}</label>
 </div>

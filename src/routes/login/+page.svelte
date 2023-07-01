@@ -49,7 +49,7 @@
                     <form action="?/login" method="POST" use:enhance={save}>
 
                         <div class="form-floating mb-3">
-                            <EmailInput bind:value={email} displayName="Email" name="email" required="true"/>
+                            <EmailInput bind:value={email} displayName="Email" name="email" required="true" autofocus="true"/>
                         </div>
                         <div class="form-floating mb-3">
                             <PasswordInput bind:value={password} displayName="Password" name="password"
