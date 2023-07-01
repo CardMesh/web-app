@@ -16,7 +16,7 @@
     addContactText = translations.translations[translations.browserLanguage];
   });
 
-  export let view = 'demo';
+  export let view = 'preview';
 
   export let vCard;
 
@@ -26,7 +26,7 @@
 
   export let avatarPreview;
 
-  let displayMode = view === 'demo' ? 'fixed-bottom-demo' : 'fixed-bottom-prod';
+  let displayMode = view === 'preview' ? 'fixed-bottom-preview' : 'fixed-bottom-prod';
 
   let telLink;
 
@@ -237,7 +237,7 @@
     cursor: pointer;
   }
 
-  .fixed-bottom-demo {
+  .fixed-bottom-preview {
     position: sticky;
     bottom: -1px;
     width: 100%;
