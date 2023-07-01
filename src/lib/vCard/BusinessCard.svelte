@@ -22,7 +22,7 @@
 
   export let theme;
 
-  export let logo = `${PUBLIC_REST_API_URL}/uploads/themes/${theme.themeId}/logo.webp`;
+  export let logo = `${PUBLIC_REST_API_URL}/uploads/themes/${theme.themeId}/logo.webp`; // TODO remove
 
   let logoExists = true;
 
@@ -30,7 +30,7 @@
     logoExists = false;
   }
 
-  export let avatar = `${PUBLIC_REST_API_URL}/uploads/users/${vCard.uuid}/avatar.webp`;
+  export let avatar = `${PUBLIC_REST_API_URL}/uploads/users/${vCard.uuid}/avatar.webp`; // TODO remove
 
   let displayMode = view === 'demo' ? 'fixed-bottom-demo' : 'fixed-bottom-prod';
 
@@ -71,27 +71,30 @@
 
 <div style="background-color: {theme.color.background}">
     <div class="container">
-        <img
-                alt={vCard.professional.company}
-                class="position-relative mt-2"
-                height="{theme.logo.height}"
-                onerror="this.src = 'https://placehold.co/100x50'"
-                src={logo}
-                style="max-height: {theme.logo.height}px"
-        />
+        {#if theme?.logo?.format?.webp}
+            <img
+                    alt={vCard.professional.company}
+                    class="position-relative mt-2"
+                    height="{theme.logo.size.height}"
+                    src={`data:image/jpeg;base64,${theme.logo.format.webp}`}
+                    style="max-height: {theme.logo.height}px"
+            />
+            <!-- TODO: add -> width="{theme.logo.size.width}" -->
+        {/if}
 
         <Divider/>
 
-        <div class="d-flex justify-content-center align-items-center">
-            <img
-                    alt="{vCard.person.firstName} {vCard.person.lastName}"
-                    class="rounded-circle"
-                    height="130"
-                    onerror="this.src = 'https://placehold.co/130x130'"
-                    src="{avatar}"
-                    width="130"
-            />
-        </div>
+        {#if vCard.avatar.format.webp}
+            <div class="d-flex justify-content-center align-items-center">
+                <img
+                        alt="{vCard.person.firstName} {vCard.person.lastName}"
+                        class="rounded-circle"
+                        height="{vCard.avatar.size.height}"
+                        width="{vCard.avatar.size.width}"
+                        src={`data:image/jpeg;base64,${vCard.avatar.format.webp}`}
+                />
+            </div>
+        {/if}
 
         <div class="text-center" style="color: {theme.color.font.secondary}">
             <h1>{vCard.person.firstName} {vCard.person.lastName}</h1>

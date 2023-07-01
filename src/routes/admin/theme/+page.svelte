@@ -137,8 +137,10 @@
                         name="displayContactBtn"
                 />
                 <Heading size="h4" tag="h4">Logo</Heading>
-                <RangeInput bind:value="{theme.logo.height}" displayName="Size" max="50" min="10"
+                {#if theme.logo.size.height}
+                <RangeInput bind:value="{theme.logo.size.height}" displayName="Size" max="50" min="10"
                             name="logoHeight"/>
+                {/if}
                 <Button {isLoading}>Save</Button>
             </form>
             <Heading border="true" size="h2" tag="h2">Images</Heading>

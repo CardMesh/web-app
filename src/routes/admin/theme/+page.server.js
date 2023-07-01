@@ -86,7 +86,9 @@ export const actions = {
         vCardBtn: formData.get('displayContactBtn') === 'on',
       },
       logo: {
-        height: formData.get('logoHeight'),
+        size: {
+          height: formData.get('logoHeight'),
+        },
       },
     };
 
@@ -101,7 +103,7 @@ export const actions = {
 
     try {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}`, options);
-
+      console.log(response);
       if (response.ok) {
         return { success: true };
       }
