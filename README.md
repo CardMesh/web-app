@@ -115,3 +115,46 @@ npm run build:favicons
 ### License
 
 The distribution of the package operates under the `MIT License`. Further information can be found in the LICENSE file.
+
+### DISCLAIMER: USE OF THIS GITHUB REPOSITORY
+
+By accessing and using this GitHub repository ("Repository"), you agree to the following terms and conditions. If you do
+not agree with any of these terms, please refrain from using the Repository.
+
+1) No Warranty or Liability:
+   The Repository is provided on an "as is" basis, without any warranties or representations of any kind, either
+   expressed or implied. The owner(s) of the Repository ("Owner") hereby disclaim(s) any and all liability for any
+   damages, losses, or injuries arising out of or in connection with the use, inability to use, or reliance on the
+   Repository.
+
+2) No Legal Advice:
+   The content and information provided in the Repository are for informational purposes only and do not constitute
+   legal advice. The Owner does not assume any responsibility for any actions taken or not taken based on the
+   information provided in the Repository. For legal advice or specific inquiries, consult a qualified legal
+   professional.
+
+3) Intellectual Property:
+   The Repository may contain copyrighted materials, including but not limited to code, documentation, images, and other
+   intellectual property owned by the Owner or third parties. You may not use, copy, distribute, or modify any such
+   materials without obtaining prior written permission from the respective copyright holder(s).
+
+4) External Links:
+   The Repository may include links to third-party websites or resources. The Owner does not endorse, control, or assume
+   any responsibility for the content or practices of these third-party websites or resources. Accessing and using such
+   links are solely at your own risk.
+
+5) Modification of Repository:
+   The Owner reserves the right to modify, update, or remove any content or functionality of the Repository at any time
+   without prior notice. The Owner shall not be liable for any consequences arising from such modifications.
+
+6) Indemnification:
+   You agree to indemnify and hold the Owner harmless from and against any claims, damages, liabilities, costs, and
+   expenses arising out of or in connection with your use of the Repository, including but not limited to any violation
+   of these terms.
+
+7) Governing Law:
+   These terms shall be governed by and construed in accordance with the laws of the jurisdiction where the Owner is
+   located, without regard to its conflict of law principles.
+
+By using the Repository, you acknowledge that you have read, understood, and agreed to these terms and conditions. If
+you do not agree with any of these terms, your sole remedy is to discontinue using the Repository.
