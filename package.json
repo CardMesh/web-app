@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/CardMesh/web-app/issues"
   },
-  "homepage": "https://cardmesh.fly.dev",
+  "homepage": "https://github.com/CardMesh/web-app",
   "scripts": {
     "start": "node build",
     "dev": "vite dev",
@@ -34,7 +34,6 @@
     "@playwright/test": "^1.35.1",
     "@popperjs/core": "^2.11.8",
     "@rodneylab/svelte-social-icons": "^0.0.27",
-    "@sveltejs/adapter-node": "^1.2.4",
     "@sveltejs/adapter-vercel": "^3.0.1",
     "@sveltejs/kit": "^1.21.0",
     "@types/cookie": "^0.5.1",
@@ -43,10 +42,10 @@
     "chart.js": "^4.3.0",
     "country-telephone-data": "^0.6.3",
     "cross-env": "^7.0.3",
-    "eslint": "^8.43.0",
+    "eslint": "^8.44.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-svelte": "^2.32.0",
+    "eslint-plugin-svelte": "^2.32.2",
     "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
     "moment-timezone": "^0.5.43",
