@@ -21,6 +21,8 @@
     }) => {
       await update({ reset: false });
 
+      isLoading = true;
+
       if (result.data.success) {
         await goto('/admin');
         displaySuccess('Successfully logged in!');
