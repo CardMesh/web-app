@@ -9,7 +9,7 @@
 
   export let required = false;
 
-  export let autofocus = true;
+  export let autofocus = false;
 </script>
 
 <div class="form-floating mb-3">
