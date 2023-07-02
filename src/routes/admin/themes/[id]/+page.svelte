@@ -1,6 +1,6 @@
 <script>
   import AdminMain from '$lib/layout/AdminMain.svelte';
-  import { displaySuccess, displayWarning } from '../../../js/toast.js';
+  import { displaySuccess, displayWarning } from '../../../../js/toast.js';
   import { enhance } from '$app/forms';
   import DisplayPreview from '$lib/vCard/DisplayPreview.svelte';
   import Switch from '$lib/forms/Switch.svelte';
@@ -13,6 +13,7 @@
   export let data;
 
   let isLoading = false;
+
   const save = () => {
     isLoading = true;
     return async ({
@@ -31,7 +32,7 @@
     };
   };
 
-  let vCard = data.vCards.data;
+  const vCard = data.vCards.data;
 
   export let theme = data.theme.data;
 

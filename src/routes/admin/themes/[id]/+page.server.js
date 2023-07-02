@@ -4,14 +4,15 @@ import { PUBLIC_REST_API_URL } from '$env/static/public';
 export const load = async ({
   fetch,
   cookies,
-  url,
+  params,
 }) => {
-  const { token } = JSON.parse(cookies.get('access')).data;
-  const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
   const {
-    themeId,
     role,
+    uuid,
   } = JSON.parse(cookies.get('user')).data;
+  const { token } = JSON.parse(cookies.get('access')).data;
+
+  const themeId = params.id;
 
   if (!['admin', 'editor'].includes(role)) {
     throw redirect(302, '/admin');
@@ -54,13 +55,13 @@ export const actions = {
   save: async ({
     request,
     cookies,
+    params,
   }) => {
     const { token } = JSON.parse(cookies.get('access')).data;
-    const { themeId } = JSON.parse(cookies.get('user')).data;
+    const themeId = params.id;
     const formData = await request.formData();
 
     const data = {
-      themeId: 1,
       color: {
         font: {
           primary: formData.get('fontColor'),
@@ -109,7 +110,7 @@ export const actions = {
       }
 
       return { success: false };
-    } catch (error) {
+    } catch (err) {
       return { success: false };
     }
   },
@@ -137,7 +138,37 @@ export const actions = {
         return { success: true };
       }
       return { success: false };
-    } catch (error) {
+    } catch (err) {
+      return { success: false };
+    }
+  },
+
+  createTheme: async ({
+    request,
+    cookies,
+  }) => {
+    const { token } = JSON.parse(cookies.get('access')).data;
+    const formData = await request.formData();
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name: formData.get('name'),
+      }),
+    };
+
+    try {
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+
+      if (response.ok) {
+        return { success: true };
+      }
+      return { success: false };
+    } catch (err) {
       return { success: false };
     }
   },

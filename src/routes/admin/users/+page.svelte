@@ -8,7 +8,8 @@
     MoreVerticalIcon,
     SendIcon,
     TrashIcon,
-    UserPlusIcon
+    UserIcon,
+    UserPlusIcon,
   } from 'svelte-feather-icons';
   import { displaySuccess, displayWarning } from '../../../js/toast.js';
   import { enhance } from '$app/forms';
@@ -22,6 +23,7 @@
   import Cookies from 'js-cookie';
 
   export let data;
+
   const userId = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
 
   let isLoading = false;
@@ -33,9 +35,27 @@
       result
     }) => {
       await update({ reset: false });
-      console.log(result.data);
+
       if (result.data.success) {
         displaySuccess('Mail successfully sent!');
+      } else {
+        displayWarning('Something went wrong. Please try again.');
+      }
+
+      isLoading = false;
+    };
+  };
+
+  const updateUser = () => {
+    isLoading = true;
+    return async ({
+      update,
+      result
+    }) => {
+      await update({ reset: false });
+
+      if (result.data.success) {
+        displaySuccess('Successfully updated!');
       } else {
         displayWarning('Something went wrong. Please try again.');
       }
@@ -63,8 +83,6 @@
   };
 
   let text;
-
-  let role = 'user';
 
   let pagination;
 
@@ -97,7 +115,7 @@
 </svelte:head>
 
 <AdminMain>
-    <Heading size="h2" tag="h1">Users</Heading>
+    <Heading border="true" size="h2" tag="h1">Users</Heading>
 
     <SearchInput bind:searchQuery={searchQuery} name="Search" {searchInput}></SearchInput>
 
@@ -111,13 +129,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <Heading className="modal-title" id="createUserModalLabel" size="h4" tag="h3">Create user</Heading>
+                    <h4 class="modal-title" id="createUserModalLabel">Create user</h4>
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
                     <form action="?/create" method="POST" use:enhance={send}>
                         <TextInput displayName="Name" name="name"></TextInput>
                         <EmailInput displayName="Email" name="email"></EmailInput>
+
+                        <div class="form-floating mb-3"> <!-- todo: move to component? -->
+                            <select aria-label="Select theme" class="form-select" id="floatingSelectTheme"
+                                    name="themeId">
+                                {#each data.themes.data as theme}
+                                    <option value="{theme.themeId}">{theme.name}</option>
+                                {/each}
+                            </select>
+                            <label for="floatingSelectTheme">Themes</label>
+                        </div>
 
                         <div class="form-check form-switch mb-3">
                             <input
@@ -134,7 +162,7 @@
                         <div class="mb-3">
                             <div class="form-check form-check-inline">
                                 <input
-                                        bind:group={role}
+                                        checked
                                         class="form-check-input"
                                         id="roleUserRadio"
                                         name="role"
@@ -145,7 +173,6 @@
                             </div>
                             <div class="form-check form-check-inline">
                                 <input
-                                        bind:group={role}
                                         class="form-check-input"
                                         id="roleEditorRadio"
                                         name="role"
@@ -156,21 +183,15 @@
                             </div>
                             <div class="form-check form-check-inline">
                                 <input
-                                        bind:group={role}
                                         class="form-check-input"
                                         id="roleAdminRadio"
                                         name="role"
+                                        on:click={() => displayWarning('Warning: You have opted for the Admin role.')}
                                         type="radio"
                                         value="admin"
                                 />
                                 <label class="form-check-label" for="roleAdminRadio">Admin</label>
                             </div>
-                            {#if role === 'admin'}
-                                <div class="alert alert-warning mt-3" role="alert">
-                                    <AlertTriangleIcon class="me-3"/>
-                                    You have opted for the Admin role.
-                                </div>
-                            {/if}
                         </div>
 
                         <div class="modal-footer">
@@ -205,7 +226,7 @@
                         <a
                                 class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
                                 role="button"
-                                href="/p/{user.uuid}"
+                                href="/p/{user.uuid}/t/{user.themeId}"
                                 target="_blank"
                         >
                             <div class="d-flex text-info">
@@ -215,7 +236,7 @@
 
                         <Nfc
                                 className="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
-                                profileUrl="{`${PUBLIC_BASE_URL}/p/${user.uuid}?source=nfc`}"
+                                profileUrl="{`${PUBLIC_BASE_URL}/p/${user.uuid}/t/${user.themeId}?source=nfc`}"
                         >
                             <div class="d-flex text-success">
                                 <CreditCardIcon size="2x"/>
@@ -230,10 +251,21 @@
                                 </span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a role="button" href="/admin/vcard?uuid={user.uuid}" class="dropdown-item"
+                                <li>
+                                    <a role="button" href="/admin/vcard?uuid={user.uuid}" class="dropdown-item"
                                        type="button">
-                                    <Edit2Icon size="1x" class="me-2"/>
-                                    Edit</a>
+                                        <Edit2Icon size="1x" class="me-2"/>
+                                        Edit vCard
+                                    </a>
+                                </li>
+                                <li>
+                                    <button
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#{user.uuid}EditProfileModal" class="dropdown-item"
+                                            type="button">
+                                        <UserIcon size="1x" class="me-2"/>
+                                        Edit profile
+                                    </button>
                                 </li>
                                 <li>
                                     <form action="?/send" method="POST" use:enhance={send}>
@@ -248,7 +280,8 @@
                                     <li>
                                         <button
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#{user.uuid}Modal" class="dropdown-item" type="button">
+                                                data-bs-target="#{user.uuid}EditVCardModal" class="dropdown-item"
+                                                type="button">
                                             <TrashIcon size="1x" class="me-2"/>
                                             Delete
                                         </button>
@@ -259,15 +292,16 @@
 
                         <div
                                 class="modal fade"
-                                id="{user.uuid}Modal"
+                                id="{user.uuid}EditVCardModal"
                                 tabindex="-1"
-                                aria-labelledby="{user.uuid}ModalLabel"
+                                aria-labelledby="{user.uuid}EditVCardModalLabel"
                                 aria-hidden="true"
                         >
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="{user.uuid}ModalLabel">Delete {user.name}</h1>
+                                        <h1 class="modal-title fs-5" id="{user.uuid}EditVCardModalLabel">
+                                            Delete {user.name}</h1>
                                         <button
                                                 type="button"
                                                 class="btn-close"
@@ -291,6 +325,94 @@
                                             <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">
                                                 Yes, I am sure!
                                             </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                                class="modal fade"
+                                id="{user.uuid}EditProfileModal"
+                                tabindex="-1"
+                                aria-labelledby="{user.uuid}EditProfileModalLabel"
+                                aria-hidden="true"
+                        >
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="EditProfileModalLabel">
+                                            Edit user
+                                        </h4>
+                                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
+                                                type="button"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="?/updateUser" method="POST" use:enhance={updateUser}>
+                                            <input type="text" name="userId" value="{user.uuid}" hidden>
+                                            <TextInput displayName="Name" name="name" value="{user.name}"></TextInput>
+                                            <EmailInput displayName="Email" name="email"
+                                                        value="{user.email}"></EmailInput>
+
+                                            <div class="form-floating mb-3"> <!-- todo: move to component? -->
+                                                <select aria-label="Select theme" class="form-select"
+                                                        id="floatingEditTheme"
+                                                        name="themeId">
+                                                    {#each data.themes.data as theme}
+                                                        <option value="{theme.themeId}"
+                                                                selected={theme.themeId === user.themeId}>{theme.name}</option>
+                                                    {/each}
+                                                </select>
+                                                <label for="floatingEditTheme">Themes</label>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <div class="form-check form-check-inline">
+                                                    <input
+                                                            class="form-check-input"
+                                                            id="{user.uuid}editRoleUserRadio"
+                                                            name="role"
+                                                            type="radio"
+                                                            value="user"
+                                                            checked={user.role === 'user'}
+                                                    />
+                                                    <label class="form-check-label" for="{user.uuid}editRoleUserRadio">User</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input
+                                                            class="form-check-input"
+                                                            id="{user.uuid}editRoleEditorRadio"
+                                                            name="role"
+                                                            type="radio"
+                                                            value="editor"
+                                                            checked={user.role === 'editor'}
+                                                    />
+                                                    <label class="form-check-label"
+                                                           for="{user.uuid}editRoleEditorRadio">Editor</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input
+                                                            class="form-check-input"
+                                                            id="{user.uuid}editRoleAdminRadio"
+                                                            name="role"
+                                                            type="radio"
+                                                            value="admin"
+                                                            checked={user.role === 'admin'}
+                                                            on:click={() => displayWarning('Warning: You have opted for the Admin role.')}
+                                                    />
+                                                    <label class="form-check-label"
+                                                           for="{user.uuid}editRoleAdminRadio">Admin</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">
+                                                    Close
+                                                </button>
+                                                <button class="btn btn-primary" data-bs-dismiss="modal" type="submit"
+                                                >Update user
+                                                </button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

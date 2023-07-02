@@ -125,7 +125,7 @@ export const actions = {
         return { success: true };
       }
       return { success: false };
-    } catch (error) {
+    } catch (err) {
       return { success: false };
     }
   },
@@ -153,7 +153,7 @@ export const actions = {
         return { success: true };
       }
       return { success: false };
-    } catch (error) {
+    } catch (err) {
       return { success: false };
     }
   },

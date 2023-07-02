@@ -40,7 +40,7 @@
       // Add a marker
       marker = leaflet.marker([latitude, longitude], { icon: customMarkerIcon })
         .addTo(map);
-    } catch (error) {
+    } catch (err) {
       // Nothing
     }
   });

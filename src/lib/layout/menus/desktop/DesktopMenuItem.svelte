@@ -29,7 +29,7 @@
   };
 
 </script>
-
+<!-- TODO move aria current out of component -->
 {#if href}
     <a
             aria-current={$page.url.pathname === href ? 'page' : undefined}

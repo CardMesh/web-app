@@ -93,7 +93,7 @@
             <MenuDivider/>
 
             <li class="nav-item">
-                <DesktopMenuItem href="/admin/theme" name="Theme">
+                <DesktopMenuItem href="/admin/themes" name="Themes">
                     <SlidersIcon class="text-warning align-middle" size="2x"/>
                 </DesktopMenuItem>
             </li>

@@ -39,7 +39,7 @@ export const actions = {
       }
 
       return { success: false };
-    } catch (error) {
+    } catch (err) {
       return { success: false };
     }
   },

@@ -7,7 +7,6 @@
   const vCard = data.vCard.data;
 
   export let theme = data.theme.data;
-
 </script>
 
 <ProductionView>

@@ -69,6 +69,7 @@
                     alt={vCard.professional.company}
                     class="position-relative mt-2"
                     height="{theme?.logo?.size?.height ?? 20}"
+                    width="{theme?.logo?.size?.width}"
                     src="{logoPreview ? logoPreview : `data:image/webp;base64,${theme.logo.format.webp}`}"
                     style="max-height: {theme?.logo?.size?.height ?? 20}px"
             />

@@ -45,9 +45,9 @@
         </li>
         <li class="nav-item">
             <a
-                    aria-current={$page.url.pathname === '/admin/theme' ? 'page' : undefined}
+                    aria-current={$page.url.pathname.startsWith('/admin/themes') ? 'page' : undefined}
                     class="btn btn-nav d-flex align-items-center justify-content-center mx-auto"
-                    href="/admin/theme"
+                    href="/admin/themes"
                     role="button"
             >
                 <SlidersIcon class="text-warning align-middle" size="2x"/>

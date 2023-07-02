@@ -33,11 +33,11 @@
       // This workaround prevents the phone from reading the NFC tag immediately after the write operation.
       const abortController = new AbortController();
       await ndef.scan({ signal: abortController.signal });
-    } catch (error) {
-      if (error instanceof DOMException && error.message.includes('Failed to write due to an IO error: null')) {
+    } catch (err) {
+      if (err instanceof DOMException && err.message.includes('Failed to write due to an IO error: null')) {
         showOverlay = false;
         displayError('It seems like the tag was removed a bit too soon. Please give it another try.');
-      } else if (error instanceof AbortError && error.message.includes('Push is cancelled due to a new push request.')) {
+      } else if (err instanceof AbortError && err.message.includes('Push is cancelled due to a new push request.')) {
         showOverlay = true;
       } else {
         displayWarning('Unfortunately, writing with Web NFC isn\'t supported on your device.');

@@ -9,20 +9,6 @@ export const load = async ({
   const { token } = JSON.parse(cookies.get('access')).data;
 
   const fetchThemes = async () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
-
-    return response.json();
-  };
-
-  const fetchUsers = async () => {
     const params = new URLSearchParams(url.search);
     const page = params.get('page');
     const limit = params.get('limit') ?? 5;
@@ -36,7 +22,7 @@ export const load = async ({
       },
     };
 
-    const apiUrl = new URL(`${PUBLIC_REST_API_URL}/api/users`);
+    const apiUrl = new URL(`${PUBLIC_REST_API_URL}/api/themes`);
 
     if (page) {
       apiUrl.searchParams.append('page', page);
@@ -63,12 +49,12 @@ export const load = async ({
 
   return {
     themes: fetchThemes(),
-    users: fetchUsers(),
   };
 };
 
 export const actions = {
   view: async ({
+    fetch,
     request,
     cookies,
   }) => {
@@ -86,37 +72,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users`, options);
-
-      if (response.ok) {
-        return { success: true };
-      }
-      return { success: false };
-    } catch (err) {
-      return { success: false };
-    }
-  },
-
-  send: async ({
-    request,
-    cookies,
-  }) => {
-    const { token } = JSON.parse(cookies.get('access')).data;
-    const formData = await request.formData();
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        uuid: formData.get('uuid'),
-      }),
-    };
-
-    try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/auth/recover`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
 
       if (response.ok) {
         return { success: true };
@@ -128,6 +84,7 @@ export const actions = {
   },
 
   delete: async ({
+    fetch,
     request,
     cookies,
   }) => {
@@ -141,46 +98,12 @@ export const actions = {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        uuid: formData.get('uuid'),
-      }),
-    };
-
-    try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${formData.get('uuid')}`, options);
-
-      if (response.ok) {
-        return { success: true };
-      }
-      return { success: false };
-    } catch (err) {
-      return { success: false };
-    }
-  },
-
-  updateUser: async ({
-    fetch,
-    request,
-    cookies,
-  }) => {
-    const { token } = JSON.parse(cookies.get('access')).data;
-    const formData = await request.formData();
-
-    const options = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
         themeId: formData.get('themeId'),
-        email: formData.get('email'),
-        name: formData.get('name'),
-        role: formData.get('role'),
       }),
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${formData.get('userId')}`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${formData.get('themeId')}`, options);
 
       if (response.ok) {
         return { success: true };
@@ -191,7 +114,8 @@ export const actions = {
     }
   },
 
-  create: async ({
+  createTheme: async ({
+    fetch,
     request,
     cookies,
   }) => {
@@ -205,16 +129,12 @@ export const actions = {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        themeId: formData.get('themeId'),
-        email: formData.get('email'),
         name: formData.get('name'),
-        role: formData.get('role'),
-        sendMail: Boolean(formData.get('sendMail')),
       }),
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/auth/signup`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
 
       if (response.ok) {
         return { success: true };

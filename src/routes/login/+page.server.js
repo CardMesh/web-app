@@ -52,7 +52,7 @@ export const actions = {
       displayWarning('Wrong credentials');
       return { success: false };
     } catch
-    (error) {
+    (err) {
       displayWarning('Error during login');
       return { success: false };
     }

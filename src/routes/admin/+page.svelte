@@ -13,7 +13,7 @@
   const user = JSON.parse(Cookies.get('user') || '{}').data;
   const uuid = user?.uuid;
 
-  let profileUrl = `${PUBLIC_BASE_URL}/p/${uuid}`;
+  let profileUrl = `${PUBLIC_BASE_URL}/p/${uuid}/t/${user.themeId}`;
 
   export let data;
 
@@ -63,7 +63,7 @@
 </svelte:head>
 
 <AdminMain>
-    <Heading size="h2" tag="h1">Personal Dashboard</Heading>
+    <Heading border="true" size="h2" tag="h1">Personal Dashboard</Heading>
 
     <div class="row mb-4">
         <div class="col-sm-4 mb-3 mb-sm-0">
@@ -102,7 +102,7 @@
                         </button>
 
                         <a class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
-                           href={`${PUBLIC_BASE_URL}/qr/${uuid}`}
+                           href={`${PUBLIC_BASE_URL}/qr/${uuid}/t/${user.themeId}`}
                            role="button"
                            target="_blank">
                             <div class="text-info">
