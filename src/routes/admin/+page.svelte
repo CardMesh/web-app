@@ -14,7 +14,7 @@
   const userId = user?.userId;
 
   let profileUrl = `${PUBLIC_BASE_URL}/p/${userId}/t/${user.themeId}`;
-
+  console.log(profileUrl);
   export let data;
 
   const clicks = data.clicks.data;

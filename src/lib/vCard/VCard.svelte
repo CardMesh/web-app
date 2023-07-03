@@ -11,7 +11,7 @@
 
   onMount(() => {
     const detectOperatingSystem = () => {
-      const userAgent = navigator.userAgent;
+      const userAgent = window.navigator.userAgent;
 
       if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
         return 3; // 'iOS'
@@ -24,8 +24,12 @@
 
     link = `${PUBLIC_REST_API_URL}/api/users/${vCard.userId}/vcf?v=${detectOperatingSystem()}`;
   });
+
+  const handleClick = () => {
+    window.location.href = link; // Redirect to the link URL
+  };
 </script>
 
-<a class={className} href={link} style="background-color: {backgroundColor}; color: {color}">
+<button class={className} on:click={handleClick} style="background-color: {backgroundColor}; color: {color}">
     <slot/>
-</a>
+</button>
