@@ -53,6 +53,9 @@
   };
 
   let avatarPreview;
+
+  let test;
+
 </script>
 
 <AdminMain>
@@ -93,6 +96,33 @@
                                   bind:postalCode="{vCard.location.postalCode}"
                                   bind:street="{vCard.location.street}"/>
                 <TextInput bind:value="{vCard.contact.web}" displayName="Web" name="web"></TextInput>
+
+                <div class="input-group mb-3">
+                    <div class="form-floating">
+                        <input
+                                bind:value="{test}"
+                                class="form-control"
+                                id="latitudeInput"
+                                name="Link"
+                                placeholder=""
+                                type="text"
+                        />
+                        <label for="latitudeInput">Custom file text</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input
+                                bind:value="{test}"
+                                class="form-control"
+                                id="longitudeInput"
+                                name="filePath"
+                                placeholder=""
+                                type="text"
+                        />
+                        <label for="longitudeInput">Custom file URL</label>
+                    </div>
+                  </div>
+
                 <DateInput bind:value="{vCard.person.birthday}" displayName="Birthday" name="birthday"/>
                 <SocialIconTextInput
                         bind:value={vCard.socialMedia.twitter}

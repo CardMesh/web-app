@@ -77,9 +77,9 @@
             />
         {/if}
 
-        {#if vCard?.avatar?.format?.webp || avatarPreview}
-            <Divider/>
+        <Divider/>
 
+        {#if vCard?.avatar?.format?.webp || avatarPreview}
             <div class="d-flex justify-content-center align-items-center">
                 <img
                         alt="{vCard.person.firstName} {vCard.person.lastName}"
@@ -94,8 +94,9 @@
         <div class="text-center" style="color: {theme.color.font.secondary}">
             <h1>{vCard.person.firstName} {vCard.person.lastName}</h1>
             <small><em>{vCard.person.pronouns}</em></small>
-            <p>{vCard.professional.role} {vCard.professional.bio}</p>
+            <p>{vCard.professional.role}<br>{@html vCard.professional.bio.replace(/(\r\n|\r|\n)/g, '<br>')}</p>
         </div>
+
 
         <SocialIconLink link={vCard.socialMedia.twitter} network="twitter"/>
         <SocialIconLink link={vCard.socialMedia.linkedin} network="linkedin"/>
