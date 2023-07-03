@@ -24,7 +24,7 @@
 
   export let data;
 
-  const userId = JSON.parse(Cookies.get('user') || '{}').data?.uuid;
+  const userId = JSON.parse(Cookies.get('userId') || '{}').data?.userId;
 
   let isLoading = false;
 
@@ -226,7 +226,7 @@
                         <a
                                 class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
                                 role="button"
-                                href="/p/{user.uuid}/t/{user.themeId}"
+                                href="/p/{user.userId}/t/{user.themeId}"
                                 target="_blank"
                         >
                             <div class="d-flex text-info">
@@ -236,7 +236,7 @@
 
                         <Nfc
                                 className="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
-                                profileUrl="{`${PUBLIC_BASE_URL}/p/${user.uuid}/t/${user.themeId}?source=nfc`}"
+                                profileUrl="{`${PUBLIC_BASE_URL}/p/${user.userId}/t/${user.themeId}?source=nfc`}"
                         >
                             <div class="d-flex text-success">
                                 <CreditCardIcon size="2x"/>
@@ -252,7 +252,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a role="button" href="/admin/vcard?uuid={user.uuid}&themeId={user.themeId}" class="dropdown-item"
+                                    <a role="button" href="/admin/vcard?userId={user.userId}&themeId={user.themeId}" class="dropdown-item"
                                        type="button">
                                         <Edit2Icon size="1x" class="me-2"/>
                                         Edit vCard
@@ -261,7 +261,7 @@
                                 <li>
                                     <button
                                             data-bs-toggle="modal"
-                                            data-bs-target="#{user.uuid}EditProfileModal" class="dropdown-item"
+                                            data-bs-target="#{user.userId}EditProfileModal" class="dropdown-item"
                                             type="button">
                                         <UserIcon size="1x" class="me-2"/>
                                         Edit profile
@@ -269,18 +269,18 @@
                                 </li>
                                 <li>
                                     <form action="?/send" method="POST" use:enhance={send}>
-                                        <input type="text" value={user.uuid} name="uuid" hidden/>
+                                        <input type="text" value={user.userId} name="userId" hidden/>
                                         <button class="dropdown-item" type="submit">
                                             <SendIcon size="1x" class="me-2"/>
                                             Send mail
                                         </button>
                                     </form>
                                 </li>
-                                {#if userId !== user.uuid}
+                                {#if userId !== user.userId}
                                     <li>
                                         <button
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#{user.uuid}EditVCardModal" class="dropdown-item"
+                                                data-bs-target="#{user.userId}EditVCardModal" class="dropdown-item"
                                                 type="button">
                                             <TrashIcon size="1x" class="me-2"/>
                                             Delete
@@ -292,15 +292,15 @@
 
                         <div
                                 class="modal fade"
-                                id="{user.uuid}EditVCardModal"
+                                id="{user.userId}EditVCardModal"
                                 tabindex="-1"
-                                aria-labelledby="{user.uuid}EditVCardModalLabel"
+                                aria-labelledby="{user.userId}EditVCardModalLabel"
                                 aria-hidden="true"
                         >
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="{user.uuid}EditVCardModalLabel">
+                                        <h1 class="modal-title fs-5" id="{user.userId}EditVCardModalLabel">
                                             Delete {user.name}</h1>
                                         <button
                                                 type="button"
@@ -321,7 +321,7 @@
                                         </button>
 
                                         <form action="?/delete" method="POST" use:enhance={deleteUser}>
-                                            <input type="text" value={user.uuid} name="uuid" hidden/>
+                                            <input type="text" value={user.userId} name="userId" hidden/>
                                             <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">
                                                 Yes, I am sure!
                                             </button>
@@ -333,9 +333,9 @@
 
                         <div
                                 class="modal fade"
-                                id="{user.uuid}EditProfileModal"
+                                id="{user.userId}EditProfileModal"
                                 tabindex="-1"
-                                aria-labelledby="{user.uuid}EditProfileModalLabel"
+                                aria-labelledby="{user.userId}EditProfileModalLabel"
                                 aria-hidden="true"
                         >
                             <div class="modal-dialog">
@@ -349,7 +349,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <form action="?/updateUser" method="POST" use:enhance={updateUser}>
-                                            <input type="text" name="userId" value="{user.uuid}" hidden>
+                                            <input type="text" name="userId" value="{user.userId}" hidden>
                                             <TextInput displayName="Name" name="name" value="{user.name}"></TextInput>
                                             <EmailInput displayName="Email" name="email"
                                                         value="{user.email}"></EmailInput>
@@ -370,30 +370,30 @@
                                                 <div class="form-check form-check-inline">
                                                     <input
                                                             class="form-check-input"
-                                                            id="{user.uuid}editRoleUserRadio"
+                                                            id="{user.userId}editRoleUserRadio"
                                                             name="role"
                                                             type="radio"
                                                             value="user"
                                                             checked={user.role === 'user'}
                                                     />
-                                                    <label class="form-check-label" for="{user.uuid}editRoleUserRadio">User</label>
+                                                    <label class="form-check-label" for="{user.userId}editRoleUserRadio">User</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input
                                                             class="form-check-input"
-                                                            id="{user.uuid}editRoleEditorRadio"
+                                                            id="{user.userId}editRoleEditorRadio"
                                                             name="role"
                                                             type="radio"
                                                             value="editor"
                                                             checked={user.role === 'editor'}
                                                     />
                                                     <label class="form-check-label"
-                                                           for="{user.uuid}editRoleEditorRadio">Editor</label>
+                                                           for="{user.userId}editRoleEditorRadio">Editor</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input
                                                             class="form-check-input"
-                                                            id="{user.uuid}editRoleAdminRadio"
+                                                            id="{user.userId}editRoleAdminRadio"
                                                             name="role"
                                                             type="radio"
                                                             value="admin"
@@ -401,7 +401,7 @@
                                                             on:click={() => displayWarning('Warning: You have opted for the Admin role.')}
                                                     />
                                                     <label class="form-check-label"
-                                                           for="{user.uuid}editRoleAdminRadio">Admin</label>
+                                                           for="{user.userId}editRoleAdminRadio">Admin</label>
                                                 </div>
                                             </div>
 

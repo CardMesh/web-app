@@ -8,7 +8,7 @@ export const load = async ({
 }) => {
   const {
     role,
-    uuid,
+    userId,
   } = JSON.parse(cookies.get('user')).data;
   const { token } = JSON.parse(cookies.get('access')).data;
 
@@ -27,7 +27,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcards`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${userId}/vcards`, options);
     return response.json();
   };
 

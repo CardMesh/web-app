@@ -111,7 +111,7 @@ export const actions = {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        uuid: formData.get('uuid'),
+        userId: formData.get('userId'),
       }),
     };
 
@@ -141,12 +141,12 @@ export const actions = {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        uuid: formData.get('uuid'),
+        userId: formData.get('userId'),
       }),
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${formData.get('uuid')}`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${formData.get('userId')}`, options);
 
       if (response.ok) {
         return { success: true };

@@ -16,15 +16,15 @@
   import Button from '$lib/forms/Button.svelte';
   import UploadFile from '$lib/forms/UploadFile.svelte';
 
-  let uuid;
+  let userId;
   $: if (browser) {
-    uuid = getUUID();
+    userId = getUUID();
   }
 
   function getUUID() {
     const url = new URL(window.location.href);
     const searchParams = new URLSearchParams(url.search);
-    return searchParams.get('uuid');
+    return searchParams.get('userId');
   }
 
   export let data;
@@ -59,7 +59,7 @@
     <Heading border="true" size="h2" tag="h1">Edit vCard</Heading>
     <div class="row">
         <div class="col-lg-8">
-            <form action="?/save{uuid ? `&uuid=${uuid}` : ''}" method="POST" use:enhance={save}>
+            <form action="?/save{userId ? `&userId=${userId}` : ''}" method="POST" use:enhance={save}>
                 <TextInput bind:value={vCard.person.firstName} displayName="First Name"
                            name="firstName"></TextInput>
                 <TextInput bind:value={vCard.person.middleName} displayName="Middle Name"

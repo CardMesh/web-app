@@ -8,7 +8,7 @@ export const load = async ({
 }) => {
   const { token } = JSON.parse(cookies.get('access')).data;
 
-  const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
+  const userId = url.searchParams.get('userId') || JSON.parse(cookies.get('user')).data.userId;
   const themeId = url.searchParams.get('themeId') || JSON.parse(cookies.get('user')).data.themeId;
 
   const fetchVcard = async () => {
@@ -20,7 +20,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/vcards`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${userId}/vcards`, options);
 
     if (response.status === 404) {
       throw redirect(302, '/login');
@@ -106,7 +106,7 @@ export const actions = {
       },
     };
 
-    const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
+    const userId = url.searchParams.get('userId') || JSON.parse(cookies.get('user')).data.userId;
 
     const options = {
       method: 'PUT',
@@ -119,7 +119,7 @@ export const actions = {
 
     try {
       const response = await fetch(
-        `${PUBLIC_REST_API_URL}/api/users/${uuid}/vcards`,
+        `${PUBLIC_REST_API_URL}/api/users/${userId}/vcards`,
         options,
       );
 
@@ -138,7 +138,7 @@ export const actions = {
     cookies,
   }) => {
     const { token } = JSON.parse(cookies.get('access')).data;
-    const { uuid } = JSON.parse(cookies.get('user')).data;
+    const { userId } = JSON.parse(cookies.get('user')).data;
     const formData = await request.formData();
 
     const options = {
@@ -150,7 +150,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${uuid}/images`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${userId}/images`, options);
 
       if (response.ok) {
         return { success: true };
