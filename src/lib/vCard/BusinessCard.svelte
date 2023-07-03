@@ -64,6 +64,8 @@
 
 <div style="background-color: {theme.color.background}">
     <div class="container">
+        <div class="d-flex"></div>
+
         {#if theme?.logo?.format?.webp || logoPreview}
             <img
                     alt={vCard.professional.company}
@@ -75,9 +77,9 @@
             />
         {/if}
 
-        <Divider/>
-
         {#if vCard?.avatar?.format?.webp || avatarPreview}
+            <Divider/>
+
             <div class="d-flex justify-content-center align-items-center">
                 <img
                         alt="{vCard.person.firstName} {vCard.person.lastName}"
@@ -197,9 +199,9 @@
             {/if}
         </ul>
 
-        <Divider/>
-
         {#if theme.display.map && latitude.length !== 0 && longitude.length !== 0}
+            <Divider/>
+
             <div class="card overflow-hidden">
                 <Map
                         bind:latitude={latitude}

@@ -26,7 +26,7 @@
   });
 
   const handleClick = () => {
-    window.location.href = link; // Redirect to the link URL
+    window.location.href = link;
   };
 </script>
 

@@ -3,7 +3,6 @@
   export let height = '780px';
 </script>
 
-<!-- inspired by: https://codepen.io/annasrauther/pen/yeZdpa -->
 <div id="wrapper">
     <div class="phone" style="width: {width}; height: {height};">
         <slot/>
