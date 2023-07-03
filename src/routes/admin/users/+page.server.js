@@ -182,6 +182,15 @@ export const actions = {
     try {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${formData.get('userId')}`, options);
 
+      // Update the cookie.
+      await cookies.set('user', JSON.stringify(await response.json()), {
+        path: '/',
+        maxAge: 3600 * 60 * 60 * 24, // 1 day
+        secure: true,
+        sameSite: 'strict',
+        httpOnly: false,
+      });
+
       if (response.ok) {
         return { success: true };
       }
