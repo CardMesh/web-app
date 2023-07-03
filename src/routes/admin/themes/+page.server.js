@@ -105,9 +105,18 @@ export const actions = {
     try {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${formData.get('themeId')}`, options);
 
+      if (response.status === 400) {
+        const data = await response.json();
+        return {
+          success: false,
+          ...data,
+        };
+      }
+
       if (response.ok) {
         return { success: true };
       }
+
       return { success: false };
     } catch (err) {
       return { success: false };

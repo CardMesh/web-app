@@ -26,7 +26,9 @@
       if (result.data.success) {
         displaySuccess('Successfully deleted!');
       } else {
-        displayWarning('Something went wrong. Please try again.');
+        if (result.data.errors) {
+          displayWarning(result.data.errors.join('\n'))
+        }
       }
 
       isLoading = false;

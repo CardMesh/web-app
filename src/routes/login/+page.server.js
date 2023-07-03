@@ -3,6 +3,7 @@ import { displayWarning } from '../../js/toast.js';
 
 export const actions = {
   login: async ({
+    fetch,
     request,
     cookies,
   }) => {

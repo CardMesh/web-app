@@ -19,9 +19,9 @@
       update,
       result
     }) => {
-      await update({ reset: false });
-
       isLoading = true;
+
+      await update({ reset: false });
 
       if (result.data.success) {
         await goto('/admin');
