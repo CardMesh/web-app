@@ -53,6 +53,7 @@ export const load = async ({
 
 export const actions = {
   save: async ({
+    fetch,
     request,
     cookies,
     params,
@@ -116,6 +117,7 @@ export const actions = {
   },
 
   uploadLogo: async ({
+    fetch,
     request,
     cookies,
   }) => {
@@ -144,6 +146,7 @@ export const actions = {
   },
 
   createTheme: async ({
+    fetch,
     request,
     cookies,
   }) => {

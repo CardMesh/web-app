@@ -51,6 +51,7 @@ export const load = async ({
 
 export const actions = {
   save: async ({
+    fetch,
     request,
     cookies,
     url,
@@ -132,6 +133,7 @@ export const actions = {
   },
 
   uploadLogo: async ({
+    fetch,
     request,
     cookies,
   }) => {
