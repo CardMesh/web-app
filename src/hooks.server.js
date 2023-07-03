@@ -17,7 +17,17 @@ export async function handle({
     throw redirect(302, '/login');
   }
 
-  return resolve(event, {
+  const response = await resolve(event, {
     transformPageChunk: ({ html }) => html.replace('data-bs-theme="auto"', `data-bs-theme="${theme}"`),
   });
+
+  return {
+    ...response,
+    headers: {
+      ...response.headers,
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'X-XSS-Protection': '1; mode=block',
+    },
+  };
 }
