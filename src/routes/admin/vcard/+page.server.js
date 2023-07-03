@@ -7,8 +7,9 @@ export const load = async ({
   url,
 }) => {
   const { token } = JSON.parse(cookies.get('access')).data;
-  const { themeId } = JSON.parse(cookies.get('user')).data;
+
   const uuid = url.searchParams.get('uuid') || JSON.parse(cookies.get('user')).data.uuid;
+  const themeId = url.searchParams.get('themeId') || JSON.parse(cookies.get('user')).data.themeId;
 
   const fetchVcard = async () => {
     const options = {
