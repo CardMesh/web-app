@@ -28,7 +28,7 @@
     "lint": "eslint ."
    },
   "devDependencies": {
-    "@fontsource/fira-mono": "^5.0.3",
+    "@fontsource/fira-mono": "^5.0.4",
     "@neoconfetti/svelte": "^1.0.0",
     "@playwright/test": "^1.35.1",
     "@popperjs/core": "^2.11.8",
