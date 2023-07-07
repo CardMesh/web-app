@@ -82,6 +82,10 @@ export const actions = {
         },
         email: formData.get('email'),
         web: formData.get('web'),
+        file: {
+          url: formData.get('fileUrl'),
+          name: formData.get('fileName'),
+        },
       },
       location: {
         street: formData.get('street'),

@@ -1,5 +1,5 @@
 <script>
-  import { GlobeIcon, MailIcon, MapPinIcon, MessageSquareIcon, PhoneIcon, UserPlusIcon } from 'svelte-feather-icons';
+  import { GlobeIcon, MailIcon, MapPinIcon, MessageSquareIcon, PhoneIcon, UserPlusIcon, FileIcon } from 'svelte-feather-icons';
   import Divider from '$lib/layout/Divider.svelte';
   import VCardButton from '$lib/vCard/VCard.svelte';
   import Map from '$lib/maps/Map.svelte';
@@ -195,6 +195,25 @@
                     <div class="d-flex flex-column my-auto">
                         <a href="{vCard.contact.web.includes('://') ? vCard.contact.web : `https://${vCard.contact.web}`}"
                            target="_blank">{vCard.contact.web}</a>
+                    </div>
+                </li>
+            {/if}
+
+            {#if vCard.contact.file.name && vCard.contact.file.url}
+                <li class="d-flex align-middle pb-3">
+                    <IconLink
+                            href="{vCard.contact.file.url}"
+                            ariaLabel="{vCard.contact.file.name}"
+                            backgroundColor="{theme.color.contactIcons.background}"
+                            fontColor="{theme.color.contactIcons.font}"
+                            target="_blank"
+                    >
+                        <FileIcon size="1.2x"/>
+                    </IconLink>
+
+                    <div class="d-flex flex-column my-auto">
+                        <a href="{vCard.contact.file.url.includes('://') ? vCard.contact.file.url : `https://${vCard.contact.file.url}`}"
+                           target="_blank">{vCard.contact.file.name}</a>
                     </div>
                 </li>
             {/if}
