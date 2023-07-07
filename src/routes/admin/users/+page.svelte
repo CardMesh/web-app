@@ -252,7 +252,8 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a role="button" href="/admin/vcard?userId={user.userId}&themeId={user.themeId}" class="dropdown-item"
+                                    <a role="button" href="/admin/vcard?userId={user.userId}&themeId={user.themeId}"
+                                       class="dropdown-item"
                                        type="button">
                                         <Edit2Icon size="1x" class="me-2"/>
                                         Edit vCard
@@ -376,7 +377,8 @@
                                                             value="user"
                                                             checked={user.role === 'user'}
                                                     />
-                                                    <label class="form-check-label" for="{user.userId}editRoleUserRadio">User</label>
+                                                    <label class="form-check-label"
+                                                           for="{user.userId}editRoleUserRadio">User</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input

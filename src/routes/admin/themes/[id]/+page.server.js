@@ -73,6 +73,10 @@ export const actions = {
           font: formData.get('socialIconFontColor'),
           background: formData.get('socialIconBackgroundColor'),
         },
+        contactIcons: {
+          font: formData.get('contactIconFontColor'),
+          background: formData.get('contactIconBackgroundColor'),
+        },
         vCardBtn: {
           font: formData.get('btnFontColor'),
           background: formData.get('btnBackgroundColor'),
@@ -86,6 +90,13 @@ export const actions = {
         address: formData.get('displayAddress') === 'on',
         map: formData.get('displayMap') === 'on',
         vCardBtn: formData.get('displayContactBtn') === 'on',
+      },
+      align: {
+        logo: formData.get('alignLogo'),
+        avatar: formData.get('alignAvatar'),
+        heading: formData.get('alignHeading'),
+        bio: formData.get('alignBio'),
+        socialIcons: formData.get('alignSocialIcons'),
       },
       logo: {
         size: {

@@ -121,7 +121,7 @@
                         />
                         <label for="longitudeInput">Custom file URL</label>
                     </div>
-                  </div>
+                </div>
 
                 <DateInput bind:value="{vCard.person.birthday}" displayName="Birthday" name="birthday"/>
                 <SocialIconTextInput

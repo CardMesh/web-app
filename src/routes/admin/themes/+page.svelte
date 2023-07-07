@@ -27,7 +27,7 @@
         displaySuccess('Successfully deleted!');
       } else {
         if (result.data.errors) {
-          displayWarning(result.data.errors.join('\n'))
+          displayWarning(result.data.errors.join('\n'));
         }
       }
 

@@ -4,6 +4,6 @@
     .divider {
         width: 100%;
         height: 1px;
-        margin: 16px 0;
+        margin: 15px 0;
     }
 </style>

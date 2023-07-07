@@ -9,6 +9,7 @@
   import RangeInput from '$lib/forms/RangeInput.svelte';
   import Heading from '$lib/layout/Heading.svelte';
   import Button from '$lib/forms/Button.svelte';
+  import AlignSelect from '$lib/forms/AlignSelect.svelte';
 
   export let data;
 
@@ -81,6 +82,18 @@
                         name="socialIconBackgroundColor"
                 />
                 <ColorInput
+                        bind:value={theme.color.contactIcons.font}
+                        id="contactIconFontColorInput"
+                        label="Contact icon font color"
+                        name="contactIconFontColor"
+                />
+                <ColorInput
+                        bind:value={theme.color.contactIcons.background}
+                        id="contactIconBackgroundColorInput"
+                        label="Contact icon background color"
+                        name="contactIconBackgroundColor"
+                />
+                <ColorInput
                         bind:value={theme.color.vCardBtn.font}
                         id="btnFontColorInput"
                         label="Button font color"
@@ -91,6 +104,37 @@
                         id="btnBackgroundColorInput"
                         label="Button background color"
                         name="btnBackgroundColor"
+                />
+                <Heading size="h4" tag="h4">Align content</Heading>
+                <AlignSelect
+                        bind:value={theme.align.logo}
+                        id="floatingSelectAlignLogo"
+                        label="Align logo"
+                        name="alignLogo"
+                />
+                <AlignSelect
+                        bind:value={theme.align.avatar}
+                        id="floatingSelectAlignAvatar"
+                        label="Align avatar"
+                        name="alignAvatar"
+                />
+                <AlignSelect
+                        bind:value={theme.align.heading}
+                        id="floatingSelectAlignHeading"
+                        label="Align heading"
+                        name="alignHeading"
+                />
+                <AlignSelect
+                        bind:value={theme.align.bio}
+                        id="floatingSelectAlignBio"
+                        label="Align bio"
+                        name="alignBio"
+                />
+                <AlignSelect
+                        bind:value={theme.align.socialIcons}
+                        id="floatingSelectAlignSocialIcons"
+                        label="Align social icons"
+                        name="alignSocialIcons"
                 />
                 <Heading size="h4" tag="h4">Contact information</Heading>
                 <Switch
@@ -138,13 +182,13 @@
                         name="displayContactBtn"
                 />
                 <Heading size="h4" tag="h4">Logo</Heading>
-                <RangeInput bind:value="{theme.logo.size.height}" displayName="Size" max="50" min="10"
+                <RangeInput bind:value="{theme.logo.size.height}" displayName="Size" max="80" min="20"
                             name="logoHeight"/>
                 <Button {isLoading}>Save</Button>
             </form>
             <Heading border="true" size="h2" tag="h2">Images</Heading>
             <Heading size="h4" tag="h4">Upload logo</Heading>
-            <UploadFile bind:file={logoPreview} imageHeight="50" imageName="logo"/>
+            <UploadFile bind:file={logoPreview} imageHeight="80" imageName="logo"/>
         </div>
     </div>
     <DisplayPreview {logoPreview} {theme} {vCard}/>

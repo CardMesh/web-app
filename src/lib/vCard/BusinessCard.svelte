@@ -53,7 +53,7 @@
     .replace(/\s/g, '+');
 
   let addressLink;
-  $: addressLink = 'https://www.google.com/maps/place/' + formattedAddress;
+  $: addressLink = `https://www.google.com/maps/place/${formattedAddress}`;
 
   let latitude;
   $: latitude = vCard.location.coordinates.latitude;
@@ -67,47 +67,70 @@
         <div class="d-flex"></div>
 
         {#if theme?.logo?.format?.webp || logoPreview}
-            <img
-                    alt={vCard.professional.company}
-                    class="position-relative mt-2"
-                    height="{theme?.logo?.size?.height ?? 20}"
-                    width="{theme?.logo?.size?.width}"
-                    src="{logoPreview ? logoPreview : `data:image/webp;base64,${theme.logo.format.webp}`}"
-                    style="max-height: {theme?.logo?.size?.height ?? 20}px"
-            />
+            <div class="d-flex justify-content-{theme.align.logo}">
+                <img
+                        alt={vCard.professional.company}
+                        class="position-relative mt-2"
+                        height="{theme?.logo?.size?.height ?? 20}"
+                        width="{theme?.logo?.size?.width}"
+                        src="{logoPreview ? logoPreview : `data:image/webp;base64,${theme.logo.format.webp}`}"
+                        style="max-height: {theme?.logo?.size?.height ?? 20}px"
+                />
+            </div>
         {/if}
 
         <Divider/>
 
         {#if vCard?.avatar?.format?.webp || avatarPreview}
-            <div class="d-flex justify-content-center align-items-center">
-                <img
-                        alt="{vCard.person.firstName} {vCard.person.lastName}"
-                        class="rounded-circle"
-                        height="{vCard?.avatar?.size?.height ?? 130}"
-                        width="{vCard?.avatar?.size?.width ?? 130}"
-                        src="{avatarPreview ? avatarPreview : `data:image/webp;base64,${vCard.avatar.format.webp}`}"
-                />
+            <div class="d-flex justify-content-{theme.align.avatar}">
+                <div class="d-flex justify-content-center align-items-center">
+                    <img
+                            alt="{vCard.person.firstName} {vCard.person.lastName}"
+                            class="rounded-circle"
+                            height="{vCard?.avatar?.size?.height ?? 130}"
+                            width="{vCard?.avatar?.size?.width ?? 130}"
+                            src="{avatarPreview ? avatarPreview : `data:image/webp;base64,${vCard.avatar.format.webp}`}"
+                    />
+                </div>
             </div>
         {/if}
 
-        <div class="text-center" style="color: {theme.color.font.secondary}">
-            <h1>{vCard.person.firstName} {vCard.person.lastName}</h1>
-            <small><em>{vCard.person.pronouns}</em></small>
-            <p>{vCard.professional.role}<br>{@html vCard.professional.bio.replace(/(\r\n|\r|\n)/g, '<br>')}</p>
+        <div class="d-flex justify-content-{theme.align.heading}">
+            <h1 class="h3 pt-1"
+                style="color: {theme.color.font.primary}">{vCard.person.firstName} {vCard.person.lastName}</h1>
         </div>
+        <span class="text-{theme.align.bio}" style="color: {theme.color.font.secondary}">
+            <small><em>{vCard.person.pronouns}</em></small>
+            <p><em>{vCard.professional.role}</em></p>
+            <p>{@html vCard.professional.bio.replace(/(\r\n|\r|\n)/g, '<br>')}</p>
+        </span>
 
-
-        <SocialIconLink link={vCard.socialMedia.twitter} network="twitter"/>
-        <SocialIconLink link={vCard.socialMedia.linkedin} network="linkedin"/>
-        <SocialIconLink link={vCard.socialMedia.facebook} network="facebook"/>
-        <SocialIconLink link={vCard.socialMedia.instagram} network="instagram"/>
-        <SocialIconLink link={vCard.socialMedia.pinterest} network="pinterest"/>
-        <SocialIconLink link={vCard.socialMedia.github} network="github"/>
+        <div class="d-flex justify-content-{theme.align.socialIcons}">
+            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                            fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.twitter}
+                            network="twitter"/>
+            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                            fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.linkedin}
+                            network="linkedin"/>
+            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                            fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.facebook}
+                            network="facebook"/>
+            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                            fontColor="{theme.color.socialIcons.font}"
+                            link={vCard.socialMedia.instagram}
+                            network="instagram"/>
+            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                            fontColor="{theme.color.socialIcons.font}"
+                            link={vCard.socialMedia.pinterest}
+                            network="pinterest"/>
+            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                            fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.github}
+                            network="github"/>
+        </div>
 
         <Divider/>
 
-        <ul class="list-unstyled m-0" style="color: {theme.color.font.primary}">
+        <ul class="list-unstyled m-0" style="color: {theme.color.font.secondary}">
             {#if vCard.contact.phone.number.length !== 0}
                 {#if theme.display.phone || theme.display.sms}
                     <li class="d-flex align-middle pb-3">
@@ -115,8 +138,8 @@
                             <IconLink
                                     href="tel:{telLink}"
                                     ariaLabel="Call {vCard.contact.phone.number}"
-                                    backgroundColor="{theme.color.socialIcons.background}"
-                                    fontColor="{theme.color.socialIcons.font}"
+                                    backgroundColor="{theme.color.contactIcons.background}"
+                                    fontColor="{theme.color.contactIcons.font}"
                             >
                                 <PhoneIcon size="1.2x"/>
                             </IconLink>
@@ -126,8 +149,8 @@
                             <IconLink
                                     href="sms:+{vCard.contact.phone.countryCode}{vCard.contact.phone.number}"
                                     ariaLabel="Send SMS to {vCard.contact.phone.number}"
-                                    backgroundColor="{theme.color.socialIcons.background}"
-                                    fontColor="{theme.color.socialIcons.font}"
+                                    backgroundColor="{theme.color.contactIcons.background}"
+                                    fontColor="{theme.color.contactIcons.font}"
                             >
                                 <MessageSquareIcon size="1.2x"/>
                             </IconLink>
@@ -145,8 +168,8 @@
                     <IconLink
                             href="mailto:{vCard.contact.email}"
                             ariaLabel="Email {vCard.contact.email}"
-                            backgroundColor="{theme.color.socialIcons.background}"
-                            fontColor="{theme.color.socialIcons.font}"
+                            backgroundColor="{theme.color.contactIcons.background}"
+                            fontColor="{theme.color.contactIcons.font}"
                     >
                         <MailIcon size="1.2x"/>
                     </IconLink>
@@ -162,14 +185,16 @@
                     <IconLink
                             href="{vCard.contact.web}"
                             ariaLabel="Visit {vCard.contact.web}"
-                            backgroundColor="{theme.color.socialIcons.background}"
-                            fontColor="{theme.color.socialIcons.font}"
+                            backgroundColor="{theme.color.contactIcons.background}"
+                            fontColor="{theme.color.contactIcons.font}"
+                            target="_blank"
                     >
                         <GlobeIcon size="1.2x"/>
                     </IconLink>
 
                     <div class="d-flex flex-column my-auto">
-                        <a href={vCard.contact.web} target="_blank">{vCard.contact.web}</a>
+                        <a href="{vCard.contact.web.includes('://') ? vCard.contact.web : `https://${vCard.contact.web}`}"
+                           target="_blank">{vCard.contact.web}</a>
                     </div>
                 </li>
             {/if}
@@ -180,8 +205,9 @@
                         <IconLink
                                 href="{addressLink}"
                                 ariaLabel="View location on Google Maps"
-                                backgroundColor="{theme.color.socialIcons.background}"
-                                fontColor="{theme.color.socialIcons.font}"
+                                backgroundColor="{theme.color.contactIcons.background}"
+                                fontColor="{theme.color.contactIcons.font}"
+                                target="_blank"
                         >
                             <MapPinIcon size="1.2x"/>
                         </IconLink>

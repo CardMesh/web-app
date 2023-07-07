@@ -13,7 +13,8 @@
             id="{name}Textarea"
             name="{name}"
             placeholder=""
-            style="height: 100px"
+            style="height: 140px"
             type="email"></textarea>
     <label for="{name}Textarea">{displayName}</label>
+    <small>HTML is allowed</small>
 </div>
