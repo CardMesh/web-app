@@ -138,6 +138,12 @@
                 />
                 <Heading size="h4" tag="h4">Contact information</Heading>
                 <Switch
+                        bind:checked={theme.display.logo}
+                        id="displayLogo"
+                        label="Display logo"
+                        name="displayLogo"
+                />
+                <Switch
                         bind:checked={theme.display.phone}
                         id="displayPhone"
                         label="Display phone"

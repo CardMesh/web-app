@@ -83,6 +83,7 @@ export const actions = {
         },
       },
       display: {
+        logo: formData.get('displayLogo') === 'on',
         phone: formData.get('displayPhone') === 'on',
         sms: formData.get('displaySms') === 'on',
         email: formData.get('displayEmail') === 'on',

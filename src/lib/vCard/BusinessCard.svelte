@@ -1,5 +1,13 @@
 <script>
-  import { GlobeIcon, MailIcon, MapPinIcon, MessageSquareIcon, PhoneIcon, UserPlusIcon, FileIcon } from 'svelte-feather-icons';
+  import {
+    FileIcon,
+    GlobeIcon,
+    MailIcon,
+    MapPinIcon,
+    MessageSquareIcon,
+    PhoneIcon,
+    UserPlusIcon
+  } from 'svelte-feather-icons';
   import Divider from '$lib/layout/Divider.svelte';
   import VCardButton from '$lib/vCard/VCard.svelte';
   import Map from '$lib/maps/Map.svelte';
@@ -66,17 +74,19 @@
     <div class="container">
         <div class="d-flex"></div>
 
-        {#if theme?.logo?.format?.webp || logoPreview}
-            <div class="d-flex justify-content-{theme.align.logo}">
-                <img
-                        alt={vCard.professional.company}
-                        class="position-relative mt-2"
-                        height="{theme?.logo?.size?.height ?? 20}"
-                        width="{theme?.logo?.size?.width}"
-                        src="{logoPreview ? logoPreview : `data:image/webp;base64,${theme.logo.format.webp}`}"
-                        style="max-height: {theme?.logo?.size?.height ?? 20}px"
-                />
-            </div>
+        {#if theme.display.logo}
+            {#if theme?.logo?.format?.webp || logoPreview}
+                <div class="d-flex justify-content-{theme.align.logo}">
+                    <img
+                            alt={vCard.professional.company}
+                            class="position-relative mt-2"
+                            height="{theme?.logo?.size?.height ?? 20}"
+                            width="{theme?.logo?.size?.width}"
+                            src="{logoPreview ? logoPreview : `data:image/webp;base64,${theme.logo.format.webp}`}"
+                            style="max-height: {theme?.logo?.size?.height ?? 20}px"
+                    />
+                </div>
+            {/if}
         {/if}
 
         <Divider/>
@@ -99,11 +109,11 @@
             <h1 class="h3 pt-1"
                 style="color: {theme.color.font.primary}">{vCard.person.firstName} {vCard.person.lastName}</h1>
         </div>
-        <span class="text-{theme.align.bio}" style="color: {theme.color.font.secondary}">
+        <div class="text-{theme.align.bio}" style="color: {theme.color.font.secondary}">
             <small><em>{vCard.person.pronouns}</em></small>
             <p><em>{vCard.professional.role}</em></p>
             <p>{@html vCard.professional.bio.replace(/(\r\n|\r|\n)/g, '<br>')}</p>
-        </span>
+        </div>
 
         <div class="d-flex justify-content-{theme.align.socialIcons}">
             <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
