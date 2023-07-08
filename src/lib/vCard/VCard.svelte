@@ -22,7 +22,7 @@
       return 3;
     };
 
-    link = `${PUBLIC_REST_API_URL}/api/users/${vCard.userId}/vcf?v=${detectOperatingSystem()}`;
+    link = `${PUBLIC_REST_API_URL}/api/v1/users/${vCard.userId}/vcf?v=${detectOperatingSystem()}`;
   });
 
   const handleClick = () => {

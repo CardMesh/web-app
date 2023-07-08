@@ -3,12 +3,13 @@
 
   export let searchQuery;
 
-  const buildPaginationParams = page => {
+  const buildPaginationParams = (page) => {
     const params = new URLSearchParams();
 
     if (page) {
       params.append('page', page);
     }
+
     if (pagination.limit) {
       params.append('limit', pagination.limit);
     }

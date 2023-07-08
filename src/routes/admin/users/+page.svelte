@@ -37,7 +37,7 @@
       await update({ reset: false });
 
       if (result.data.success) {
-        displaySuccess('Mail successfully sent!');
+        displaySuccess('User successfully created!');
       } else {
         displayWarning('Something went wrong. Please try again.');
       }
@@ -92,7 +92,7 @@
       totalPages,
       limit,
       nextPage,
-      prevPage
+      prevPage,
     } = data.users.pagination;
 
     pagination = {
@@ -100,7 +100,7 @@
       totalPages,
       limit,
       nextPage,
-      prevPage
+      prevPage,
     };
   }
 
