@@ -12,9 +12,10 @@
   let svgString = '';
   const user = JSON.parse(Cookies.get('user') || '{}').data;
   const userId = user?.userId;
+  const themeId = user?.themeId;
 
-  let profileUrl = `${PUBLIC_BASE_URL}/p/${userId}/t/${user.themeId}`;
-  console.log(profileUrl);
+  let profileUrl = `${PUBLIC_BASE_URL}/p/${userId}/t/${themeId}`;
+
   export let data;
 
   const clicks = data.clicks.data;
@@ -102,7 +103,7 @@
                         </button>
 
                         <a class="btn btn-action rounded-circle d-flex align-items-center justify-content-center"
-                           href={`${PUBLIC_BASE_URL}/qr/${userId}/t/${user.themeId}`}
+                           href={`${PUBLIC_BASE_URL}/qr/${userId}/t/${themeId}`}
                            role="button"
                            target="_blank">
                             <div class="text-info">
