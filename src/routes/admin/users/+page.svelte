@@ -144,7 +144,7 @@
                                     <option value="{theme.themeId}">{theme.name}</option>
                                 {/each}
                             </select>
-                            <label for="floatingSelectTheme">Themes</label>
+                            <label for="floatingSelectTheme">Theme</label>
                         </div>
 
                         <div class="form-check form-switch mb-3">
@@ -364,7 +364,7 @@
                                                                 selected={theme.themeId === user.themeId}>{theme.name}</option>
                                                     {/each}
                                                 </select>
-                                                <label for="floatingEditTheme">Themes</label>
+                                                <label for="floatingEditTheme">Theme</label>
                                             </div>
 
                                             <div class="mb-3">
