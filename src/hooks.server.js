@@ -11,7 +11,7 @@ export async function handle({
 
   const access = event.cookies.get('access') ?? '{}';
   if (event.url.pathname.startsWith('/admin') && (!JSON.parse(access)?.data?.token || !JSON.parse(user)?.data)) {
-   // throw redirect(302, '/login');
+    throw redirect(302, '/login');
   }
 
   const theme = JSON.parse(user)?.data?.theme || 'dark';
