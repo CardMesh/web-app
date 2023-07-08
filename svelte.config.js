@@ -7,8 +7,7 @@ const config = {
   },
 
   preprocess: [
-    preprocess({
-    }),
+    preprocess({}),
   ],
 };
 
