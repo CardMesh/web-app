@@ -273,7 +273,7 @@
                                         <input type="text" value={user.userId} name="userId" hidden/>
                                         <button class="dropdown-item" type="submit">
                                             <SendIcon size="1x" class="me-2"/>
-                                            Send mail
+                                            Reset password
                                         </button>
                                     </form>
                                 </li>
