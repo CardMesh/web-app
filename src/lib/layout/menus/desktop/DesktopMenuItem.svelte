@@ -8,24 +8,28 @@
   export let click;
 
   const resetPopoverState = () => {
-    const popoverDiv = document.querySelectorAll('div.bs-popover-auto');
+    try {
+      const popoverDiv = document.querySelectorAll('div.bs-popover-auto');
 
-    // Remove the div manually
-    popoverDiv.forEach((element) => {
-      element.remove();
-    });
+      // Remove the div manually
+      popoverDiv.forEach((element) => {
+        element.remove();
+      });
 
-    const popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]');
+      const popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]');
 
-    popoverElements.forEach((element) => {
-      // Dispose of the existing popover instance
-      if ('_bootstrap' in element) {
-        element._bootstrap.dispose();
-      }
+      popoverElements.forEach((element) => {
+        // Dispose of the existing popover instance
+        if ('_bootstrap' in element) {
+          element._bootstrap.dispose();
+        }
 
-      // Create a new popover instance and store the new instance in the '_bootstrap' property
-      element._bootstrap = new bootstrap.Popover(element);
-    });
+        // Create a new popover instance and store the new instance in the '_bootstrap' property
+        element._bootstrap = new bootstrap.Popover(element);
+      });
+    } catch (err) {
+      // nothing
+    }
   };
 
 </script>
