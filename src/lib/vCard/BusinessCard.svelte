@@ -115,28 +115,41 @@
             <p>{@html vCard.professional.bio.replace(/(\r\n|\r|\n)/g, '<br>')}</p>
         </div>
 
-        <div class="d-flex justify-content-{theme.align.socialIcons}">
-            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
-                            fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.twitter}
-                            network="twitter"/>
-            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
-                            fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.linkedin}
-                            network="linkedin"/>
-            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
-                            fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.facebook}
-                            network="facebook"/>
-            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
-                            fontColor="{theme.color.socialIcons.font}"
-                            link={vCard.socialMedia.instagram}
-                            network="instagram"/>
-            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
-                            fontColor="{theme.color.socialIcons.font}"
-                            link={vCard.socialMedia.pinterest}
-                            network="pinterest"/>
-            <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
-                            fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.github}
-                            network="github"/>
-        </div>
+        <ul class="social-icons d-flex justify-content-{theme.align.socialIcons}">
+            <li>
+                <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                                fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.twitter}
+                                network="twitter"/>
+            </li>
+            <li>
+                <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                                fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.linkedin}
+                                network="linkedin"/>
+            </li>
+            <li>
+                <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                                fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.facebook}
+                                network="facebook"/>
+            </li>
+            <li>
+                <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                                fontColor="{theme.color.socialIcons.font}"
+                                link={vCard.socialMedia.instagram}
+                                network="instagram"/>
+            </li>
+            <li>
+                <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                                fontColor="{theme.color.socialIcons.font}"
+                                link={vCard.socialMedia.pinterest}
+                                network="pinterest"/>
+            </li>
+            <li>
+                <SocialIconLink backgroundColor="{theme.color.socialIcons.background}"
+                                fontColor="{theme.color.socialIcons.font}" link={vCard.socialMedia.github}
+                                network="github"/>
+            </li>
+        </ul>
+
 
         <Divider/>
 
@@ -319,5 +332,22 @@
 
   .text-secondary {
     color: grey !important;
+  }
+
+  ul.social-icons {
+    list-style: none;
+    display: flex;
+  }
+
+  ul.social-icons li {
+    margin-right: 1px;
+  }
+
+  ul.social-icons li:last-child {
+    margin-right: 0;
+  }
+
+  ul {
+    padding-left: 0px;
   }
 </style>
