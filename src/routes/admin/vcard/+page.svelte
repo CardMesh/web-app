@@ -15,6 +15,7 @@
   import Heading from '$lib/layout/Heading.svelte';
   import Button from '$lib/forms/Button.svelte';
   import UploadFile from '$lib/forms/UploadFile.svelte';
+  import SvelteSeo from 'svelte-seo';
 
   let userId;
   $: if (browser) {
@@ -54,6 +55,11 @@
 
   let avatarPreview;
 </script>
+
+<SvelteSeo
+        description="Edit vCard"
+        title="Edit vCard"
+/>
 
 <AdminMain>
     <Heading border="true" size="h2" tag="h1">Edit vCard</Heading>
@@ -154,8 +160,3 @@
         <DisplayPreview {avatarPreview} {theme} {vCard}/>
     </div>
 </AdminMain>
-
-<svelte:head>
-    <title>Edit vCard</title>
-    <meta content="Edit vCard"/>
-</svelte:head>

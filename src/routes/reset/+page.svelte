@@ -7,6 +7,7 @@
   import PasswordInput from '$lib/forms/PasswordInput.svelte';
   import Button from '$lib/forms/Button.svelte';
   import Heading from '$lib/layout/Heading.svelte';
+  import SvelteSeo from 'svelte-seo';
 
   export let data;
 
@@ -30,6 +31,11 @@
     };
   };
 </script>
+
+<SvelteSeo
+        description="Rest Password"
+        title="Reset Password"
+/>
 
 <div class="d-flex align-items-center justify-content-center vh-100">
     <div class="container" style="max-width: 600px" tabindex="-1">

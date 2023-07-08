@@ -8,6 +8,7 @@
   import Pagination from '$lib/pagination/Pagination.svelte';
   import TextInput from '$lib/forms/TextInput.svelte';
   import Cookies from 'js-cookie';
+  import SvelteSeo from 'svelte-seo';
 
   export let data;
 
@@ -80,10 +81,10 @@
   let searchInput;
 </script>
 
-<svelte:head>
-    <title>Themes</title>
-    <meta content="Themes"/> <!-- TODO use lib for meta data -->
-</svelte:head>
+<SvelteSeo
+        description="Themes"
+        title="Themes"
+/>
 
 <AdminMain>
     <Heading border="true" size="h2" tag="h1">Themes</Heading>

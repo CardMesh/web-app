@@ -31,7 +31,6 @@
       // nothing
     }
   };
-
 </script>
 <!-- TODO move aria current out of component -->
 {#if href}

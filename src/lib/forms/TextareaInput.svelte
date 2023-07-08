@@ -16,5 +16,5 @@
             style="height: 140px"
             type="email"></textarea>
     <label for="{name}Textarea">{displayName}</label>
-    <small>HTML is allowed</small>
+    <small>The following HTML-tags are allowed: 'b', 'i', 'em', 'strong', 'a'</small>
 </div>

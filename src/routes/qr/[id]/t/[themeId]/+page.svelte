@@ -1,11 +1,13 @@
 <script>
+  import SvelteSeo from 'svelte-seo';
+
   export let data;
 </script>
 
-<svelte:head>
-    <title>QR-code</title>
-    <meta content="QR-code" name="description"/>
-</svelte:head>
+<SvelteSeo
+        description="QR-code"
+        title="QR-code"
+/>
 
 <div class="qr-container">
     {@html data.qrCode}

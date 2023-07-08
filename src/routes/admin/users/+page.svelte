@@ -21,6 +21,7 @@
   import TextInput from '$lib/forms/TextInput.svelte';
   import EmailInput from '$lib/forms/EmailInput.svelte';
   import Cookies from 'js-cookie';
+  import SvelteSeo from 'svelte-seo';
 
   export let data;
 
@@ -109,10 +110,10 @@
   let searchInput;
 </script>
 
-<svelte:head>
-    <title>Users</title>
-    <meta content="Users"/>
-</svelte:head>
+<SvelteSeo
+        description="Users"
+        title="Users"
+/>
 
 <AdminMain>
     <Heading border="true" size="h2" tag="h1">Users</Heading>

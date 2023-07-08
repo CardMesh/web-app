@@ -43,7 +43,7 @@
   };
 </script>
 
-<form action="?/uploadLogo" method="POST" use:enhance={save}> <!-- todo: rename to uploadImage -->
+<form action="?/uploadLogo" method="POST" use:enhance={save}>
     <div class="mb-3">
         <input
                 accept=".jpg, .jpeg, .png"

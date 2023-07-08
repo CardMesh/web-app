@@ -1,27 +1,41 @@
 <script>
   import BusinessCard from '$lib/vCard/BusinessCard.svelte';
   import ProductionView from '$lib/vCard/views/ProductionView.svelte';
+  import SvelteSeo from 'svelte-seo';
 
   export let data;
 
   const vCard = data.vCard.data;
 
-  export let theme = data.theme.data;
+  const theme = data.theme.data;
+
+  const title = `${vCard.person.firstName} ${vCard.person.lastName}`;
+  const description = `${vCard.person.firstName} ${vCard.person.lastName}\'s personal business card.`;
 </script>
+
+<SvelteSeo
+        description="{description}"
+        openGraph={{
+    title: title,
+    description: description,
+    image: vCard.avatar.format.webp || '',
+    type: "website",
+    images: [
+      {
+        url: vCard.avatar.format.webp || '',
+        width: vCard.avatar.size.width || '',
+        height: vCard.avatar.size.height || '',
+        alt: `${vCard.person.firstName || ''} ${vCard.person.lastName || ''}`,
+      },
+    ],
+    site_name: `${vCard.person.firstName || ''} ${vCard.person.lastName || ''}`,
+  }}
+        title="{title}"
+/>
 
 <ProductionView>
     <BusinessCard {theme} {vCard} view="prod"/>
 </ProductionView>
-
-<svelte:head>
-    <title>{`${vCard.person.firstName} ${vCard.person.lastName} - Personal Profile`}</title>
-    <meta
-            content="`Discover ${vCard.person.firstName} ${vCard.person
-			.lastName}'s personal business card, including contact information, social media profiles, and a brief bio. Connect with ${vCard
-			.person.firstName} and learn more about their background.`"
-            name="description"
-    />
-</svelte:head>
 
 <style>
     :global(body) {

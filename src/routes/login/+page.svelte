@@ -8,6 +8,7 @@
   import { enhance } from '$app/forms';
   import { goto } from '$app/navigation';
   import { displaySuccess, displayWarning } from '../../js/toast.js';
+  import SvelteSeo from 'svelte-seo';
 
   let email = '';
   let password = '';
@@ -34,6 +35,11 @@
     };
   };
 </script>
+
+<SvelteSeo
+        description="Login"
+        title="Login"
+/>
 
 <div class="d-flex align-items-center justify-content-center vh-100">
     <div class="container" style="max-width: 600px" tabindex="-1">
@@ -69,11 +75,6 @@
     </div>
 </div>
 <SvelteToast/>
-
-<svelte:head>
-    <title>Login</title>
-    <meta content="Login" name="description"/>
-</svelte:head>
 
 <style>
     .center-container {

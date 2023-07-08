@@ -8,6 +8,7 @@
   import StackedBarLineChart from '$lib/charts/StackedBarLineChart.svelte';
   import { ActivityIcon, DownloadIcon, ExternalLinkIcon, GridIcon, SmartphoneIcon } from 'svelte-feather-icons';
   import Heading from '$lib/layout/Heading.svelte';
+  import SvelteSeo from 'svelte-seo';
 
   let svgString = '';
   const user = JSON.parse(Cookies.get('user') || '{}').data;
@@ -58,10 +59,10 @@
   };
 </script>
 
-<svelte:head>
-    <title>Personal Dashboard</title>
-    <meta content="Personal Dashboard"/>
-</svelte:head>
+<SvelteSeo
+        description="Personal Dashboard"
+        title="Personal Dashboard"
+/>
 
 <AdminMain>
     <Heading border="true" size="h2" tag="h1">Personal Dashboard</Heading>

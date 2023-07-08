@@ -10,6 +10,7 @@
   import Heading from '$lib/layout/Heading.svelte';
   import Button from '$lib/forms/Button.svelte';
   import AlignSelect from '$lib/forms/AlignSelect.svelte';
+  import SvelteSeo from 'svelte-seo';
 
   export let data;
 
@@ -40,10 +41,10 @@
   let logoPreview;
 </script>
 
-<svelte:head>
-    <title>Edit theme</title>
-    <meta content="Edit theme"/>
-</svelte:head>
+<SvelteSeo
+        description="Edit theme"
+        title="Edit theme"
+/>
 
 <AdminMain>
     <Heading border="true" size="h2" tag="h1">Edit theme</Heading>
