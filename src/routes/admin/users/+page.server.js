@@ -17,7 +17,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes`, options);
 
     return response.json();
   };
@@ -36,7 +36,7 @@ export const load = async ({
       },
     };
 
-    const apiUrl = new URL(`${PUBLIC_REST_API_URL}/api/users`);
+    const apiUrl = new URL(`${PUBLIC_REST_API_URL}/api/v1/users`);
 
     if (page) {
       apiUrl.searchParams.append('page', page);
@@ -86,7 +86,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/users`, options);
 
       if (response.ok) {
         return { success: true };
@@ -116,7 +116,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/auth/recover`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/auth/recover`, options);
 
       if (response.ok) {
         return { success: true };
@@ -146,7 +146,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${formData.get('userId')}`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/users/${formData.get('userId')}`, options);
 
       if (response.ok) {
         return { success: true };
@@ -180,7 +180,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${formData.get('userId')}`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/users/${formData.get('userId')}`, options);
 
       // Update the cookie.
       await cookies.set('user', JSON.stringify(await response.json()), {
@@ -223,7 +223,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/auth/signup`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/auth/signup`, options);
 
       if (response.ok) {
         return { success: true };

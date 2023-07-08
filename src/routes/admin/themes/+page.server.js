@@ -22,7 +22,7 @@ export const load = async ({
       },
     };
 
-    const apiUrl = new URL(`${PUBLIC_REST_API_URL}/api/themes`);
+    const apiUrl = new URL(`${PUBLIC_REST_API_URL}/api/v1/themes`);
 
     if (page) {
       apiUrl.searchParams.append('page', page);
@@ -72,7 +72,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes`, options);
 
       if (response.ok) {
         return { success: true };
@@ -103,7 +103,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${formData.get('themeId')}`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes/${formData.get('themeId')}`, options);
 
       if (response.status === 400) {
         const data = await response.json();
@@ -143,7 +143,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes`, options);
 
       if (response.ok) {
         return { success: true };

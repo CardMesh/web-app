@@ -18,7 +18,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${userId}/statistics/clicks`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/users/${userId}/statistics/clicks`, options);
 
     if (response.status === 404) {
       throw redirect(302, '/login');

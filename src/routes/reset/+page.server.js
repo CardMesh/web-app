@@ -32,7 +32,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/auth/reset`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/auth/reset`, options);
 
       if (response.ok) {
         return { success: true };

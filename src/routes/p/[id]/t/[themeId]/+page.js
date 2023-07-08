@@ -17,7 +17,7 @@ export const load = async ({
     };
 
     const response = await fetch(
-      `${PUBLIC_REST_API_URL}/api/users/${params.id}/vcards`,
+      `${PUBLIC_REST_API_URL}/api/v1/users/${params.id}/vcards`,
       options,
     );
 
@@ -36,7 +36,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${params.themeId}`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes/${params.themeId}`, options);
 
     return response.json();
   };
@@ -52,7 +52,7 @@ export const load = async ({
       body: JSON.stringify(data),
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${params.id}/statistics/clicks`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/users/${params.id}/statistics/clicks`, options);
 
     return response.json();
   };

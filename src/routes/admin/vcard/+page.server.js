@@ -20,7 +20,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${userId}/vcards`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/users/${userId}/vcards`, options);
 
     if (response.status === 404) {
       throw redirect(302, '/login');
@@ -38,7 +38,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes/${themeId}`, options);
 
     return response.json();
   };
@@ -123,7 +123,7 @@ export const actions = {
 
     try {
       const response = await fetch(
-        `${PUBLIC_REST_API_URL}/api/users/${userId}/vcards`,
+        `${PUBLIC_REST_API_URL}/api/v1/users/${userId}/vcards`,
         options,
       );
 
@@ -154,7 +154,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${userId}/images`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/users/${userId}/images`, options);
 
       if (response.ok) {
         return { success: true };

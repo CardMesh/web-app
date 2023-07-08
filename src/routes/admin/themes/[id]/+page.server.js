@@ -27,7 +27,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/users/${userId}/vcards`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/users/${userId}/vcards`, options);
     return response.json();
   };
 
@@ -40,7 +40,7 @@ export const load = async ({
       },
     };
 
-    const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}`, options);
+    const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes/${themeId}`, options);
 
     return response.json();
   };
@@ -116,7 +116,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes/${themeId}`, options);
 
       if (response.ok) {
         return { success: true };
@@ -146,7 +146,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes/${themeId}/images`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes/${themeId}/images`, options);
 
       if (response.ok) {
         return { success: true };
@@ -177,7 +177,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/themes`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/themes`, options);
 
       if (response.ok) {
         return { success: true };

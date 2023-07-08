@@ -21,7 +21,7 @@ export const actions = {
     };
 
     try {
-      const response = await fetch(`${PUBLIC_REST_API_URL}/api/auth/login`, options);
+      const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/auth/login`, options);
 
       if (response.ok) {
         const user = await response.json();
