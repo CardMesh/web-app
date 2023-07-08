@@ -13,7 +13,7 @@
 <a
         aria-label="{ariaLabel}"
         class="btn me-2 d-flex my-auto rounded-circle p-2 border-0"
-        href="{href.includes('://') ? href : `https://${href}`}"
+        href="{href}"
         role="button"
         style="background-color: {backgroundColor}; color: {fontColor}"
         target="{target}"

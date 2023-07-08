@@ -206,7 +206,7 @@
             {#if theme.display.web && vCard.contact.web.length !== 0}
                 <li class="d-flex align-middle pb-3">
                     <IconLink
-                            href="{vCard.contact.web}"
+                            href="{vCard.contact.web.includes('://') ? vCard.contact.web : `https://${vCard.contact.web}`}"
                             ariaLabel="Visit {vCard.contact.web}"
                             backgroundColor="{theme.color.contactIcons.background}"
                             fontColor="{theme.color.contactIcons.font}"

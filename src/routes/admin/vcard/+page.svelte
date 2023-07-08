@@ -94,7 +94,7 @@
                                   bind:street="{vCard.location.street}"/>
                 <TextInput bind:value="{vCard.contact.web}" displayName="Web" name="web"></TextInput>
 
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <TextInput bind:value="{vCard.contact.file.name}" displayName="File name"
                                name="fileName"></TextInput>
                     <TextInput bind:value="{vCard.contact.file.url}" displayName="File URL" name="fileUrl"></TextInput>
