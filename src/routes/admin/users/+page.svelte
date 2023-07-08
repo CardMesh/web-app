@@ -24,7 +24,7 @@
 
   export let data;
 
-  const userId = JSON.parse(Cookies.get('userId') || '{}').data?.userId;
+  const userId = JSON.parse(Cookies.get('user') || '{}').data?.userId;
 
   let isLoading = false;
 
