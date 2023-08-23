@@ -33,7 +33,7 @@
 </script>
 
 <SvelteSeo
-        description="Rest Password"
+        description="Reset Password"
         title="Reset Password"
 />
 

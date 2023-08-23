@@ -18,17 +18,17 @@
         openGraph={{
     title: title,
     description: description,
-    image: vCard.avatar.format.webp || '',
+    image: vCard?.avatar?.format.webp || '',
     type: "website",
     images: [
       {
-        url: vCard.avatar.format.webp || '',
-        width: vCard.avatar.size.width || '',
-        height: vCard.avatar.size.height || '',
-        alt: `${vCard.person.firstName || ''} ${vCard.person.lastName || ''}`,
+        url: vCard?.avatar?.format.webp || '',
+        width: vCard?.avatar?.size?.width || '',
+        height: vCard?.avatar?.size?.height || '',
+        alt: `${vCard?.person?.firstName || ''} ${vCard?.person?.lastName || ''}`,
       },
     ],
-    site_name: `${vCard.person.firstName || ''} ${vCard.person.lastName || ''}`,
+    site_name: `${vCard?.person?.firstName || ''} ${vCard?.person?.lastName || ''}`,
   }}
         title="{title}"
 />
