@@ -45,7 +45,12 @@ git clone git@github.com:CardMesh/web-app.git && cd web-app
 
 **2. Configure your private `.env` file, following the `.env.example` sample**
 
-**3. In `svelte.config.js` you can define the adapter.**
+**3. In `svelte.config.js` you can define the adapter.
+If you want to run this on a node server, use:**
+
+```javascript
+import adapter from '@sveltejs/adapter-node';
+```
 
 **4. Run the app**
 
