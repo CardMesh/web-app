@@ -83,8 +83,6 @@
     };
   };
 
-  let text;
-
   let pagination;
 
   $: {

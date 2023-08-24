@@ -103,7 +103,6 @@ export const actions = {
   }) => {
     const { token } = JSON.parse(cookies.get('access')).data;
     const formData = await request.formData();
-
     const options = {
       method: 'POST',
       headers: {
@@ -117,7 +116,6 @@ export const actions = {
 
     try {
       const response = await fetch(`${PUBLIC_REST_API_URL}/api/v1/auth/recover`, options);
-
       if (response.ok) {
         return { success: true };
       }
