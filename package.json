@@ -38,7 +38,7 @@
     "@types/cookie": "^0.5.1",
     "@zerodevx/svelte-toast": "^0.9.5",
     "bootstrap": "^5.3.1",
-    "chart.js": "^4.3.3",
+    "chart.js": "^4.4.0",
     "country-telephone-data": "^0.6.3",
     "cross-env": "^7.0.3",
     "eslint": "^8.47.0",
@@ -57,8 +57,8 @@
     "svelte-icons-pack": "^2.1.0",
     "svelte-preprocess": "^5.0.4",
     "svelte-seo": "^1.5.3",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vitest": "^0.34.2"
+    "vitest": "^0.34.3"
   }
 }
