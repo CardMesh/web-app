@@ -189,13 +189,13 @@
                         name="displayContactBtn"
                 />
                 <Heading size="h4" tag="h4">Logo</Heading>
-                <RangeInput bind:value="{theme.logo.size.height}" displayName="Size" max="80" min="20"
+                <RangeInput bind:value="{theme.logo.size.height}" displayName="Size" max="140" min="20"
                             name="logoHeight"/>
                 <Button {isLoading}>Save</Button>
             </form>
             <Heading border="true" size="h2" tag="h2">Images</Heading>
             <Heading size="h4" tag="h4">Upload logo</Heading>
-            <UploadFile bind:file={logoPreview} imageHeight="80" imageName="logo"/>
+            <UploadFile bind:file={logoPreview} imageHeight="140" imageName="logo"/>
         </div>
     </div>
     <DisplayPreview {logoPreview} {theme} {vCard}/>

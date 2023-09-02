@@ -59,5 +59,5 @@
     <input hidden name="imageHeight" value="{imageHeight}"/>
     <input hidden name="imageName" value="{imageName}"/>
 
-    <Button {isLoading}>Upload image</Button>
+    <Button {isLoading}>Save image</Button>
 </form>
