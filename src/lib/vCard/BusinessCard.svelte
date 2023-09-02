@@ -68,6 +68,10 @@
 
   let longitude;
   $: longitude = vCard.location.coordinates.longitude;
+
+  const generateFullName = (first, middle, last) => `${first ? first + ' ' : ''}${middle ? middle + ' ' : ''}${last}`;
+
+  $: fullName = generateFullName(vCard.person.firstName, vCard.person.middleName, vCard.person.lastName);
 </script>
 
 <div style="background-color: {theme.color.background}">
@@ -95,10 +99,10 @@
             <div class="d-flex justify-content-{theme.align.avatar}">
                 <div class="d-flex justify-content-center align-items-center">
                     <img
-                            alt="{vCard.person.firstName} {vCard.person.lastName}"
-                            class="rounded-circle"
-                            height="{vCard?.avatar?.size?.height ?? 130}"
-                            width="{vCard?.avatar?.size?.width ?? 130}"
+                            alt="{fullName}"
+                            class="rounded-circle object-fit-cover"
+                            height="130"
+                            width="130"
                             src="{avatarPreview ? avatarPreview : `data:image/webp;base64,${vCard.avatar.format.webp}`}"
                     />
                 </div>
@@ -107,7 +111,7 @@
 
         <div class="d-flex justify-content-{theme.align.heading}">
             <h1 class="h3 pt-1"
-                style="color: {theme.color.font.primary}">{vCard.person.firstName} {vCard.person.lastName}</h1>
+                style="color: {theme.color.font.primary}">{fullName}</h1>
         </div>
         <div class="text-{theme.align.bio}" style="color: {theme.color.font.secondary}">
             <small><em>{vCard.person.pronouns}</em></small>
@@ -348,6 +352,6 @@
   }
 
   ul {
-    padding-left: 0px;
+    padding-left: 0;
   }
 </style>
