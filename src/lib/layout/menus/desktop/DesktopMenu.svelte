@@ -38,7 +38,7 @@
     });
   };
 
-  let currentVersion = '1.0.3';
+  let currentVersion = '1.0.4';
 
   let hasUpgrade = false;
 

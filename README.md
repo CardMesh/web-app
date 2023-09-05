@@ -27,7 +27,7 @@ cards in a web browser, accessible via NFC tags, QR codes, or direct URLs.
 
 | Version | Documentation |
 |---------|---------------|
-| 1.0.3   | current       |
+| 1.0.4   | current       |
 
 ### Requirements
 
