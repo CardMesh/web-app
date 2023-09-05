@@ -96,7 +96,7 @@
         <Divider/>
 
         {#if vCard?.avatar?.format?.webp || avatarPreview}
-            <div class="d-flex justify-content-{theme.align.avatar}">
+            <div class="d-flex justify-content-{theme.align.avatar} mb-2">
                 <div class="d-flex justify-content-center align-items-center">
                     <img
                             alt="{fullName}"
