@@ -56,7 +56,7 @@
     "svelte-feather-icons": "^4.0.1",
     "svelte-icons-pack": "^2.1.0",
     "svelte-preprocess": "^5.0.4",
-    "svelte-seo": "^1.5.3",
+    "svelte-seo": "^1.5.4",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vitest": "^0.34.3"
