@@ -30,7 +30,7 @@
   "devDependencies": {
     "@fontsource/fira-mono": "^5.0.8",
     "@neoconfetti/svelte": "^1.0.0",
-    "@playwright/test": "^1.38.0",
+    "@playwright/test": "^1.38.1",
     "@popperjs/core": "^2.11.8",
     "@rodneylab/svelte-social-icons": "^0.0.28",
     "@sveltejs/adapter-vercel": "^3.0.3",
