@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@fontsource/fira-mono": "^5.0.8",
-    "@neoconfetti/svelte": "^1.0.0",
+    "@neoconfetti/svelte": "^2.0.0",
     "@playwright/test": "^1.40.1",
     "@popperjs/core": "^2.11.8",
     "@rodneylab/svelte-social-icons": "^0.0.28",
