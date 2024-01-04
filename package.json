@@ -33,7 +33,7 @@
     "@playwright/test": "^1.40.1",
     "@popperjs/core": "^2.11.8",
     "@rodneylab/svelte-social-icons": "^0.0.28",
-    "@sveltejs/adapter-vercel": "^4.0.3",
+    "@sveltejs/adapter-vercel": "^4.0.4",
     "@sveltejs/kit": "^2.0.6",
     "@types/cookie": "^0.6.0",
     "@zerodevx/svelte-toast": "^0.9.5",
