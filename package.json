@@ -58,7 +58,7 @@
     "svelte-preprocess": "^5.1.4",
     "svelte-seo": "^1.6.0",
     "typescript": "^5.4.5",
-    "vite": "^5.2.10",
+    "vite": "^5.2.11",
     "vitest": "^1.5.3"
   }
 }
