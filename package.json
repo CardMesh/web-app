@@ -34,7 +34,7 @@
     "@popperjs/core": "^2.11.8",
     "@rodneylab/svelte-social-icons": "^0.0.30",
     "@sveltejs/adapter-vercel": "^5.4.7",
-    "@sveltejs/kit": "^2.8.3",
+    "@sveltejs/kit": "^2.11.1",
     "@types/cookie": "^1.0.0",
     "@zerodevx/svelte-toast": "^0.9.6",
     "bootstrap": "^5.3.3",
