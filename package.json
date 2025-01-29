@@ -51,7 +51,7 @@
     "qrcode-svg": "^1.1.0",
     "sass": "^1.81.0",
     "semver": "^7.6.3",
-    "svelte": "^5.17.0",
+    "svelte": "^5.19.4",
     "svelte-check": "^4.1.4",
     "svelte-feather-icons": "^4.2.0",
     "svelte-icons-pack": "^3.1.3",
