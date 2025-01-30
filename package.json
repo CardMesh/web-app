@@ -44,7 +44,7 @@
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-svelte": "^2.46.0",
+    "eslint-plugin-svelte": "^2.46.1",
     "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
     "moment-timezone": "^0.5.47",
