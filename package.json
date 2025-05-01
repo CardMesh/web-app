@@ -59,6 +59,6 @@
     "svelte-seo": "^1.6.1",
     "typescript": "^5.7.2",
     "vite": "^6.3.4",
-    "vitest": "^2.1.9"
+    "vitest": "^3.1.2"
   }
 }
