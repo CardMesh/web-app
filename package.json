@@ -47,7 +47,7 @@
     "eslint-plugin-svelte": "^3.12.4",
     "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
-    "moment-timezone": "^0.5.47",
+    "moment-timezone": "^0.6.0",
     "qrcode-svg": "^1.1.0",
     "sass": "^1.86.0",
     "semver": "^7.7.2",
